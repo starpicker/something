@@ -1,0 +1,8 @@
+#dd if=IMG_1600x1216_201701_000_1.nv21 bs=1600x1200 count=1 skip=0 of=1600x1200.grey
+#dd if=IMG_1600x1216_201701_000_1.nv21 bs=1600x1216 count=1 skip=1 of=1600x1200.uv
+#cat 1600x1200.grey 1600x1200.uv > 1600x1200.nv21
+
+dd if=IMG_3264x2496_201701_000_0.nv21 bs=3264x2448 count=1 skip=0 of=3264x2448.grey
+dd if=IMG_3264x2496_201701_000_0.nv21 bs=3264x2496 count=1 skip=1 of=3264x2496.uv
+dd if=3264x2496.uv bs=3264x2448 count=1 skip=1 of=3264x2448.uv
+cat 3264x2448.grey 3264x2448.uv > 3264x2448.nv21
