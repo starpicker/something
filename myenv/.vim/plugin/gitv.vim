@@ -15,6 +15,7 @@ set cpo&vim
 "configurable options:
 "g:Gitv_CommitStep                - int
 "g:Gitv_OpenHorizontal            - {0,1,'AUTO'}
+"let g:Gitv_OpenHorizontal         = 0
 "g:Gitv_WipeAllOnClose            - int
 "g:Gitv_WrapLines                 - {0,1}
 "g:Gitv_TruncateCommitSubjects    - {0,1}
@@ -713,6 +714,15 @@ fu! s:SetDefaultMappings() "{{{
         \'cmd': ':call <SID>DiffGitvCommit()<cr>',
         \'bindings': 'D'
     \}
+    let s:defaultMappings.diff = {
+        \'cmd': ':<C-U>call <SID>DiffGitvCommitV()<cr>',
+        \'bindings': 'd'
+    \}
+    let s:defaultMappings.vdiff = {
+        \'mapCmd': 'vnoremap',
+        \'cmd': ':call <SID>DiffGitvCommitV()<cr>',
+        \'bindings': 'd'
+    \}
     let s:defaultMappings.stat = {
         \'cmd': ':<C-U>call <SID>StatGitvCommit()<cr>',
         \'bindings': 'S'
@@ -785,16 +795,16 @@ fu! s:SetDefaultMappings() "{{{
         \'cmd': ':call <SID>Revert()<cr>',
         \'bindings': 'rev'
     \}
-    let s:defaultMappings.delete = {
-        \'mapCmd': 'nmap',
-        \'cmd': ':<C-U>call <SID>DeleteRef()<cr>',
-        \'bindings': 'd'
-    \}
-    let s:defaultMappings.vdelete = {
-        \'mapCmd': 'vmap',
-        \'cmd': ':call <SID>DeleteRef()<cr>',
-        \'bindings': 'd'
-    \}
+    "let s:defaultMappings.delete = {
+        "\'mapCmd': 'nmap',
+        "\'cmd': ':<C-U>call <SID>DeleteRef()<cr>',
+        "\'bindings': 'd'
+    "\}
+    "let s:defaultMappings.vdelete = {
+        "\'mapCmd': 'vmap',
+        "\'cmd': ':call <SID>DeleteRef()<cr>',
+        "\'bindings': 'd'
+    "\}
 
     " rebasing
     let s:defaultMappings.rebase = {
@@ -987,24 +997,24 @@ fu! s:SetDefaultMappings() "{{{
             \'preventCustomBindings': 1,
             \'bindings': '<c-cr>'
         \}
-        let s:defaultMappings.ctrlSplit = {
-            \'mapCmd': 'nmap',
-            \'cmd': '<Plug>(gitv-split)',
-            \'preventCustomBindings': 1,
-            \'bindings': '<c-j>'
-        \}
-        let s:defaultMappings.ctrlVsplit = {
-            \'mapCmd': 'nmap',
-            \'cmd': '<Plug>(gitv-vsplit)',
-            \'preventCustomBindings': 1,
-            \'bindings': '<c-k>'
-        \}
-        let s:defaultMappings.ctrlTabe = {
-            \'mapCmd': 'nmap',
-            \'cmd': '<Plug>(gitv-tabedit)',
-            \'preventCustomBindings': 1,
-            \'bindings': '<c-l>'
-        \}
+        "let s:defaultMappings.ctrlSplit = {
+            "\'mapCmd': 'nmap',
+            "\'cmd': '<Plug>(gitv-split)',
+            "\'preventCustomBindings': 1,
+            "\'bindings': '<c-j>'
+        "\}
+        "let s:defaultMappings.ctrlVsplit = {
+            "\'mapCmd': 'nmap',
+            "\'cmd': '<Plug>(gitv-vsplit)',
+            "\'preventCustomBindings': 1,
+            "\'bindings': '<c-k>'
+        "\}
+        "let s:defaultMappings.ctrlTabe = {
+            "\'mapCmd': 'nmap',
+            "\'cmd': '<Plug>(gitv-tabedit)',
+            "\'preventCustomBindings': 1,
+            "\'bindings': '<c-l>'
+        "\}
     endif
 endf "}}}
 fu! s:NormalCmd(mapId, mappings) "{{{
@@ -2206,6 +2216,22 @@ fu! s:DiffGitvCommit() range "{{{
         call s:OpenRelativeFilePath(shafirst, "Gedit")
     endif
     call s:MoveIntoPreviewAndExecute("Gdiff " . shalast, a:firstline != a:lastline)
+endf "}}}
+
+fu! s:DiffGitvCommitV() range "{{{
+    if !s:IsFileMode()
+        echom "Diffing is not possible in browser mode."
+        return
+    endif
+    let shafirst = gitv#util#line#sha(a:firstline)
+    let shalast  = gitv#util#line#sha(a:lastline)
+    if shafirst == "" || shalast == ""
+        return
+    endif
+    if a:firstline != a:lastline
+        call s:OpenRelativeFilePath(shafirst, "Gedit")
+    endif
+    call s:MoveIntoPreviewAndExecute("Gvdiff " . shalast, a:firstline != a:lastline)
 endf "}}}
 fu! s:GetMergeArguments(from, to, verbose) "{{{
     if exists('g:Gitv_MergeArgs') && type(g:Gitv_MergeArgs) == 1
