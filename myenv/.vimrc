@@ -47,8 +47,7 @@ set incsearch		" incremental search
 "set autowrite		" automatically save before commands like :next and :make
 "set hidden             " hide buffers when they are abandoned
 "set mouse=a		" enable mouse usage (all modes)
-"autocmd FileType c,cpp,make,go set tabstop=4 | set expandtab
-set tabstop=4
+autocmd FileType c,cpp,make,go set tabstop=4 | set expandtab
 set shiftwidth=4
 set hlsearch
 set nonumber
@@ -85,6 +84,7 @@ endif
 " showmarks setting
 """"""""""""""""""""""""""""""
 " enable showmarks
+" disable showmarks
 "let showmarks_enable = 1
 "" show which marks
 "let showmarks_include = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
@@ -155,6 +155,7 @@ let g:ctrlp_follow_symlinks=1
 nnoremap <Leader>f :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 "nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <Leader>u :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_by_filename=1
@@ -199,6 +200,7 @@ nnoremap <C-l> <C-W>l
 
 " NERDTree toggle
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>N :NERDTree .<CR>
 nnoremap <silent> <leader>t :TlistToggle<CR>
 
 nnoremap <silent> <leader>q :q<CR>
@@ -227,6 +229,7 @@ set nocompatible
 "Bundle 'bling/vim-airline'
 "Bundle 'dyng/ctrlsf.vim'
 
+""
 "let g:ycm_autoclose_preview_window_after_completion=1
 ""let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 "let g:ycm_collect_identifiers_from_tag_files=0
@@ -253,7 +256,7 @@ set nocompatible
 "nnoremap <leader>D :YcmCompleter GoTo<CR>
 ""nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 ""nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-""
+"
 "let g:ycm_filetype_blacklist = {
        "\ 'tagbar' : 1,
        "\ 'qf' : 1,
@@ -297,7 +300,7 @@ nnoremap <leader>o :only<CR>
 nnoremap <Space> <C-f>
 
 "map <F2> :call ToggleSketch()<CR>
-inoremap jj <ESC>i
+"inoremap jj <ESC>
 
 "nnoremap <Leader>e :call TracyoneGotoDef("")<cr>
 "nnoremap <C-\>g :call TracyoneGotoDef("sp")<cr>
@@ -446,8 +449,8 @@ xmap <Leader>L <Plug>(Limelight)
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 "noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 "noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
@@ -495,9 +498,9 @@ vnoremap < <gv
 vnoremap > >gv
 vmap <Tab> >
 vmap <S-Tab> <
-" vimgrep/lvimgrep(lv)
-" " 在当前文件中快速查找光标下的单词, 并在窗口的位置列表中显示
-nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+vmap q <ESC>
+noremap vv va{omxomz
+noremap ss [[3k0/(<cr>b/<c-r><c-w><cr>N
 
-nmap <Leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<CR>
-set ignorecase
+nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+nmap <leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<cr>
