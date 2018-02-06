@@ -500,7 +500,7 @@ vmap <Tab> >
 vmap <S-Tab> <
 vmap q <ESC>
 noremap vv va{omxomz
-noremap ss [[3k0/(<cr>b/<c-r><c-w><cr>N
+noremap ss [[?(<cr>b/<c-r><c-w><cr>N
 
 nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 nmap <leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<cr>
