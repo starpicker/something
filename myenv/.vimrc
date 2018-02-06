@@ -183,10 +183,10 @@ let g:ctrlp_regexp=1
 "inoremap <silent><s-tab> <ESC>:tabnext<CR>
 
 " Tab navigation
-nnoremap tp :tabprevious<CR>
-nnoremap tn :tabnext<CR>
-nnoremap to :tabnew<CR>
-nnoremap tc :tabclose<CR>
+"nnoremap tp :tabprevious<CR>
+"nnoremap tn :tabnext<CR>
+"nnoremap to :tabnew<CR>
+"nnoremap tc :tabclose<CR>
 nnoremap t1 :tabn 1<cr>
 nnoremap t2 :tabn 2<cr>
 nnoremap t3 :tabn 3<cr>
@@ -501,6 +501,49 @@ vmap <S-Tab> <
 vmap q <ESC>
 noremap vv va{omxomz
 noremap ss [[?(<cr>b/<c-r><c-w><cr>N
+noremap qq f(b/<c-r><c-w><cr>N
+noremap <silent>tt <c-]>
+noremap tb <c-t>
+noremap ts :ts<cr>
+noremap tn :tn<cr>
+noremap tp :tp<cr>
+set shortmess +=F
 
 nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 nmap <leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<cr>
+
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
+endfunction
+
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+
+function! WindowMessage(...)
+" this function output the result of the Ex command into a split scratch buffer
+  let cmd = join(a:000, ' ')
+  let temp_reg = @"
+  redir @"
+  silent! execute cmd
+  redir END
+  let output = copy(@")
+  let @" = temp_reg
+  if empty(output)
+    echoerr "no output"
+  else
+    new
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
+    put! =output
+  endif
+endfunction
+command! -nargs=+ -complete=command WindowMessage call WindowMessage(<f-args>)
