@@ -502,11 +502,13 @@ vmap q <ESC>
 noremap vv va{omxomz
 noremap ss [[?(<cr>b/<c-r><c-w><cr>N
 noremap qq f(b/<c-r><c-w><cr>N
-noremap <silent>tt <c-]>
+noremap tt <c-]>
 noremap tb <c-t>
 noremap ts :ts<cr>
 noremap tn :tn<cr>
 noremap tp :tp<cr>
+noremap <Tab> :tn<cr>
+noremap <S-Tab> :tp<cr>
 set shortmess +=F
 
 nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
@@ -547,3 +549,7 @@ function! WindowMessage(...)
   endif
 endfunction
 command! -nargs=+ -complete=command WindowMessage call WindowMessage(<f-args>)
+
+let g:ag_prg="ag --vimgrep -s -w"
+let g:ag_working_path_mode='r'
+let g:ag_highlight=1
