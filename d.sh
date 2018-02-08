@@ -1,4 +1,5 @@
 mv wrap wrapc
-git reset --hard
+git checkout wrap.zip
+unzip warp.zip
 diff -upraN wrap/ wrapc/ > wrap.diff
-zip -e wrap.diff
+zip -e wrap.zip wrap.diff
