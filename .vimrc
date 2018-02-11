@@ -367,7 +367,8 @@ set wildmenu
 set updatetime=250
 "let g:gitgutter_enabled = 0
 nnoremap <Leader>d :GitGutterToggle<Cr>
-map <Leader>l :set invnumber<Cr>
+"has less use
+"map <Leader>l :set invnumber<Cr>
 "set splitright
 "set splitbelow
 
@@ -486,11 +487,13 @@ cabbrev w!! w !sudo tee % >/dev/null
 "nnoremap <silent> <leader>cd :cd %:p:h<CR>
 "
 " switch between last two files
-nnoremap <leader><Tab> <c-^>
+"dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
+"nnoremap <leader><Tab> <c-^>
 "
-"nnoremap j gj
-"nnoremap k gk
-" switch between windows by hitting <Tab> twice
+nnoremap j gj
+nnoremap k gk
+"switch between windows by hitting <Tab> twice
+"dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
 "nnoremap <silent> <Tab><Tab> <C-w>w
 "nnoremap <silent> <Tab> <C-w>w
 noremap Y y$
@@ -507,8 +510,9 @@ noremap tb <c-t>
 noremap ts :ts<cr>
 noremap tn :tn<cr>
 noremap tp :tp<cr>
-noremap <Tab> :tn<cr>
-noremap <S-Tab> :tp<cr>
+"dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
+"noremap <Tab> :tn<cr>
+"noremap <S-Tab> :tp<cr>
 set shortmess +=F
 
 nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
@@ -556,9 +560,19 @@ let g:ag_highlight=1
 
 let g:EclimCValidate = 0
 let g:EclimFileTypeValidate = 0
+let g:EclimBrowser = 'w3m'
+
+command -range -nargs=* Bd call eclim#web#SearchEngine(
+	\ 'http://www.baidu.com/s?wd=<query>', <q-args>, <line1>, <line2>)
+
+nmap <leader>m <c-o>
+nmap <leader>i <c-i>
 
 nmap <leader>cn :cn<cr>
+nmap <leader>j :cn<cr>
 nmap <leader>cp :cp<cr>
+nmap <leader>k :cp<cr>
 nmap <leader>ch :CCallHierarchy<cr>
 nmap <leader>cd :CSearchContext<cr>
 nmap <leader>cs :CSearch <c-r><c-w> -x all<cr>
+nmap <leader>cf :LocateFile <c-r><c-w>.h<cr>
