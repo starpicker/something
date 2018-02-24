@@ -1,0 +1,46 @@
+CROSSCOMPILE_TOOLCHAIN_BASE :=/mnt/500G/OEMIV/lma/.android_toolchain/
+SYSROOT := $(CROSSCOMPILE_TOOLCHAIN_BASE)/sysroot/usr
+
+CROSSCOMPILE := $(CROSSCOMPILE_TOOLCHAIN_BASE)/bin/arm-linux-androideabi-
+TOOLCHAIN_INCDIR := $(SYSROOT)/include
+TOOLCHAIN_LIBDIR := $(SYSROOT)/lib
+
+CXX := $(CROSSCOMPILE)g++
+AR  := $(CROSSCOMPILE)ar
+
+INCDIR :=	-I./include -I./include/inc \
+								-I./common/inc -I./input/inc \
+								-I./fundamental/inc -I./common/inc/trace \
+								-I$(TOOLCHAIN_INCDIR)
+
+LIBDIR := -L./input/lib -L./common/lib -L$(TOOLCHAIN_LIBDIR) -L$(CROSSCOMPILE_TOOLCHAIN_BASE)lib/gcc/arm-linux-androideabi/4.4.3
+
+
+LIBS =  $(LIBDIR) \
+		-L$(TOOLCHAIN_LIBDIR)\
+     	-lmtutils -lampostprocess -lamimgcodec  -lmtgif -lmtjpgex \
+     	-lamcm -ladkutils -lmpkernel -lmputility -lmpbase -lamimageprocess 
+
+INPUT    = libamimageprocess.a
+TARGET	 = libamimageprocess.so
+
+OBJS	:= 	./input/lib/libamimgcodec.a \
+				 	./input/lib/libamcm.a  \
+					./input/lib/libmtgif.a \
+					./input/lib/libmtjpgex.a\
+				 	./input/lib/libmtutils.a \
+				 	./input/lib/libadkutils.a\
+				 	./common/lib/libampostprocess.a \
+				 	./common/lib/libmpkernel.a \
+				 	./common/lib/libmputility.a  \
+				 	./common/lib/libmpbase.a
+
+$(TARGET): $(OBJS)
+	$(AR) -x $(INPUT)
+	$(CXX) *.o -fno-rtti -fno-exceptions -shared -fPIC -Wl,--no-whole-archive $^ -Wl,--no-whole-archive --Wl,-soname,$@ \
+	-Wl,--no-undefined -o $@
+
+
+.PHONEY:clean
+clean:
+	-rm -f $(TARGET) *.o

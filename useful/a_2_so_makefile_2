@@ -1,0 +1,13 @@
+CC := /mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++ --sysroot=/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64/platforms/android-21/arch-arm
+
+all:
+	$(CC) -Wall -Wl,--no-undefined -Wl,--whole-archive input32/libmputility.a input32/libmpbase.a input32/libmpkernel.a input32/libmpstream.a -Wl,--no-whole-archive -shared -Wl,-soname,libarcveplatform.so fake_interface.c -o libarcveplatform.so
+	$(CC) -Wl,--no-undefined -Wl,--whole-archive input32/libamcm.a input32/libadkutils.a -Wl,--no-whole-archive -shared -Wl,-soname,libveamcm.so -o libveamcm.so -L. -larcveplatform
+	$(CC) -Wl,--no-undefined -Wl,--whole-archive input32/libadkutils.a -Wl,--no-whole-archive -shared -Wl,-soname,libveadkutils.so -o libveadkutils.so -L. -larcveplatform
+
+clean:
+	-rm libarcveplatform.so libveamcm.so libveadkutils.so
+	
+
+	
+	

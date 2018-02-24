@@ -1,0 +1,5 @@
+diff -upraN camera.ori/ camera.mod/ > cap_patch.diff
+diff -upraN mm-camera.ori/ mm-camera.mod/ > pre_patch.diff
+
+cd camera.ori && patch -b -p1 -i ../cap_patch.diff
+cd mm-camera.ori && patch -b -p1 -i ../pre_patch.diff

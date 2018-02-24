@@ -1,0 +1,32 @@
+core.symlinks=false
+core.autocrlf=false
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+pack.packsizelimit=2g
+help.format=html
+http.sslcainfo=C:/Program Files (x86)/Git/mingw32/ssl/certs/ca-bundle.crt
+diff.astextplain.textconv=astextplain
+rebase.autosquash=true
+alias.lg=log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+alias.df=difftool -y
+alias.st=status
+user.name=lma
+user.email=lma@arcsoft.com
+diff.tool=diffmerge
+difftool.diffmerge.cmd=diffmerge "$LOCAL" "$REMOTE"
+merge.tool=diffmerge
+mergetool.diffmerge.cmd=diffmerge --merge --result="$MERGED" "$LOCAL" "$(if test -f "$BASE"; then echo "$BASE"; else echo "$LOCAL"; fi)" "$REMOTE"
+mergetool.diffmerge.trustexitcode=true
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+core.hidedotfiles=dotGitOnly
+core.autocrlf=false
+gui.wmstate=normal
+gui.geometry=812x427+602+118 171 192
+alias.lb=!for k in `git branch |perl -pe s/^..//`; do echo -e `git show --pretty=format:"%Cgreen%ci%Creset" $k|head -n 1`	$k; done|sort -r
