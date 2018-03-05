@@ -1,0 +1,12 @@
+#repo forall -c sh /home/lma/cloudminds/sourcecode/repo_forall.txt
+date="2018-2-26"
+
+stdout=`git log --since $date`
+if [ -n "$stdout" ]
+then
+echo `pwd`
+git log --name-only --since $date
+echo
+echo "****************************************************************"
+echo
+fi
