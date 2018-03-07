@@ -563,6 +563,18 @@ let g:EclimCValidate = 0
 let g:EclimFileTypeValidate = 0
 let g:EclimBrowser = 'w3m'
 let g:EclimQuickFixHeight = 15
+let g:EclimProjectTreeAutoOpen = 0
+let g:EclimProjectTreeActions = [
+    \ {'pattern': '.*', 'name': 'Split', 'action': 'split'},
+    \ {'pattern': '.*', 'name': 'Tab', 'action': 'tabnew'},
+    \ {'pattern': '.*', 'name': 'Edit', 'action': 'edit'},
+  \ ]
+
+"you can instead Todo to what you want
+let g:EclimTodoSearchPattern = '\(\<fixme\>\|\<todo\>\|\<Todo\>\)\c'
+
+"let g:EclimTodoSearchExtensions = ['java', 'py', 'php', 'jsp', 'xml', 'html']
+let g:EclimTodoSearchExtensions = ['java', 'c', 'cpp']
 
 command -range -nargs=* Bd call eclim#web#SearchEngine(
 	\ 'http://www.baidu.com/s?wd=<query>', <q-args>, <line1>, <line2>)
@@ -575,12 +587,23 @@ nmap <leader>j :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>k :cp<cr>
 nmap <leader>ch :CCallHierarchy<cr>
-nmap <leader>cd :CSearchContext<cr>
+"nmap <leader>cd :CSearchContext<cr>
+nmap <leader>l :CSearchContext<cr>
 nmap <leader>cs :CSearch <c-r><c-w> -x all<cr>
-nmap <leader>l :CSearch <c-r><c-w> -x all<cr>
+"nmap <leader>l :CSearch <c-r><c-w> -x all<cr>
 nmap <leader>cf :LocateFile <c-r><c-w>.h<cr>
+nmap <leader>T :ProjectTreeToggle<cr>
+
+nmap <leader>C :bp<cr>:q<cr>
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
 nmap -- <c-w>l<c-w>_<c-w>><c-w>><c-w>>
 set wildmode=list:longest,full
+"set nowrapscan
+"
+"set UltiSnips
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrgger="<leader><tab>"
+let g:UltiSnipsListSnippets="<c-e>"
