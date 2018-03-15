@@ -47,7 +47,7 @@ set incsearch		" incremental search
 "set autowrite		" automatically save before commands like :next and :make
 "set hidden             " hide buffers when they are abandoned
 "set mouse=a		" enable mouse usage (all modes)
-autocmd FileType c,cpp,make,go set tabstop=4 | set expandtab
+autocmd FileType c,cpp,make,go,h set tabstop=4 | set expandtab
 set shiftwidth=4
 set hlsearch
 set nonumber
@@ -594,7 +594,8 @@ nmap <leader>cs :CSearch <c-r><c-w> -x all<cr>
 nmap <leader>cf :LocateFile <c-r><c-w>.h<cr>
 nmap <leader>T :ProjectTreeToggle<cr>
 
-nmap <leader>C :bp<cr>:q<cr>
+"nmap <leader>C :bp<cr>:q<cr>
+nmap <leader>C :-quit<cr>
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
@@ -607,3 +608,5 @@ let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrgger="<leader><tab>"
 let g:UltiSnipsListSnippets="<c-e>"
+
+nmap <leader>Y :YRShow<cr>
