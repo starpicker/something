@@ -556,7 +556,8 @@ function! WindowMessage(...)
 endfunction
 command! -nargs=+ -complete=command WindowMessage call WindowMessage(<f-args>)
 
-let g:ag_prg="ag --vimgrep -s -w"
+"let g:ag_prg="ag --vimgrep -s -w"
+let g:ag_prg="ag --vimgrep -S"
 let g:ag_working_path_mode='r'
 let g:ag_highlight=1
 
