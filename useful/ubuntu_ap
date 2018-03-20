@@ -1,0 +1,5 @@
+https://github.com/oblique/create_ap/
+sudo make install
+sudo apt-get install util-linux procps hostapd iproute2 iw haveged dnsmasq
+iwconfig
+sudo create_ap wlp1s0 enxf01e34125916 ubuntu 11111111
