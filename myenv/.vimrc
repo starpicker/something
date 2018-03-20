@@ -282,6 +282,7 @@ let g:EasyMotion_smartcase = 1
 "map <leader><leader>l <Plug>(easymotion-lineforward)
 "map <leader><leader>s <Plug>(easymotion-s2)
 map <leader>. <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
 "map <leader><leader>t <Plug>(easymotion-t2)
 map <leader><leader>. <Plug>(easymotion-repeat)
 "map  / <Plug>(easymotion-sn)

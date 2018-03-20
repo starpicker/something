@@ -116,7 +116,8 @@ export PATH=$PATH:~/bin:/usr/local/go/bin
 #alias ema='emacs'
 # sudo mount -o username=lma,uid=lma,gid=lma,nounix,noserverino //lma-win7/gif_encoder mount_mount
 #sudo mount -o username=lma,uid=lma,gid=lma,nounix,noserverino //172.17.200.21/gif_my mount_mount
-export LS_COLORS=$LS_COLORS:'di=01;94':'ex=01;91'
+#export LS_COLORS=$LS_COLORS:'di=01;94':'ex=01;91'
+export LS_COLORS=$LS_COLORS:'di=01;36':'ex=01;91'
 #alias android_addr2line=/mnt/500G/public/NDK/android-ndk64-r10-x86_64/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-addr2line
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/lib/x86_64-linux-gnu:/home/lma/mount_for_olympus/opengles/qcomsdk/Bin/x64:/usr/local/lib/:/usr/local/lib64/:/opt/Qualcomm/Symphony/1.1.2/x86_64-linux-gnu/lib:/home/lma/Qt5.7.0/5.7/gcc_64/lib
 
@@ -166,6 +167,8 @@ alias v="view"
 alias gg="go run"
 alias ca="cat"
 alias ivm="vim"
+alias vi="vim"
+
 #bind Space:magic-space
 source ~/.bash_aliases
 alias gcc="color_compile gcc"
