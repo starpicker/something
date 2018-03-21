@@ -197,6 +197,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
+nnoremap <leader>. <C-W><C-W>
 
 " NERDTree toggle
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -281,10 +282,10 @@ let g:EasyMotion_smartcase = 1
 "map <leader><leader>h <Plug>(easymotion-linebackward)
 "map <leader><leader>l <Plug>(easymotion-lineforward)
 "map <leader><leader>s <Plug>(easymotion-s2)
-map <leader>. <Plug>(easymotion-s)
+"map <leader>. <Plug>(easymotion-s)
 map s <Plug>(easymotion-s)
 "map <leader><leader>t <Plug>(easymotion-t2)
-map <leader><leader>. <Plug>(easymotion-repeat)
+"map <leader><leader>. <Plug>(easymotion-repeat)
 "map  / <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
 "map  n <Plug>(easymotion-next)
@@ -598,6 +599,7 @@ nmap <leader>T :ProjectsTree<cr>
 
 "nmap <leader>C :bp<cr>:q<cr>
 nmap <leader>C :-quit<cr>
+nmap <leader>lu :Ag <c-r><c-w><cr>
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
