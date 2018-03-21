@@ -1,0 +1,4 @@
+sudo apt install libudev-dev
+sudo apt install libevdev-dev
+gcc caps2esc.c -o caps2esc -I/usr/include/libevdev-1.0 -levdev -ludev
+sudo nice -n -20 ./caps2esc >caps2esc.log 2>caps2esc.err &
