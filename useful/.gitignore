@@ -1,0 +1,10 @@
+.gitignore
+.cproject
+.project
+.settings/
+cscope.files
+cscope.in.out
+cscope.out
+cscope.po.out
+namespace.files
+tags

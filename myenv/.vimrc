@@ -594,7 +594,7 @@ nmap <leader>l :CSearchContext<cr>
 nmap <leader>cs :CSearch <c-r><c-w> -x all<cr>
 "nmap <leader>l :CSearch <c-r><c-w> -x all<cr>
 nmap <leader>cf :LocateFile <c-r><c-w>.h<cr>
-nmap <leader>T :ProjectTreeToggle<cr>
+nmap <leader>T :ProjectsTree<cr>
 
 "nmap <leader>C :bp<cr>:q<cr>
 nmap <leader>C :-quit<cr>
