@@ -168,6 +168,7 @@ function! ag#Ag(cmd, args)
 
       exe 'nnoremap <silent> <buffer> e <CR><C-w><C-w>:' . l:matches_window_prefix .'close<CR>'
       exe 'nnoremap <silent> <buffer> go <CR>:' . l:matches_window_prefix . 'open<CR>'
+      exe 'nnoremap <silent> <buffer> p <CR>:' . l:matches_window_prefix . 'open<CR>'
       exe 'nnoremap <silent> <buffer> q  :' . l:matches_window_prefix . 'close<CR>'
 
       exe 'nnoremap <silent> <buffer> gv :let b:height=winheight(0)<CR><C-w><CR><C-w>H:' . l:matches_window_prefix . 'open<CR><C-w>J:exe printf(":normal %d\<lt>c-w>_", b:height)<CR>'
