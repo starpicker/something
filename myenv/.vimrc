@@ -616,3 +616,6 @@ let g:UltiSnipsListSnippets="<c-e>"
 nmap <leader>Y :YRShow<cr>
 "let g:yankring_history_dir =$HOME.'/.yanking/'
 let g:yankring_history_file = '.yankring_history'
+
+nmap ]<space> ]c
+nmap [<space> [c
