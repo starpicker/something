@@ -382,7 +382,9 @@ nnoremap <Leader>d :GitGutterToggle<Cr>
 let g:airline_theme="luna"
 "let g:airline_theme="molokai"
 let g:airline#extensions#tabline#enabled = 1
-nnoremap <C-p> :bn<CR>
+"nnoremap <C-p> :bn<CR>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
 "nnoremap <C-i> :bp<CR>
 "let g:airline#extensions#tabline#buffer_nr_show = 1
 "let g:airline#extensions#tabline#left_sep = ' '
@@ -619,3 +621,4 @@ let g:yankring_history_file = '.yankring_history'
 
 nmap ]<space> ]c
 nmap [<space> [c
+nmap "" ebi"<esc>ea"<esc>
