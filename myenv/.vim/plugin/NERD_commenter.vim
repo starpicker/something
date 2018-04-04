@@ -65,6 +65,9 @@ call s:InitVariable("g:NERDDelimiterRequests", 1)
 
 let s:NERDFileNameEscape="[]#*$%'\" ?`!&();<>\\"
 "vf ;;dA:hcs"'A {j^f(lyi(k$p0f{a A }0f{a 'left':jdd^
+"
+"malei force c using like cpp
+"\ 'c': { 'left': '/*','right': '*/', 'leftAlt': '//' },
 
 let s:delimiterMap = {
     \ 'aap': { 'left': '#' },
@@ -102,7 +105,7 @@ let s:delimiterMap = {
     \ 'caos': { 'left': '*' },
     \ 'calibre': { 'left': '//' },
     \ 'catalog': { 'left': '--', 'right': '--' },
-    \ 'c': { 'left': '/*','right': '*/', 'leftAlt': '//' },
+    \ 'c': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'cfg': { 'left': '#' },
     \ 'cg': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'ch': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
@@ -2731,7 +2734,7 @@ endfunction
 
 if g:NERDCreateDefaultMappings
     call s:CreateMaps('<plug>NERDCommenterComment',    '<leader>cc')
-    "call s:CreateMaps('<plug>NERDCommenterToggle',     '<leader>c<space>')
+    call s:CreateMaps('<plug>NERDCommenterToggle',     '<leader>c<space>')
     "call s:CreateMaps('<plug>NERDCommenterMinimal',    '<leader>cm')
     "call s:CreateMaps('<plug>NERDCommenterSexy',       '<leader>cs')
     call s:CreateMaps('<plug>NERDCommenterInvert',     '<leader>ci')
