@@ -369,7 +369,9 @@ set wildmenu
 
 set updatetime=250
 "let g:gitgutter_enabled = 0
-nnoremap <Leader>d :GitGutterToggle<Cr>
+"nnoremap <Leader>d :GitGutterToggle<Cr>
+nnoremap <Leader>d :GitGutterNextHunk<Cr>
+nnoremap <Leader>D :GitGutterPrevHunk<Cr>
 "has less use
 "map <Leader>l :set invnumber<Cr>
 "set splitright
