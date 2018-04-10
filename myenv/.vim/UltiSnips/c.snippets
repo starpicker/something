@@ -58,9 +58,41 @@ snippet inc
 
 endsnippet
 
-snippet file
+snippet filer
+FILE* ${1:fp} = fopen(${2}, "r");
+fread(${3}, ${4}, 1, $1);
+
+fclose($1);
+endsnippet
+
+snippet filew
 FILE* ${1:fp} = fopen(${2}, "w");
 fwrite(${3}, ${4}, 1, $1);
 
 fclose($1);
+endsnippet
+
+snippet malloc
+char* ${1:buff} = malloc(${2});
+endsnippet
+
+
+snippet filesize
+
+#include <sys/stat.h>
+unsigned long get_file_size(const char *path)
+{
+    unsigned long filesize = -1;
+    struct stat statbuff;
+    if(stat(path, &statbuff) < 0)
+    {
+    	return filesize;
+    }
+    else
+    {
+    	filesize = statbuff.st_size;
+    }
+    return filesize;
+}
+
 endsnippet
