@@ -3,7 +3,7 @@
 # for examples
 
 # If not running interactively, don't do anything
-#[ -z "$PS1" ] && exit
+#[ -z "$PS1" ] && exit 
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
@@ -107,7 +107,7 @@ fi
 #export LC_ALL=C
 
 #umask 0027
-export PATH=$PATH:~/bin:/usr/local/go/bin
+#export PATH=$PATH:/mnt/500G/OEMIV/lma/lge/android-ndk-r7/
 #export PATH=$PATH:/mnt/500G/OEMIV/lma/android-ndk-r9:/mnt/500G/OEMIV/lma/bin/bin:/mnt/500G/OEMIV/lma/bin/depot_tools
 #export ZZ=/mnt/500G/OEMIV/lma/mount_mount/
 #alias cdd='cd `cat /home/lma/myfifo`'
@@ -116,15 +116,13 @@ export PATH=$PATH:~/bin:/usr/local/go/bin
 #alias ema='emacs'
 # sudo mount -o username=lma,uid=lma,gid=lma,nounix,noserverino //lma-win7/gif_encoder mount_mount
 #sudo mount -o username=lma,uid=lma,gid=lma,nounix,noserverino //172.17.200.21/gif_my mount_mount
-#export LS_COLORS=$LS_COLORS:'di=01;94':'ex=01;91'
-export LS_COLORS=$LS_COLORS:'di=01;36':'ex=01;91'
+export LS_COLORS=$LS_COLORS:'di=01;94':'ex=01;91'
 #alias android_addr2line=/mnt/500G/public/NDK/android-ndk64-r10-x86_64/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-addr2line
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/lib/x86_64-linux-gnu:/home/lma/mount_for_olympus/opengles/qcomsdk/Bin/x64:/usr/local/lib/:/usr/local/lib64/:/opt/Qualcomm/Symphony/1.1.2/x86_64-linux-gnu/lib:/home/lma/Qt5.7.0/5.7/gcc_64/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/lib/x86_64-linux-gnu:/lma/mount_for_olympus/opengles/qcomsdk/Bin/x64:/usr/local/lib/:/usr/local/lib64/:/opt/Qualcomm/Symphony/1.1.2/x86_64-linux-gnu/lib
 
-[[ -s /home/lma/.autojump/etc/profile.d/autojump.sh ]] && source /home/lma/.autojump/etc/profile.d/autojump.sh
+[[ -s //home/lma/.autojump/etc/profile.d/autojump.sh ]] && source /home/lma/.autojump/etc/profile.d/autojump.sh
 
-export NDK_HOME=/opt/ndk/android-ndk-r10e
-export PATH="/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}:$NDK_HOME"
+export PATH="$GOROOT/bin:/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64:/home/lma/skia_android/depot_tools:/opt/poky/1.7/sysroots/i686-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/usr/local/bin:/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}"
 
 export ANDROID_NDK=/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64
 export ANDROID_SDK_ROOT=/mnt/500G/public/SDK/android-sdk-linux-6.0
@@ -156,21 +154,11 @@ alias v="vim"
 #export LC_ALL=en_US.utf8
 export EDITOR=vim
 export ANDROID_JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-alias gcc="color_compile gcc"
-alias g++="color_compile g++"
-alias make="color_compile make"
-alias fbterm="sudo fbterm -s 40"
-alias grepr="grep -rnH"
-alias findf="find . -type f -name"
-alias findd="find . -type d -name"
-alias v="view"
-alias gg="go run"
-alias ca="cat"
-alias ivm="vim"
-alias vi="vim"
-
 #bind Space:magic-space
-source ~/.bash_aliases
-alias gcc="color_compile gcc"
-alias g++="color_compile g++"
-alias make="color_compile make"
+#stty -ixon
+alias vpn='/opt/cisco/anyconnect/bin/vpn'
+alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
+
+export PATH=$HOME/bin:$PATH
+alias bci='bitcoin-cli'
+source $HOME/.tmuxinator/.tmuxinator.bash
