@@ -623,4 +623,7 @@ let g:yankring_history_file = '.yankring_history'
 
 nmap ]<space> ]c
 nmap [<space> [c
+nmap j<space> ]c
+nmap k<space> [c
+
 nmap "" ebi"<esc>ea"<esc>
