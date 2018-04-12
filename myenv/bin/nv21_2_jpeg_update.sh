@@ -5,7 +5,7 @@ then
 else
 	in=$1
 
-	if [ $# != 5 ]
+	if [ $# != 4 ]
 	then
 		width=`get_width $in`
 		height=`get_height $in`
