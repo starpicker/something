@@ -1,0 +1,1 @@
+for i in ../patch/*; do j=`../cut_name/cut_name $i`; git apply --whitespace=nowarn $i;git add -A; git commit -m $j;pause; done
