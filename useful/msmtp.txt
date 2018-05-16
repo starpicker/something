@@ -1,0 +1,27 @@
+配置msmtp账号
+
+切换到，cd /usr/local/msmtp
+
+新建文件夹etc，mkdir etc
+vi /usr/local/msmtp/etc/msmtprc
+# Set default values for all following accounts.
+defaults
+logfile /usr/local/msmtp/msmtp.log 
+# The SMTP server of the provider. 
+account test
+# SMTP邮件服务器地址
+host smtp.qq.com
+# 发送的邮件Email
+from xiaobaichi@qq.com
+auth login
+# 邮件服务器登录账号
+user xiaobaichi@qq.com
+# 邮件服务器登陆密码
+password 123456
+# Set a default account
+account default: test
+
+由于password是明码，所以我们需要修改此文件的权限 chmod 600 etc/msmtprc
+
+
+exchange pls dont auth login, and chown owner:owner
