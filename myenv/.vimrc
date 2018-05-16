@@ -105,6 +105,7 @@ set fileencodings=utf-8,gbk,ucs-bom,cp936
 "set tags =/home/lma/linux_else/tags
 "hi Comment ctermfg =lightblue
 colorscheme desert
+"colorscheme twilighted
 
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
@@ -627,3 +628,11 @@ nmap VV [c
 "nmap <space>k [c
 
 nmap "" ebi"<esc>ea"<esc>
+
+let g:color_coded_enabled = 1
+let g:color_coded_filetypes = ['c', 'cpp', 'objc']
+
+" Disable color_coded in diff mode
+if &diff
+  let g:color_coded_enabled = 0
+endif

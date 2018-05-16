@@ -187,3 +187,5 @@ export LESS_TERMCAP_so=$purple
 export LESS_TERMCAP_ue=$default
 # Begin underline
 export LESS_TERMCAP_us=$green
+
+alias vi='vim'
