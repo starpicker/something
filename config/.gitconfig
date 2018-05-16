@@ -1,0 +1,20 @@
+[user]
+	email = lma@arcsoft.com.cn
+	name = lma
+[core]
+	editor = vim
+[color]
+	ui = auto
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	df = difftool
+	lg = log -10 --oneline --graph --decorate
+	st = status
+	diffc = diff --cached
+[branch]
+	autosetuprebase = always
+[push]
+	default = matching
