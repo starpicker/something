@@ -142,7 +142,7 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
 alias l="ls"
-alias v="vim"
+#alias v="vim"
 #motherfuck, if caused shell if problem, cost ME LOTS of time
 #shit, rubbish
 #must pay attention to alias
@@ -207,6 +207,9 @@ if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
 fi
 source "$fasd_cache"
 unset fasd_cache
+unalias a
+unalias d
+unalias f
 unalias z
 unalias zz
 
