@@ -18,3 +18,6 @@
 	autosetuprebase = always
 [push]
 	default = matching
+[credential]
+	helper = store
+	username = starpicker
