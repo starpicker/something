@@ -1,0 +1,5 @@
+while true
+do
+free -h|sed -n '2p' |tr -s ' '| cut -d' ' -f4
+sleep 1
+done
