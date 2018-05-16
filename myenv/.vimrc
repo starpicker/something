@@ -509,14 +509,14 @@ vnoremap > >gv
 vmap <Tab> >
 vmap <S-Tab> <
 vmap q <ESC>
-noremap vv va{omxomz
-noremap ss [[?(<cr>b/<c-r><c-w><cr>N
-noremap qq f(b/<c-r><c-w><cr>N
-noremap tt <c-]>
-noremap tb <c-t>
-noremap ts :ts<cr>
-noremap tn :tn<cr>
-noremap tp :tp<cr>
+"noremap vv va{omxomz
+"noremap ss [[?(<cr>b/<c-r><c-w><cr>N
+"noremap qq f(b/<c-r><c-w><cr>N
+"noremap tt <c-]>
+"noremap tb <c-t>
+"noremap ts :ts<cr>
+"noremap tn :tn<cr>
+"noremap tp :tp<cr>
 "dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
 "noremap <Tab> :tn<cr>
 "noremap <S-Tab> :tp<cr>
@@ -621,8 +621,8 @@ nmap <leader>Y :YRShow<cr>
 "let g:yankring_history_dir =$HOME.'/.yanking/'
 let g:yankring_history_file = '.yankring_history'
 
-nmap ]<space> ]c
-nmap [<space> [c
+nmap vv ]c
+nmap VV [c
 "nmap <space>j ]c
 "nmap <space>k [c
 
