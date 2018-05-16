@@ -646,15 +646,21 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let b:syntastic_skip_checks = 0
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
-let g:syntastic_enable_highlighting=1
+let g:syntastic_enable_highlighting = 1
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_cpp_compiler = 'clang'
 let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
+let g:syntastic_mode_map = {
+        \ "mode": "passive",
+        \ "active_filetypes": [],
+        \ "passive_filetypes": [] }
+
 
 
 "for indent_guides
