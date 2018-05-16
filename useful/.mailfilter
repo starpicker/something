@@ -1,0 +1,3 @@
+HOME=/home/lma
+DEFAULT=/var/spool/mail/malei
+logfile "$HOME/.maillog"

@@ -134,6 +134,7 @@ set sendmail="/usr/bin/msmtp -C /usr/local/msmtp/etc/msmtprc"
 set use_from=yes
 set realname="malei"
 set editor="vim"
+set spoolfile=~/sent
 
 ##
 # See /usr/share/doc/mutt/README.Debian for details.
