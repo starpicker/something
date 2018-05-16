@@ -104,8 +104,9 @@ set fileencodings=utf-8,gbk,ucs-bom,cp936
 "set tags +=~/.vim/systags
 "set tags =/home/lma/linux_else/tags
 "hi Comment ctermfg =lightblue
-colorscheme desert
+"colorscheme desert
 "colorscheme twilighted
+colorscheme gruvbox
 
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
@@ -636,3 +637,5 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 if &diff
   let g:color_coded_enabled = 0
 endif
+
+nmap <leader>H :TagbarToggle<CR>
