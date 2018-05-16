@@ -322,4 +322,4 @@ cdf() {
 }
 
 export CDIFF_OPTIONS='-s -w0 --wrap'
-export GREP_OPTIONS='--color=auto' GREP_COLOR='31'
+alias grep='grep --color'
