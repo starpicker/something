@@ -1,0 +1,66 @@
+1. 下载llvm的源代码
+
+wget http://llvm.org/releases/3.6.0/llvm-3.6.0.src.tar.xz
+tar xf llvm-3.6.0.src.tar.xz
+mv llvm-3.6.0.src llvm
+1
+2
+3
+4
+2. 下载clang的源代码
+
+cd llvm/tools
+wget http://llvm.org/releases/3.6.0/cfe-3.6.0.src.tar.xz
+tar xf cfe-3.6.0.src.tar.xz
+mv cfe-3.6.0.src clang
+cd ../..
+1
+2
+3
+4
+5
+6
+3. 下载clang-tools-extra的源代码
+
+cd llvm/tools/clang/tools
+wget http://llvm.org/releases/3.6.0/clang-tools-extra-3.6.0.src.tar.xz
+tar xf clang-tools-extra-3.6.0.src.tar.xz
+mv clang-tools-extra-3.6.0.src  extra
+cd ../../../..
+1
+2
+3
+4
+5
+6
+4. 下载compiler-rt的源代码
+
+cd llvm/projects
+wget http://llvm.org/releases/3.6.0/compiler-rt-3.6.0.src.tar.xz
+tar xf compiler-rt-3.6.0.src.tar.xz
+mv compiler-rt-3.6.0.src compiler-rt
+cd ../..
+1
+2
+3
+4
+5
+6
+这样之后 clang，clang-tool-extra 和 compiler-rt 就可以和 llvm 一起编译了。
+
+5. 编译安装
+
+注意：3.7.0以后，不允许在源码树中进行构建，我们可以在llvm源码目录同级目录中创建一个目录build目录，然后使用绝对路径进行构建
+
+cd build && cmake ..
+//or memory is below 8GB
+cmake .. -DCMAKE_BUILD_TYPE=Release
+
+make -j4
+make install
+1
+2
+3
+尽量把几个核都用上
+
+clang –version

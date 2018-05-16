@@ -1,0 +1,1 @@
+find ./QCamera2/ -type d -exec printf "-I%s\n" {} \; > .color_coded
