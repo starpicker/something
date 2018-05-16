@@ -3,3 +3,8 @@
 if exists("+colorcolumn")
   set colorcolumn=81          " display a marker after column 80
 endif
+
+
+if filereadable(expand("~/.vimrc.local.make"))
+  source ~/.vimrc.local.make
+endif
