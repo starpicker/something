@@ -189,3 +189,9 @@ export LESS_TERMCAP_ue=$default
 export LESS_TERMCAP_us=$green
 
 alias vi='vim'
+alias gi='git'
+alias gti='git'
+alias gs='git status'
+alias gd='git diff'
+alias gl='git log'
+alias mux='tmuxinator'
