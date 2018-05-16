@@ -374,6 +374,7 @@ set updatetime=250
 "nnoremap <Leader>d :GitGutterToggle<Cr>
 nnoremap <Leader>d :GitGutterNextHunk<Cr>
 nnoremap <Leader>D :GitGutterPrevHunk<Cr>
+nnoremap <Leader>U :GitGutterUndoHunk<Cr>
 "has less use
 "map <Leader>l :set invnumber<Cr>
 "set splitright
@@ -541,7 +542,7 @@ function! TabMessage(cmd)
   endif
 endfunction
 
-command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+command! -nargs=+ -complete=command TMessage call TabMessage(<q-args>)
 
 
 function! WindowMessage(...)
