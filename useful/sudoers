@@ -1,0 +1,39 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+lma     ALL=(ALL:ALL) ALL
+lmabak  ALL=(ALL:ALL) ALL
+sb      localhost=(ALL:ALL) ALL
+wml     ALL=(ALL:ALL) /bin/mount,/sbin/mount.cifs,/bin/umount
+ycai    ALL=(ALL:ALL) /bin/mount,/sbin/mount.cifs,/bin/umount
+temp    ALL=(ALL:ALL) /bin/mount,/sbin/mount.cifs,/bin/umount
+test    ALL=(ALL:ALL) /bin/mount,/sbin/mount.cifs,/bin/umount
+ck      ALL=(ALL:ALL) NOPASSWD:/bin/mount,/sbin/mount.cifs,/bin/umount
+wq      ALL=(ALL:ALL) NOPASSWD:/bin/mount,/sbin/mount.cifs,/bin/umount
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
