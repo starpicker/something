@@ -320,3 +320,6 @@ cdf() {
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
+
+export CDIFF_OPTIONS='-s -w0 --wrap'
+export GREP_OPTIONS='--color=auto' GREP_COLOR='31'
