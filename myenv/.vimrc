@@ -650,8 +650,15 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_enable_highlighting=1
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_cpp_compiler = 'clang'
+let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
 
 
 "for indent_guides
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
+
+let g:startify_custom_header = []
