@@ -669,3 +669,4 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
 let g:startify_custom_header = []
+vmap <leader>S :!astyle<CR>

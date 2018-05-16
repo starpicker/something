@@ -1,0 +1,34 @@
+# this line is a comment
+--style=allman      # this is a line-end comment
+# long options can be written without the preceding '--'
+#indent-switches     # cannot do this on the command line
+# short options must have the preceding '-'
+#-t -p
+# short options can be concatenated together
+#-M60Ucv
+#
+#--indent=spaces=4
+#--attach-extern-c
+--attach-closing-while
+--indent-switches
+--indent-continuation=0
+--indent-preproc-define
+--indent-col1-comments
+--min-conditional-indent=0
+--max-continuation-indent=60
+--break-blocks
+--pad-oper
+#--pad-comma
+--unpad-paren
+--delete-empty-lines
+--align-pointer=type
+--align-reference=type
+--break-one-line-headers
+--add-braces
+--attach-return-type
+--attach-return-type-decl
+--convert-tabs
+--close-templates
+--max-code-length=60
+--break-after-logical
+--mode=c
