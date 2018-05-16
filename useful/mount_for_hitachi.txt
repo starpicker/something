@@ -1,0 +1,1 @@
+sudo mount -t cifs -o noserverino //172.17.218.164/hitachi_reconstruction ~/mount_for_hitachi -o username=lma,password=xxxxxxxxx,iocharset=utf8,uid=lma
