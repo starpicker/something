@@ -122,7 +122,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/lib/x86_64-linux-gnu:/lma/mount_f
 
 [[ -s //home/lma/.autojump/etc/profile.d/autojump.sh ]] && source /home/lma/.autojump/etc/profile.d/autojump.sh
 
-export PATH="$GOROOT/bin:/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64:/home/lma/skia_android/depot_tools:/opt/poky/1.7/sysroots/i686-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/usr/local/bin:/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}"
+export PATH="$GOROOT/bin:/mnt/500G/public/NDK/android-ndk-r16b:/home/lma/skia_android/depot_tools:/opt/poky/1.7/sysroots/i686-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/usr/local/bin:/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}"
 
 export ANDROID_NDK=/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64
 export ANDROID_SDK_ROOT=/mnt/500G/public/SDK/android-sdk-linux-6.0
@@ -161,4 +161,29 @@ alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
 export PATH=$HOME/bin:$PATH
 alias bci='bitcoin-cli'
+export s="sheng@172.17.199.159"
 source $HOME/.tmuxinator/.tmuxinator.bash
+
+# Colors
+default=$(tput sgr0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+purple=$(tput setaf 5)
+orange=$(tput setaf 9)
+
+# Less colors for man pages
+export PAGER=less
+# Begin blinking
+export LESS_TERMCAP_mb=$red
+# Begin bold
+export LESS_TERMCAP_md=$orange
+# End mode
+export LESS_TERMCAP_me=$default
+# End standout-mode
+export LESS_TERMCAP_se=$default
+# Begin standout-mode - info box
+export LESS_TERMCAP_so=$purple
+# End underline
+export LESS_TERMCAP_ue=$default
+# Begin underline
+export LESS_TERMCAP_us=$green

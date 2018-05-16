@@ -1,0 +1,3 @@
+pls cd auto and rm all except configure
+like config.cache  config.h  config.log  config.mk  config.status 
+
