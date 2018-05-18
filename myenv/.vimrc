@@ -501,8 +501,9 @@ cabbrev w!! w !sudo tee % >/dev/null
 "dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
 "nnoremap <leader><Tab> <c-^>
 "
-nnoremap j gj
-nnoremap k gk
+"for j is really j
+"nnoremap j gj
+"nnoremap k gk
 "switch between windows by hitting <Tab> twice
 "dont touch tab for it is along with CTRL+I, will cause CANNOT jump back
 "nnoremap <silent> <Tab><Tab> <C-w>w
@@ -670,3 +671,8 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 let g:startify_custom_header = []
 vmap <leader>S :!astyle<CR>
+nmap mm goj
+"map <a-h> <left>
+"map <a-l> <right>
+"map <a-j> <down>
+"map <a-k> <up>
