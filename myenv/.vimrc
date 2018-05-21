@@ -388,7 +388,8 @@ let g:airline_theme="luna"
 "let g:airline_theme="molokai"
 let g:airline#extensions#tabline#enabled = 1
 "nnoremap <C-p> :bn<CR>
-nnoremap <leader>bb :BufExplorer<CR>
+"can use 'be' instead
+"nnoremap <leader>bb :BufExplorer<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 "nnoremap <C-i> :bp<CR>
