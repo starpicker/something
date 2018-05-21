@@ -323,3 +323,8 @@ cdf() {
 
 export CDIFF_OPTIONS='-s -w0 --wrap'
 alias grep='grep --color'
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
+
+alias cidff='cdiff'
