@@ -20,6 +20,7 @@ autoconf
 fbi
 libtool
 java
+openjdk-8-jdk-headless
 vim
 tmux
 fzf
@@ -47,6 +48,8 @@ mysql-client-core-5.7
 mysql-server-core-5.7
 mutt
 samba
+smbclient
+evolution
 libopencv-dev
 msmtp
 imagemagick
