@@ -1,0 +1,56 @@
+需求：Ubuntu下用Vim时，ESC因为在左上角，还算是好按，但是Ctrl就太坑了，在左右两个下角，实在是太不方便了。
+
+经过分析决定将：CapsLock键改为Ctrl，但仍然保留下面的原Ctrl键（使用Ctrl+Space来切换输入法，已经习惯了，不想换）。
+
+简单的说，就是用Ctrl替换CapsLock键。
+
+方法：
+
+1、编辑keyboard文件。
+
+sudo vim /etc/default/keyboard
+
+2、该文件默认为这个样子：
+
+# KEYBOARD CONFIGURATION FILE
+
+# Consult the keyboard(5) manual page.
+
+XKBMODEL="pc105"
+XKBLAYOUT="cn"
+XKBVARIANT=""
+XKBOPTIONS=""
+
+BACKSPACE="guess"
+
+3、将XKBOPTIONS=""修改为：
+
+XKBOPTIONS="ctrl:nocaps"
+
+这行的意思就是不要大写键了，用ctrl替换。
+
+4、如果还需要其他的修改，可以参考man文件
+
+man 5 keyboard
+
+还可以查看具体的设置项目。
+
+/usr/share/X11/xkb/rules/xorg.lst
+
+5、运行如下命令，设置生效，最秒的是CapLock的键上的小灯也不在亮了，呵呵。
+
+sudo dpkg-reconfigure keyboard-configuration
+
+6、摘录一段man的解释：
+
+=== In Debian systems, changes in /etc/default/keyboard do not become imme‐
+       diately visible to X.  You should either reboot the system, or use
+
+           udevadm trigger --subsystem-match=input --action=change
+=== The standard location of the keyboard  file  is  /etc/default/keyboard.
+       Description of all available keyboard models, layouts, variants and op‐
+       tions is available in /usr/share/X11/xkb/rules/xorg.lst.  In most  cas‐
+       es, in /usr/share/keymaps/ or /usr/share/syscons/keymaps/ you will find
+       several keymaps that can be used with the variable KMAP.
+
+===
