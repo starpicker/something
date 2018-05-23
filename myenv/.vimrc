@@ -680,3 +680,9 @@ nmap mm goj
 "map <a-l> <right>
 "map <a-j> <down>
 "map <a-k> <up>
+"
+"(a heavy feature may cost much more time)
+"let g:NERDTreeShowIgnoredStatus = 1
+"
+nnoremap ]w :NextTrailingWhitespace<CR>
+nnoremap [w :PrevTrailingWhitespace<CR>
