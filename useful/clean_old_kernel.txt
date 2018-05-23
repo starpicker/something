@@ -1,0 +1,5 @@
+dpkg --get-selections|grep linux
+uname -a
+sudo apt-get remove linux-image-(版本号)（就是上面带image的版本）
+sudo apt-get autoremove
+sudo apt-get clean
