@@ -732,3 +732,4 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 
 let g:gutentags_enabled = 0
+let g:lastplace_open_folds = 0
