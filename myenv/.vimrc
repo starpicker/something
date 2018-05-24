@@ -692,7 +692,7 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 	    \ 'whitelist': ['*'],
 	    \ 'config': {
 	    \     'splitmode':      'words',
-	    \     'filter_prefix':   1,
+	    \     'filter_prefix':   3,
 	    \     'show_incomplete': 1,
 	    \     'sort_candidates': 0,
 	    \     'scrollback':      0,
