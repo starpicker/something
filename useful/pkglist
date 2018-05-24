@@ -1,6 +1,7 @@
 expect
 sqlite
 cppman
+glances
 subversion
 rtorrent
 openoffice
