@@ -2,6 +2,7 @@ expect
 sqlite
 cppman
 glances
+python-pip
 subversion
 rtorrent
 openoffice
