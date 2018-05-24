@@ -1,0 +1,1 @@
+rsync -vzrtopgl --progress -e ssh --delete 172.17.218.165:/home/lma/cloudminds/sourcecode/build .
