@@ -1,6 +1,7 @@
 expect
 fastboot
 urlview
+vagrant
 sqlite
 cppman
 glances
