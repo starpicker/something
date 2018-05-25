@@ -1,0 +1,1 @@
+window colours ansi blue set to 0 128 187
