@@ -1,4 +1,6 @@
 expect
+fastboot
+urlview
 sqlite
 cppman
 glances
