@@ -2,6 +2,8 @@ expect
 fastboot
 urlview
 vagrant
+cmus
+devtodo
 sqlite
 cppman
 glances
