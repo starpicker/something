@@ -1,0 +1,11 @@
+{
+  "segments": [
+    "cwd",
+    "git",
+    "root"
+  ],
+  "cwd":{
+   "mode":"plain"
+  },
+  "mode":"flat"
+}

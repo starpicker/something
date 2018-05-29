@@ -323,8 +323,20 @@ cdf() {
 
 export CDIFF_OPTIONS='-s -w0 --wrap'
 alias grep='grep --color'
+eval $(thefuck --alias 2> /dev/null)
+
+source /etc/bash_completion.d/climate_completion
+alias r='ranger'
+source ~/.commacd.bash
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
-
 alias cidff='cdiff'
