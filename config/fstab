@@ -1,0 +1,4 @@
+UUID=8bb0a33a-5371-11e8-8590-8cec4b1f422b / ext4 defaults 0 0
+UUID=9A6C-256A /boot/efi vfat defaults 0 0
+/swap.img	none	swap	sw	0	0
+tmpfs /home/ml tmpfs defaults,size=1024m 0 0
