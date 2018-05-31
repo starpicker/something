@@ -1,0 +1,114 @@
+ubuntu下用apt-get install 安装软件时出现 initramfs-tools错误
+
+gzip: stdout: No space left on device
+E: mkinitramfs failure cpio 141 gzip 1
+update-initramfs: failed for /boot/initrd.img-3.2.0-29-generic with 1.
+dpkg：处理 initramfs-tools (–configure)时出错：
+子进程 已安装 post-installation 脚本 返回了错误号 1
+在处理时有错误发生：
+initramfs-tools
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+用df -h查看一下 空间的使用情况
+
+ 
+
+解决这个问题就是删除多余的内核：
+
+ 
+uname -r
+dpkg -l linux-image*
+
+方法一：
+
+打开终端：
+
+sudo aptitude purge ~ilinux-image-.*\(\!`uname -r`\)
+
+这条命令的作用：删除当前系统没有正在使用的所有内核，一般系统使用的都是最
+
+新的内核版本（如果你没有自己设置的话）
+
+这样你的GRUB启动菜单中只留下最新版本内核的菜单了
+
+ 
+
+ 
+
+方法二：
+
+查看全部内核的命令：
+
+dpkg --get-selections|grep linux
+
+ 
+
+查看当前使用内核的命令：
+
+uname -r
+
+ 
+
+删除多余的内核：
+
+sudo apt-get remove linux-image-<版本号>
+
+不要随便删除其他的内核，只删除前面是image的
+
+ 
+
+出现卸载不完全时，用以下命令：
+
+sudo apt-get autoremove
+
+ 
+Ubuntu系统中删除不要的启动项
+
+方法一如下：
+
+使用root账户进入ubuntu，找到/boot/grub/grub.cfg文件，先将其属性改为读写，之后打开文件，仔细看看就能发现多余的启动项信息，将你不要的启动项删掉，保存退出。记得再将文件属性改回来。
+
+也可以这样：
+
+使用命令 sudo chmod +w /boot/grub/grub.cfg，将grub.cfg文件的属性改为可写。
+修改之后，再用命令：sudo gedit /boot/grub/grub.cfg修改。
+
+以上的方法，只是将启动项中的信息抹掉了你不想要的一部分，并未从根本上删除那些内核，如果想删除掉不需要的内核，可以采用以下方法：
+
+首先输入命令查看已安装内核：dpkg --get-selections|grep linux
+
+之后输入命令如：sudo apt-get remove linux-headers-2.6.32-21-generic 来删除你不需要的内核
+
+下面是补充：
+
+每当Ubuntu升级到新的版本后，grub会自动调整开机启动菜单的顺序，把新的内核放在启动菜单的开始，但不会删除旧的内核版本。这样，当Ubuntu的升级次数一多，启动菜单中将变得非常臃肿。而且那些旧版本的内核基本不会用，不如删除之。通常的解决方案如下
+
+1.找出系统已经安装的内核版本，在终端里输入命令：
+
+dpkg –get-selections | grep linux-image
+
+然后会显示系统中已安装的内核，例如：
+
+linux-image-3.11.0-12-generic  install
+linux-image-3.11.0-18-generic  install
+linux-image-extra-3.11.0-12-generic  install
+linux-image-extra-3.11.0-18-generic  install
+linux-image-generic  install
+
+2.卸载旧的内核版本，在终端里输入命令：
+
+sudo apt-get remove linux-image-3.11.0-12-generic linux-image-extra-3.11.0-12-generic
+
+这样就卸载掉了。
+
+最近又看到用正则查找并卸载的方式，更为轻松：
+执行
+sudo aptitude purge ~ilinux-image-.*＼(＼!`uname -r`＼)
+或者是
+sudo apt-get purge ~ilinux-image-.*＼(＼!`uname -r`＼)
+
+这样如果发现有旧版的内核，会自动提示卸载。确定卸载即可
+
+总结，推荐使用补充方法来删除启动项吧，还有千成录要删除内核哦，这个其实真心没必要去删除了，因为删除内核可能导致系统挂掉哦。
+
+ 
