@@ -1,0 +1,2 @@
+export PATH=~/.env/usr/bin:~/.bin:/home/lma/c/ubuntu/android-ndk-r17:/home/lma/c/ubuntu/android-ndk-r17/simpleperf:/home/lma/c/ubuntu/android-ndk-r17/simpleperf/bin/linux/x86_64:$PATH
+alias cr='cmus-remote'
