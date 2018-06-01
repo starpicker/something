@@ -266,6 +266,12 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+#
+# easily toggle synchronization (mnemonic: e is for echo)
+# sends input to all panes in a given window.
+#bind e setw synchronize-panes on
+#bind E setw synchronize-panes off
+
 run-shell ~/.tmux/fpp.tmux
 run-shell ~/.tmux/urlview.tmux
-run-shell ~/.tmux/copycat.tmux
+run-shell ~/.tmux/open.tmux
