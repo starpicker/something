@@ -7,6 +7,7 @@ sudo cp .profile      /home/ml
 sudo cp .commacd.bash /home/ml
 sudo cp .fzf.*        /home/ml
 sudo cp .git*         /home/ml
+sudo chown -R ml:ml   /home/ml/.*
 sudo rsync -rtopgDzv /usr/bin/* /home/ml/.bin/
 sudo rsync -rtopgDzv /bin/* /home/ml/.bin/
 
