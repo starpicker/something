@@ -2,6 +2,7 @@ envpath='/home/lma'
 homepath='/home/ml'
 binpath='.env/usr/bin'
 libpath='.env/usr/lib'
+includepath='.env/usr/include'
 
 sudo cp -r $envpath/.bin       $homepath
 sudo cp -r $envpath/.vim*      $homepath
@@ -17,11 +18,13 @@ sudo chown -R ml:ml   $homepath
 
 sudo mkdir -p $homepath/$binpath
 sudo mkdir -p $homepath/$libpath
+sudo mkdir -p $homepath/$includepath
 
 sudo rsync -rtopgDzv /usr/bin/* $homepath/$binpath/
 sudo rsync -rtopgDzv /bin/* $homepath/$binpath/
 sudo rsync -rtopgDzvl /lib/x86_64-linux-gnu/* $homepath/$libpath/
 sudo rsync -rtopgDzvl /usr/lib/gcc $homepath/$libpath/
+sudo rsync -rtopgDzvl /usr/include/* $homepath/$includepath/
 
 sudo cp /usr/bin/vim.basic $homepath/$binpath/vim
 sudo cp /usr/bin/gawk $homepath/$binpath/awk
