@@ -322,7 +322,7 @@ cdf() {
 }
 
 export CDIFF_OPTIONS='-s -w0 --wrap'
-alias grep='grep --color'
+alias grep='grep --color -n'
 eval $(thefuck --alias 2> /dev/null)
 
 source /etc/bash_completion.d/climate_completion
