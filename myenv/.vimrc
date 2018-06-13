@@ -687,6 +687,11 @@ nmap mm goj
 nnoremap ]w :NextTrailingWhitespace<CR>
 nnoremap [w :PrevTrailingWhitespace<CR>
 
+let g:asyncomplete_auto_popup=0
+
+"let g:tmuxcomplete#trigger = 'completefunc'
+let g:tmuxcomplete#trigger = 'omnifunc'
+
 let g:tmuxcomplete#asyncomplete_source_options = {
 	    \ 'name':      'tmuxcomplete',
 	    \ 'whitelist': ['*'],
