@@ -11,9 +11,11 @@
 	prompt = false
 [alias]
 	df = difftool
-	lg = log -10 --oneline --graph --decorate
+	;lg = log -10 --oneline --graph --decorate
 	st = status
 	diffc = diff --cached
+	lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+	lb = !"for k in `git branch |perl -pe s/^..//`; do echo -e `git show --pretty=format:\"%Cgreen%ci%Creset\" $k|head -n 1`\t$k; done|sort -r"
 [branch]
 	autosetuprebase = always
 [push]
@@ -21,3 +23,7 @@
 [credential]
 	helper = store
 	username = starpicker
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
