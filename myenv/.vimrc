@@ -759,3 +759,10 @@ let g:lastplace_open_folds = 0
 "for gen tags
 map <leader>R :!update_tags.sh %:p:h<CR>
 map <leader>G :!gen_tags.sh %:p:h<CR>
+
+inoremap <C-E> <C-X><C-E>
+inoremap <C-Y> <C-X><C-Y>
+
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+map <leader>F :set foldmethod=syntax<CR>zc
