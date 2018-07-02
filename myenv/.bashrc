@@ -175,17 +175,17 @@ orange=$(tput setaf 9)
 export PAGER=less
 # Begin blinking
 #export LESS_TERMCAP_mb=$red
-## Begin bold
+# Begin bold
 #export LESS_TERMCAP_md=$orange
-## End mode
+# End mode
 #export LESS_TERMCAP_me=$default
-## End standout-mode
+# End standout-mode
 #export LESS_TERMCAP_se=$default
-## Begin standout-mode - info box
+# Begin standout-mode - info box
 #export LESS_TERMCAP_so=$purple
-## End underline
+# End underline
 #export LESS_TERMCAP_ue=$default
-## Begin underline
+# Begin underline
 #export LESS_TERMCAP_us=$green
 
 alias vi='vim'
@@ -326,15 +326,18 @@ alias grep='grep --color -n'
 eval $(thefuck --alias 2> /dev/null)
 
 source /etc/bash_completion.d/climate_completion
+#[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 alias r='ranger'
 source ~/.commacd.bash
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
+#function _update_ps1() {
+    #PS1=$(powerline-shell $?)
+#}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+#if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    #PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
+alias ff='find . -type f -name '
+alias ffd='find . -type d -name '
 
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
