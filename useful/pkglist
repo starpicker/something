@@ -1,6 +1,7 @@
 exif
 pandoc
 libelf-dev
+fscd
 peco
 libgit-dev
 fbterm
