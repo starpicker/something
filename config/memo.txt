@@ -1,0 +1,19 @@
+systemctl enable httpd.service
+systemctl disable httpd.service
+systemctl status httpd.service
+systemctl list-units --type=service
+systemctl start httpd.service
+systemctl stop httpd.service
+systemctl restart httpd.service
+
+
+systemctl reboot
+systemctl reboot
+systemctl suspend
+systemctl hibernate
+systemctl hybrid-sleep
+
+systemctl isolate graphical.target
+systemctl set-default multi-user.target
+systemctl set-default -f multi-user.target
+
