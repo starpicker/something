@@ -9,3 +9,7 @@ change ;short_open_tag = Off to short_open_tag = On
 
 modify apache2 conf
 
+sudo php -c php.ini installer/index.php -h localhost -u lma -p lma -d gallery3
+We've created an account for you to use:
+  username: admin
+  password: 0fcdc7 
