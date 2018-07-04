@@ -1,4 +1,6 @@
 exif
+console-setup
+console-terminus
 pandoc
 libelf-dev
 fscd
