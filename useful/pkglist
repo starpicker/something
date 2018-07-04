@@ -3,6 +3,11 @@ hwinfo
 fbset
 console-setup
 console-terminus
+apache2
+php7.2
+php-mysql
+php-xml
+php-mbstring
 pandoc
 libelf-dev
 fscd

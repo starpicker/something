@@ -1,0 +1,11 @@
+https://github.com/gallery/gallery3/
+http://github.com/gallery/gallery3/zipball/3.1.x
+cd gallery3
+mkdir var
+chmod 777 var
+
+/etc/php/7.2/apache2/php.ini
+change ;short_open_tag = Off to short_open_tag = On
+
+modify apache2 conf
+
