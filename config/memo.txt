@@ -17,3 +17,8 @@ systemctl isolate graphical.target
 systemctl set-default multi-user.target
 systemctl set-default -f multi-user.target
 
+please use console-terminus font
+like  	    .Combined - Latin; Slavic Cyrillic; Greek
+　　        . Combined - Latin; Slavic and non-Slavic Cyrillic
+
+
