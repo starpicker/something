@@ -8,6 +8,9 @@ php7.2
 php-mysql
 php-xml
 php-mbstring
+libgif-dev
+linuxbrew-wrapper
+texinfo
 pandoc
 libelf-dev
 fscd
