@@ -12,4 +12,4 @@ modify apache2 conf
 sudo php -c php.ini installer/index.php -h localhost -u lma -p lma -d gallery3
 We've created an account for you to use:
   username: admin
-  password: 0fcdc7 
+  password: 0fcdc7
