@@ -13,6 +13,7 @@ php-mbstring
 libgif-dev
 linuxbrew-wrapper
 texinfo
+php-gd
 pandoc
 libelf-dev
 fscd
