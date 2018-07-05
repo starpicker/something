@@ -1,0 +1,7 @@
+include/config_default.inc.php 493 change to '' to disable php errors
+
+
+http://tj.mycodes.net/201803/piwigo-2.9.3.zip
+copy image folder into galleries
+make sure _data can read, write
+create database first
