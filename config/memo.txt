@@ -22,3 +22,7 @@ like  	    .Combined - Latin; Slavic Cyrillic; Greek
 　　        . Combined - Latin; Slavic and non-Slavic Cyrillic
 
 
+sudo easy_install colorex
+
+go get -u github.com/aykamko/tag
+

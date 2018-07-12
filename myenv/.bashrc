@@ -122,7 +122,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:/usr/lib/x86_64-linux-gnu:/lma/mount_f
 
 [[ -s //home/lma/.autojump/etc/profile.d/autojump.sh ]] && source /home/lma/.autojump/etc/profile.d/autojump.sh
 
-export PATH="$GOROOT/bin:/mnt/500G/public/NDK/android-ndk-r16b:/home/lma/skia_android/depot_tools:/opt/poky/1.7/sysroots/i686-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/usr/local/bin:/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}"
+export GOPATH=/home/lma/.go/
+
+export PATH="$GOROOT/bin:$GOPATH/bin:/mnt/500G/public/NDK/android-ndk-r16b:/home/lma/skia_android/depot_tools:/opt/poky/1.7/sysroots/i686-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi:/usr/local/bin:/usr/bin:/usr/lib/x86_64-linux-gnu:${PATH}"
 
 export ANDROID_NDK=/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64
 export ANDROID_SDK_ROOT=/mnt/500G/public/SDK/android-sdk-linux-6.0
@@ -344,3 +346,9 @@ alias c='bcal -c '
     #. ~/.bashrc.local
 #fi
 alias cidff='cdiff'
+
+if hash ag 2>/dev/null; then
+  export TAG_SEARCH_PROG=ag  # replace with rg for ripgrep
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null; }
+  alias ag=tag  # replace with rg for ripgrep
+fi
