@@ -1,0 +1,60 @@
+change expect bash last line from
+interact
+to
+expect eof
+
+
+all cmd and bash MUST use absolute path
+
+
+
+sample:
+
+实现功能：在远程数据库上执行expdp导出dmp文件，并复制到本地指定位置。因每天都会执行，需要生成有日期后缀的文件。
+
+#!/bin/bash
+#获取当前日期
+curr_date=$(date '+%y%m%d')
+echo $curr_date
+
+#1.expdp导出，下述/home/.../bin/为expdp所在目录
+export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_1/
+/home/.../bin/expdp olduser/password@10.0.1.1/orcl directory=DATA_PUMP_DIR dumpfile=expdb_${curr_date}.dmp logfile=expdb${curr_date}.log SCHEMAS=olduser
+
+#2.复制到本地服务器
+/usr/local/bin/expect <<!
+spawn scp -P22 oracle@10.0.1.1:/u01/app/oracle/dpdump/expdb_${curr_date}.dmp /home/oracle/dbbackup/
+#此命令后，可能需要输入远程服务器的用户密码
+set timeout 300 #设置超时300秒
+expect "oracle@10.0.1.1's password:"
+set timeout 300
+send "password\r" #发送密码
+set timeout 3600 #验证通过后，远程服务器进行dump操作，耗时可能比较长
+send "exit\r" #完毕后，断开连接
+expect eof
+!
+
+保存以上文件为bakbash（假设位于：/usr/local/bin/目录），然后用chmod命令设置可执行权限：
+chmod 755 bakbash
+
+
+crontab -l #查看当前用户的定时任务
+crontab -e #编辑当前用户的定损任务
+#在vi 界面，添加一行：每日凌晨2点执行bakbash脚本
+0 2 * * * /usr/local/bin/bakbash
+
+#修改crontab之后，可能需要重启cron服务
+su -root password
+/etc/init.d/crond restart
+
+
+
+在/bin/bash中使用expect，可采用如下方式：
+
+#!/bin/bash
+expect <<!
+## expect命令 ##
+!
+
+Crontab 编辑后，并不需要restart。
+报错信息：/bin/sh: bakbash: command not found，这是因为之前将bakbash脚本放在了其他目录下，导致bash脚本无法找到该命令，将文件转移到/usr/local/bin/目录后，即可找到。另外，在bakbash中使用到的 expdp, expect命令，都需要有明确的路径前缀，否则也会找不到命令。这是因为crontab在执行的时候只会定义少数环境变量而不是继承用户shell环境中的环境变量。
