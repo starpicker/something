@@ -11,7 +11,7 @@ get_tmux_option() {
   fi
 }
 
-readonly key="$(get_tmux_option "@fpp-key" "f")"
+readonly key="$(get_tmux_option "@fpp-key" "F")"
 
 tmux bind-key "$key" capture-pane -J \\\; \
     save-buffer "${TMPDIR:-/tmp}/tmux-buffer" \\\; \

@@ -340,7 +340,7 @@ alias ff='find . -type f -name '
 alias ffd='find . -type d -name '
 
 alias c='bcal -c '
-if [ -f ~/.bashrc.local ]; then
-    . ~/.bashrc.local
-fi
+#if [ -f ~/.bashrc.local ]; then
+    #. ~/.bashrc.local
+#fi
 alias cidff='cdiff'
