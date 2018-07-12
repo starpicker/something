@@ -26,3 +26,6 @@ sudo easy_install colorex
 
 go get -u github.com/aykamko/tag
 
+
+cdiff may discard blank line add
+
