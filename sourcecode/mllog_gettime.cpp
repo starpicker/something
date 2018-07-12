@@ -27,3 +27,28 @@ extern "C" long long GetCurrentTime()
     return curtime;
 }
 
+
+#include <sys/time.h>
+
+struct MLTIME {
+        MLTIME(const char* l = 0):label(l)
+        {
+            gettimeofday(&t_start, 0);
+        }
+
+        ~MLTIME()
+        {
+            gettimeofday(&t_end, 0);
+            long time_diff = (t_end.tv_sec - t_start.tv_sec)*1000 + (t_end.tv_usec - t_start.tv_usec)/1000;
+            logToFile("%s cost time is %ld ms", label, time_diff);
+        }
+private:
+        MLTIME operator =(const MLTIME&);
+
+private:
+    struct timeval t_start;
+    struct timeval t_end;
+    const char* label;
+};
+
+#define T MLTIME t = __func__;
