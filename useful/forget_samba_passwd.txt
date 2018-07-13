@@ -1,0 +1,3 @@
+cmd
+net use
+net use * /del /y
