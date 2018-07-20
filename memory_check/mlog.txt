@@ -1,0 +1,81 @@
+2016-01-29 20:48:04 
+-------------------ML Memory Info-------------------
+
+2016-01-29 20:48:04 
+AllocBytes     AllocTimes     FreeBytes      FreeTimes      <UnFreeBytes>  
+
+2016-01-29 20:48:04 
+100            4              10             1              90             
+
+2016-01-29 20:48:04 
+Suspected Memory Leakage Occurrence(3 Time(s)):
+
+2016-01-29 20:48:04 
+[test.c(18)<main>]20Bytes(Address:0x1d090b8) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+[test.c(19)<main>]30Bytes(Address:0x1d09128) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+[test.c(20)<main>]40Bytes(Address:0x1d09198) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+
+
+2016-01-29 20:48:04 
+-------------------ML Memory Info-------------------
+
+2016-01-29 20:48:04 
+AllocBytes     AllocTimes     FreeBytes      FreeTimes      <UnFreeBytes>  
+
+2016-01-29 20:48:04 
+150            5              10             1              140            
+
+2016-01-29 20:48:04 
+Suspected Memory Leakage Occurrence(4 Time(s)):
+
+2016-01-29 20:48:04 
+[test.c(18)<main>]20Bytes(Address:0x1d090b8) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+[test.c(19)<main>]30Bytes(Address:0x1d09128) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+[test.c(20)<main>]40Bytes(Address:0x1d09198) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+[test.c(5)<GlobalAllocTest>]50Bytes(Address:0x1d094b8) were allocated, but unfreed!
+
+2016-01-29 20:48:04 
+
+
+2016-01-29 20:48:04 
+-------------------ML Memory Info-------------------
+
+2016-01-29 20:48:04 
+AllocBytes     AllocTimes     FreeBytes      FreeTimes      <UnFreeBytes>  
+
+2016-01-29 20:48:04 
+150            5              150            5              0              
+
+2016-01-29 20:48:04 
+No Memory Leakage Detected!
+
+2016-01-29 20:48:04 
+Warning: [test.c(41)<main>]Overrun Occurs at Lower Address(0x1d09078);
+
+2016-01-29 20:48:04 
+Warning: [test.c(46)<main>]Overrun Occurs at Higher Address(0x1d09508);
+
+2016-01-29 20:48:04 
+Warning: [test.c(49)<main>]Free Memory(0x1d09508) that was 1) not allocated by MLAlloc or 2) freed by MLFree;
+
+2016-01-29 20:48:04 
+         Both cases are critical, and NO free action takes place to minimize the casualties!!!
+
+2016-01-29 20:48:04 
+Warning: [test.c(53)<main>]Free Memory(0x1d09070) that was 1) not allocated by MLAlloc or 2) freed by MLFree;
+
+2016-01-29 20:48:04 
+         Both cases are critical, and NO free action takes place to minimize the casualties!!!
+
