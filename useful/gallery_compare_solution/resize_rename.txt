@@ -1,0 +1,1 @@
+for i in *.png; do name=`basename $i .png`; convert -resize 300 $i ${name}_resize.png; done

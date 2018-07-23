@@ -1,0 +1,1 @@
+convert view_selector_s7_resize_addtxt.png view_selector_mate9_resize_addtxt.png +append view_selector.png
