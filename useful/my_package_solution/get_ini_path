@@ -1,0 +1,1 @@
+find . -name *.ini | sed 's/\//\\/g' | sed 's/ini/ini\r\n/g' | tee iamadog.txt

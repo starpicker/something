@@ -1,0 +1,3 @@
+find . -type d -name pkg | awk  -F'/' '{printf "mv %s/*.pkg %s/output/\n", $0, $(NF-1)}' | tee iamapig.txt
+. iamapig.txt
+rm iamapig.txt
