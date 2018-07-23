@@ -1,0 +1,9 @@
+#server's error
+#Syncing work tree:  94% (564/600)  error: in `sync -j4`: revision a2h_dev_prd in platform/vendor/xxxxx/telephony not found
+#need ask customer to fix it
+
+#something like below, need re-init
+#error.GitError: manifests rev-list ('^HEAD', u'cf823616eb17a7c161820f193006a4249753c8fe', '--'): fatal: bad object cf823616eb17a7c161820f193006a4249753c8fe
+
+rm -rf .repo/manifest*
+repo init -u cmti:platform/manifest -b your_branch
