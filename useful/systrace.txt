@@ -1,0 +1,2 @@
+in sdk android-sdk-windows-7.0\platform-tools\systrace
+systrace.py sched freq idle am wm gfx view sync binder_driver irq workq input camera
