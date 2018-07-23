@@ -1,0 +1,5 @@
+./gcc-7.x.0/contrib/download_prerequisites
+mkdir gcc-build-7.x.0
+cd gcc-build-7.x.0
+../gcc-7.x.0/configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+make
