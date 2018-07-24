@@ -234,13 +234,13 @@ if !exists('g:yankring_paste_check_default_register')
     let g:yankring_paste_check_default_register = 1
 endif
 
-if !exists('g:yankring_replace_n_pkey')
-    let g:yankring_replace_n_pkey = '<C-P>'
-endif
+"if !exists('g:yankring_replace_n_pkey')
+    "let g:yankring_replace_n_pkey = '<C-P>'
+"endif
 
-if !exists('g:yankring_replace_n_nkey')
-    let g:yankring_replace_n_nkey = '<C-N>'
-endif
+"if !exists('g:yankring_replace_n_nkey')
+    "let g:yankring_replace_n_nkey = '<C-N>'
+"endif
 
 if !exists('g:yankring_clipboard_monitor')
     let g:yankring_clipboard_monitor = (has('clipboard')?1:0)
@@ -1790,12 +1790,12 @@ function! s:YRMapsCreate(...)
     if g:yankring_paste_v_akey != ''
         exec 'xnoremap <silent>'.g:yankring_paste_v_akey." :<C-U>YRPaste 'p', 'v'<CR>"
     endif
-    if g:yankring_replace_n_pkey != ''
-        exec 'nnoremap <silent>'.g:yankring_replace_n_pkey." :<C-U>YRReplace '-1', P<CR>"
-    endif
-    if g:yankring_replace_n_nkey != ''
-        exec 'nnoremap <silent>'.g:yankring_replace_n_nkey." :<C-U>YRReplace '1', p<CR>"
-    endif
+    "if g:yankring_replace_n_pkey != ''
+        "exec 'nnoremap <silent>'.g:yankring_replace_n_pkey." :<C-U>YRReplace '-1', P<CR>"
+    "endif
+    "if g:yankring_replace_n_nkey != ''
+        "exec 'nnoremap <silent>'.g:yankring_replace_n_nkey." :<C-U>YRReplace '1', p<CR>"
+    "endif
 
     let g:yankring_enabled    = 1
     let s:yr_maps_created     = 1
@@ -1882,12 +1882,12 @@ function! s:YRMapsDelete(...)
     if g:yankring_paste_v_akey != ''
         silent! exec 'vunmap '.g:yankring_paste_v_akey
     endif
-    if g:yankring_replace_n_pkey != ''
-        silent! exec 'nunmap '.g:yankring_replace_n_pkey
-    endif
-    if g:yankring_replace_n_nkey != ''
-        silent! exec 'nunmap '.g:yankring_replace_n_nkey
-    endif
+    "if g:yankring_replace_n_pkey != ''
+        "silent! exec 'nunmap '.g:yankring_replace_n_pkey
+    "endif
+    "if g:yankring_replace_n_nkey != ''
+        "silent! exec 'nunmap '.g:yankring_replace_n_nkey
+    "endif
 
     silent! exec 'nunmap @'
 
@@ -2864,8 +2864,8 @@ if has("menu") && g:yankring_default_menu_mode != 0
 
     exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.YankRing\ Window  :YRShow<CR>'
     exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.YankRing\ Search  :YRSearch<CR>'
-    exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Replace\ with\ Previous<TAB>'.leader.g:yankring_replace_n_pkey.' :YRReplace -1, ''P''<CR>'
-    exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Replace\ with\ Next<TAB>'.leader.g:yankring_replace_n_nkey.' :YRReplace 1, ''P''<CR>'
+    "exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Replace\ with\ Previous<TAB>'.leader.g:yankring_replace_n_pkey.' :YRReplace -1, ''P''<CR>'
+    "exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Replace\ with\ Next<TAB>'.leader.g:yankring_replace_n_nkey.' :YRReplace 1, ''P''<CR>'
     exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Clear  :YRClear<CR>'
     exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Toggle :YRToggle<CR>'
     exec 'noremenu  <script> '.menuPriority.' '.menuRoot.'.Check\ Clipboard :YRCheckClipboard<CR>'
