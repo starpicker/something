@@ -769,3 +769,4 @@ let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 map <leader>F :set foldmethod=syntax<CR>zc
 let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_WorkingDirectoryMode = 'Ac'
