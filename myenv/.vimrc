@@ -154,10 +154,12 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-nnoremap <Leader>f :CtrlPFunky<Cr>
+"nnoremap <Leader>f :CtrlPFunky<Cr>
+nnoremap <Leader>f :LeaderfFunction<Cr>
+nnoremap <Leader>u :LeaderfFunctionCword<Cr>
 " narrow the list down with a word under cursor
 "nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-nnoremap <Leader>u :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+"nnoremap <Leader>u :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_by_filename=1
