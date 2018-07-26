@@ -1,0 +1,7 @@
+unmap a
+map c goBack
+map t nextTab
+map b previousTab
+map a fullImageHint
+map ga zoomPageIn
+map za zoomOrig
