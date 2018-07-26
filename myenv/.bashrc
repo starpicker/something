@@ -161,7 +161,7 @@ export ANDROID_JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias vpn='/opt/cisco/anyconnect/bin/vpn'
 alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.bin:$PATH
 alias bci='bitcoin-cli'
 export s="sheng@172.17.199.159"
 source $HOME/.tmuxinator/.tmuxinator.bash
