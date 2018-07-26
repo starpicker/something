@@ -123,3 +123,127 @@ unsigned long get_file_size(const char *path)
 }
 
 endsnippet
+
+snippet mltime
+#include <sys/time.h>
+
+struct MLTIME {
+        MLTIME(const char* l = 0):label(l)
+        {
+            gettimeofday(&t_start, 0);
+        }
+
+        ~MLTIME()
+        {
+            gettimeofday(&t_end, 0);
+            long time_diff = (t_end.tv_sec - t_start.tv_sec)*1000 + (t_end.tv_usec - t_start.tv_usec)/1000;
+            logToFile("%s cost time is %ld ms", label, time_diff);
+        }
+private:
+        MLTIME operator =(const MLTIME&);
+
+private:
+    struct timeval t_start;
+    struct timeval t_end;
+    const char* label;
+};
+
+#define T MLTIME t = __func__;
+endsnippet
+
+
+snippet time
+#include <sys/time.h>
+
+long long getTimestamp(void)
+{
+    struct timeval time;
+    gettimeofday(&time,NULL);
+    long long curtime = ((long long)(time.tv_sec))*1000 + time.tv_usec/1000;
+    return curtime;
+}
+endsnippet
+
+snippet mllog
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+static void mllog(const char * fmt, ...)
+{
+    FILE* fp = fopen(${1:"/data/misc/camera/mllog2.txt"}, "a+");
+    if(fp)
+    {
+        va_list arg;
+        char buf[1024 * 4] = {0};
+        va_start(arg, fmt);
+        vsprintf(buf, fmt,arg);
+        va_end(arg);
+        fwrite(buf,1,strlen(buf),fp);
+        if(buf[strlen(buf)-1] != '\n')
+            fwrite("\n",1,1,fp);
+        fflush(fp);
+        fclose(fp);
+    }
+}
+endsnippet
+
+snippet timestr
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+string getCurrentTimeStr(void)
+{
+    time_t t = time(NULL);
+    char ch[64] = {0};
+    strftime(ch, sizeof(ch) - 1, "%Y-%m-%d-%H-%M-%S", localtime(&t));
+
+    return ch;
+}
+endsnippet
+
+snippet file2str
+#include <string>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+string readFileIntoString(const char* filename)
+{
+    ifstream ifile(filename);
+    ostringstream buf;
+    char ch;
+
+    while(buf && ifile.get(ch))
+    {
+        buf.put(ch);
+    }
+
+    return buf.str();
+}
+endsnippet
+
+snippet fun
+${2:void} ${1:name}($3)
+{
+    $4
+}
+endsnippet
+
+snippet class
+class ${1:Class}{
+public:
+    // constructor, asssignment, move constructor, move assignment, destructor
+    $1() = default;
+    $1(const $1&) = delete;
+    $1& operator=(const $1&) = delete;
+    $1($1&&) = delete;
+    $1& operator=($1&&) = delete;
+    ~$1();
+
+private:
+};
+endsnippet

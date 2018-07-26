@@ -1,0 +1,47 @@
+snippet m
+CXX                  := g++
+CXXFLAGS             := -g
+
+OBJ_PATH             := ./
+OUTPUTDIR            := ./
+
+TARGET               := ${1}
+
+INC                  := -I.
+LIBS                 := -L.
+
+SRCDIR               :=./
+
+VPATH                := $(shell find $(SRCDIR)/ -type d)
+CPPSRCS              := $(foreach x, $(VPATH), $(wildcard $(addprefix $(x)/*, .cpp)))
+CPPOBJS              := $(addprefix $(OBJ_PATH)/, $(addsuffix .o, $(notdir $(basename $(CPPSRCS)))))
+
+.PHONY : all
+all :
+
+CPPDS                := $(CPPOBJS:.o=.d)
+
+$(OBJ_PATH)/%.d : %.cpp
+	@-printf "\tMM\t%s \n" $(notdir $^)
+	@set -e; rm -f $@; \
+	$(CXX) $(INCDIR) -MM  $< >> $@.$$$$; \
+	sed 's,/($*/)/.o[ :]*,/1.o $@ : ,g' < $@.$$$$ > $@; \
+	sed -i '1s#^#$(OBJ_PATH)/&#' $@; \
+	rm -f $@.$$$$
+
+ifeq "$(MAKECMDGOALS)" ""
+sinclude $(CPPDS)
+endif
+
+$(OUTPUTDIR)/$(TARGET) : $(CPPOBJS)
+	@$(CXX) -Wl,-soname,$(TARGET) -fPIC -shared -Wl,--no-undefined $(CPPOBJS) $(LIBS) -o $(OUTPUTDIR)/$(TARGET)
+	@-printf "\n\tLD\t %s \n" $@
+
+$(OBJ_PATH)/%.o : %.cpp
+	@-printf "\tCXX\t%s\n" $(notdir $^)
+	@$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
+
+.PHONY:clean
+clean:
+	-rm -rf $(CPPOBJS) $(CPPDS) $(OUTPUTDIR)/$(TARGET)
+endsnippet
