@@ -8,9 +8,15 @@ color_coded:
  cp -r colors/ ~/.vim/
  cp -r plugin/ ~/.vim/
  cp color_coded.so ~/.vim/
+ 
+ must behold the original folder, path fixed when using it
+ so you can build in .vim folder
 
  using by adding .color_coded include header file dir
 
+
+eclim:
+you mannual build it, path fixed when using it
 
 
 
