@@ -21,4 +21,5 @@ https://github.com/Xfennec/progress
 https://github.com/jeaye/stdman
 https://github.com/nothings/stb
 https://github.com/iqiyi/xhook
+https://github.com/jeaye/color_coded
 
