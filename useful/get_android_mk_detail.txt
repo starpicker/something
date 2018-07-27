@@ -5,3 +5,10 @@ detailed located in out *.ninjia
 so bigger, cannot load in vim
 
 tail -1000 build-HydrogenONE-hardware_qcom_camera_Android.mk.ninja|more
+
+vim with plugin cannot open large file
+
+you should use vim -u NONE build-HydrogenONE-hardware_qcom_camera_Android.mk.ninja to open large file
+
+
+or just disable all plugin by mv .vim
