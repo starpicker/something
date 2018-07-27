@@ -739,9 +739,9 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 
 "let g:g:gutentags_dont_load = 1
-let g:gutentags_enabled = 0
-let g:gutentags_generate_on_write = 0
-let g:gutentags_generate_on_missing = 0
+"let g:gutentags_enabled = 0
+"let g:gutentags_generate_on_write = 0
+"let g:gutentags_generate_on_missing = 0
 "let g:gutentags_ctags_auto_set_tags = 0
 "let g:gutentags_modules = 'ctags'
 "let g:gutentags_modules = 'cscope'
