@@ -646,21 +646,59 @@ endif
 
 nmap <leader>H :TagbarToggle<CR>
 
+nmap <leader>S :SyntasticCheck<CR>
 "for syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_skip_checks = 0
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_id_checkers = 1
+let g:syntastic_sort_aggregated_errors = 1
+let g:syntastic_echo_current_error = 1
+let g:syntastic_cursor_columns = 1
 let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "E>"
+let g:syntastic_style_error_symbol = "E>"
+let g:syntastic_warning_symbol = "W>"
+let g:syntastic_style_warning_symbol = "W>"
+let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_compiler = 'clang'
+
+"clang_check and clang_tidy look for header, dont need it
+"let g:syntastic_c_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cppcheck', 'make']
+let g:syntastic_c_checkers = ['gcc', 'cppcheck', 'make']
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_remove_include_errors = 1
+let g:syntastic_c_compiler_options = ' -std=gnu99'
+let g:syntastic_c_config_file =''
+let g:syntastic_c_include_dirs = ["inc"]
+let g:syntastic_c_no_default_include_dirs = 1
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_c_auto_refresh_includes = 0
+let b:syntastic_c_cflags = ''
+let g:syntastic_c_check_header = 1
+
+"cpplint using goolge&&kernel style, discard it
+"let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cppcheck', 'cpplint']
+let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
+let g:syntastic_cpp_config_file = ''
+let g:syntastic_cpp_include_dirs  = ["inc"]
+let g:syntastic_cpp_no_default_include_dirs = 1
+let g:syntastic_cpp_no_include_search = 1
+let g:syntastic_cpp_auto_refresh_includes = 0
+let b:syntastic_cpp_cflags = ''
+let g:syntastic_cpp_check_header = 1
+
 let g:syntastic_mode_map = {
         \ "mode": "passive",
         \ "active_filetypes": [],
