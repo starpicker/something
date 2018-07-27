@@ -100,9 +100,6 @@ let tlist_auto_update=1
 filetype plugin on
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk,ucs-bom,cp936
-"set tags=/home/arcsoft/Projects/LTE-Q/7th_workspace/DualCore/android/frameworks/base/tags
-"set tags +=~/.vim/systags
-"set tags =/home/lma/linux_else/tags
 "hi Comment ctermfg =lightblue
 "colorscheme desert
 "colorscheme twilighted
@@ -421,12 +418,11 @@ set tags=./tags,tags;
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
-let OmniCpp_MayCompleteDot = 1   " 输入 .  后自动补全
-let OmniCpp_MayCompleteArrow = 1 " 输入 -> 后自动补全
-let OmniCpp_MayCompleteScope = 1 " 输入 :: 后自动补全
+let OmniCpp_ShowPrototypeInAbbr = 1
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" " 自动关闭补全窗口
 "au CursorMovedI,InsertLeave * if pu"mvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest
 
