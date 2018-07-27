@@ -1,0 +1,7 @@
+mm  SHOWCOMMAND=TRUE 2>&1 | tee build.log show's nothing
+
+detailed located in out *.ninjia
+
+so bigger, cannot load in vim
+
+tail -1000 build-HydrogenONE-hardware_qcom_camera_Android.mk.ninja|more
