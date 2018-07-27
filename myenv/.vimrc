@@ -670,13 +670,14 @@ let g:syntastic_warning_symbol = "W>"
 let g:syntastic_style_warning_symbol = "W>"
 let g:syntastic_enable_balloons = 1
 let g:syntastic_enable_highlighting = 1
+"let g:syntastic_debug = 33
 
 "clang_check and clang_tidy look for header, dont need it
 "let g:syntastic_c_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cppcheck', 'make']
 let g:syntastic_c_checkers = ['gcc', 'cppcheck', 'make']
 let g:syntastic_c_compiler = 'gcc'
 let g:syntastic_c_remove_include_errors = 1
-let g:syntastic_c_compiler_options = ' -std=gnu99'
+let g:syntastic_c_compiler_options = ' -std=gnu99 -Wall -Wextra'
 let g:syntastic_c_config_file =''
 let g:syntastic_c_include_dirs = ["inc"]
 let g:syntastic_c_no_default_include_dirs = 1
@@ -690,7 +691,7 @@ let g:syntastic_c_check_header = 1
 let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_compiler_options = ' -std=c++17 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++17 -Wall -Wextra'
 let g:syntastic_cpp_config_file = ''
 let g:syntastic_cpp_include_dirs  = ["inc"]
 let g:syntastic_cpp_no_default_include_dirs = 1
@@ -703,8 +704,6 @@ let g:syntastic_mode_map = {
         \ "mode": "passive",
         \ "active_filetypes": [],
         \ "passive_filetypes": [] }
-
-
 
 "for indent_guides
 let g:indent_guides_enable_on_vim_startup=0
