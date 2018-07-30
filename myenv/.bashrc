@@ -340,6 +340,7 @@ source ~/.commacd.bash
 #fi
 alias ff='find . -type f -name '
 alias ffd='find . -type d -name '
+alias agg='ag -g '
 
 alias c='bcal -c '
 #if [ -f ~/.bashrc.local ]; then
