@@ -673,7 +673,8 @@ let g:syntastic_enable_highlighting = 1
 "clang_check and clang_tidy look for header, dont need it
 "let g:syntastic_c_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cppcheck', 'make']
 let g:syntastic_c_checkers = ['gcc', 'cppcheck', 'make']
-let g:syntastic_c_compiler = 'gcc'
+"let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler = 'clang'
 " gcc must set to 0, otherwise no errors after include
 "let g:syntastic_c_remove_include_errors = 1
 let g:syntastic_c_remove_include_errors = 0
@@ -697,15 +698,16 @@ let g:syntastic_c_check_header = 1
 "let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cppcheck', 'cpplint']
 "gcc check build
 "cppcheck check potential bugs
-let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
-"let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_compiler = 'g++'
+"let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
+let g:syntastic_cpp_checkers = ['gcc']
+"let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler = 'clang++'
 " gcc must set to 0, otherwise no errors after include
 "let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_cpp_remove_include_errors = 0
 "too many noise warning when using old code
-let g:syntastic_cpp_compiler_options = ' -std=c++17 -Wall -Wextra '
-"let g:syntastic_cpp_compiler_options = ' -std=c++17 -w '
+"let g:syntastic_cpp_compiler_options = ' -std=c++17 -Wall -Wextra '
+let g:syntastic_cpp_compiler_options = ' -std=c++17 -w '
 "let g:syntastic_cpp_config_file = ''
 let g:syntastic_cpp_include_dirs  = ["inc"]
 "let g:syntastic_cpp_no_default_include_dirs = 1

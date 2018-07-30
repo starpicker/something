@@ -1,0 +1,6 @@
+find hardware_qcom_camera_Android.mk.ninja in out
+search clang++ in hardware_qcom_camera_Android.mk.ninja
+syntastic use -I and option, discard arm-specific options
+maybe can add -w in the end
+maybe add __ANDROID__ someway
+maybe need subsitute cat in nijia manually
