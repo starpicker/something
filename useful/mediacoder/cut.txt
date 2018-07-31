@@ -1,0 +1,2 @@
+avconv -i ./1.mkv -vcodec copy -acodec copy -ss 00:25:30 -t 00:02:00 ./2.mkv -y
+./ffmpeg -i ./1.mkv -vcodec copy -acodec copy -ss 00:25:30 -to 00:28:30 ./2.mkv -y

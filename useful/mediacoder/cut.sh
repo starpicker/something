@@ -1,0 +1,1 @@
+./ffmpeg -i $1 -vcodec copy -acodec copy -ss $3 -to $4 $2 -y
