@@ -284,13 +284,14 @@ let g:EasyMotion_smartcase = 1
 "map <leader><leader>l <Plug>(easymotion-lineforward)
 "map <leader><leader>s <Plug>(easymotion-s2)
 "map <leader>. <Plug>(easymotion-s)
-map s <Plug>(easymotion-s)
+map s <Plug>(easymotion-s2)
 "map <leader><leader>t <Plug>(easymotion-t2)
 "map <leader><leader>. <Plug>(easymotion-repeat)
 "map  / <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
 "map  n <Plug>(easymotion-next)
 "map  N <Plug>(easymotion-prev)
+let g:EasyMotion_keys = 'eriopghfasdklj;'
 
 "a.vim
 nnoremap <leader>a :A<CR>
@@ -608,6 +609,7 @@ nmap <leader>T :ProjectsTree<cr>
 "nmap <leader>C :bp<cr>:q<cr>
 nmap <leader>C :-quit<cr>
 nmap <leader>lu :Ag <c-r><c-w><cr>
+nmap <leader>A :AgFile <c-r><c-w>.h<cr>q
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
@@ -700,6 +702,7 @@ let g:syntastic_c_check_header = 1
 "cppcheck check potential bugs
 "let g:syntastic_cpp_checkers = ['gcc', 'cppcheck']
 let g:syntastic_cpp_checkers = ['gcc']
+"gcc maybe segmentfault using stdc++17 in android source code 
 "let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler = 'clang++'
 " gcc must set to 0, otherwise no errors after include
