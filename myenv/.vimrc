@@ -610,6 +610,7 @@ nmap <leader>T :ProjectsTree<cr>
 nmap <leader>C :-quit<cr>
 nmap <leader>lu :Ag <c-r><c-w><cr>
 nmap <leader>A :AgFile <c-r><c-w>.h<cr>q
+vmap <leader>A :Tabularize /=<cr>
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
@@ -736,6 +737,7 @@ let g:indent_guides_guide_size=1
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
+let g:startify_custom_indices = ['j', 'k', 'l', 'f']
 let g:startify_custom_header = []
 vmap <leader>S :!astyle<CR>
 nmap mm goj
