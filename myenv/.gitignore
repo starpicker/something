@@ -1,3 +1,16 @@
+.cproject
+.gitignore
+.project
+.settings/
+cscope.files
+cscope.in.out
+cscope.out
+cscope.po.out
+namespace.files
 tags
+workbench.xmi
 eclim*
-__pycache__
+pycache
+*.patch
+.color_coded
+.syntastic_config
