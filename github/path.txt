@@ -23,3 +23,7 @@ https://github.com/nothings/stb
 https://github.com/iqiyi/xhook
 https://github.com/jeaye/color_coded
 
+https://github.com/chriskohlhoff/asio.git
+https://github.com/geometer/FBReaderJ
+https://github.com/cslarsen/jp2a
+https://github.com/gabime/spdlog
