@@ -196,6 +196,7 @@ alias gti='git'
 alias gs='git status'
 alias gd='git diff'
 alias gl='git log'
+alias gr='git remote -v'
 alias mux='tmuxinator'
 alias cl='clear'
 
@@ -353,3 +354,5 @@ if hash ag 2>/dev/null; then
   tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null; }
   alias ag=tag  # replace with rg for ripgrep
 fi
+
+alias lss='colorls -lA --sd'
