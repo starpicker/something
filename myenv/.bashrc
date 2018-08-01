@@ -367,3 +367,4 @@ if hash ag 2>/dev/null; then
 fi
 
 alias lss='colorls -lA --sd'
+alias cdd='cd `cat ~/.vpath`'

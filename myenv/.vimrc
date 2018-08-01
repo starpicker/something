@@ -833,3 +833,5 @@ let g:ctrlp_funky_syntax_highlight = 1
 map <leader>F :set foldmethod=syntax<CR>zc
 let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_WorkingDirectoryMode = 'Ac'
+
+map <leader>C :!pwd > ~/.vpath<CR>
