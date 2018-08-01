@@ -737,7 +737,7 @@ let g:indent_guides_guide_size=1
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
-let g:startify_custom_indices = ['j', 'k', 'l', 'f']
+let g:startify_custom_indices = ['h', 'f', 'l', 'd']
 let g:startify_custom_header = []
 vmap <leader>S :!astyle<CR>
 nmap mm goj
