@@ -30,3 +30,7 @@ https://github.com/gabime/spdlog
 https://github.com/athityakumar/colorls
 https://github.com/shyiko/commacd
 https://github.com/aykamko/tag
+https://github.com/matthewearl/faceswap
+https://github.com/spmallick/learnopencv
+https://github.com/davisking/dlib.git
+https://github.com/QianMo/OpenCV3-Intro-Book-Src.git

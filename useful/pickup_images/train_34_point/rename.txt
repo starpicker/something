@@ -1,0 +1,5 @@
+rename           's/^/00/'          [0-9].jpg
+rename            's/^/0/'           [0-9][0-9].jpg
+
+rename 's/SCUT-FBP-/SCUT-FBP-00/' SCUT-FBP-[0-9].jpg
+rename 's/SCUT-FBP-/SCUT-FBP-0/' SCUT-FBP-[0-9][0-9].jpg
