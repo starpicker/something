@@ -1,0 +1,11 @@
+change mplayer/config from 
+
+## Fontconfig
+fontconfig=yes
+font=Arial
+
+to
+
+## Fontconfig
+fontconfig=no
+##font=Arial
