@@ -366,5 +366,7 @@ if hash ag 2>/dev/null; then
   alias ag=tag  # replace with rg for ripgrep
 fi
 
-alias lss='colorls -lA --sd'
+alias lsc='colorls -lA --sd'
 alias cdd='cd `cat ~/.vpath`'
+alias lss='ls -1 |fpp -ai'
+alias rms='ls -1 |fpp -ai -c "rm -rf"'
