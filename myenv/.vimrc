@@ -275,7 +275,6 @@ set nocompatible
        "\}
 ""\ 'make' : 1
 ""
-let g:autocscope_menus=1
 
 " easy motion
 let g:EasyMotion_smartcase = 1
