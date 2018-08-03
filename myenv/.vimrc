@@ -375,7 +375,7 @@ nnoremap <Leader>d :GitGutterNextHunk<Cr>
 nnoremap <Leader>D :GitGutterPrevHunk<Cr>
 nnoremap <Leader>U :GitGutterUndoHunk<Cr>
 "has less use
-"map <Leader>l :set invnumber<Cr>
+map <Leader>L :set invnumber<Cr>
 "set splitright
 "set splitbelow
 
@@ -454,8 +454,8 @@ let g:limelight_eop = '\ze\n\r^\s'
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
 
-nmap <Leader>L <Plug>(Limelight)
-xmap <Leader>L <Plug>(Limelight)
+"nmap <Leader>L <Plug>(Limelight)
+"xmap <Leader>L <Plug>(Limelight)
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
