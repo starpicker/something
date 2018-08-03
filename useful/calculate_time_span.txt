@@ -1,0 +1,15 @@
+"need care for log tag, maybe mixed
+ag "D ARCSOFT_DUAL_CAMERA: \[ARC_RTB] DoProcess:" > 1.txt
+"vim :FixWhiteSpace 1.txt
+"need check missing log lines
+cat 1.txt |awk '{print $2}' > 2.txt
+sed -n '{N;s/\n/:/p}' 2.txt > 3.txt
+awk -F: '{print $3 "." $6}' 3.txt > 4.txt
+awk -F. '{print ($3*1000+$4)-($1*1000+$2)}' 4.txt
+awk -F. '{print ($3*1000+$4)-($1*1000+$2)}' 4.txt > 5.txt
+
+
+check missing lines:
+awk -F" " '{print $9}' 1.txt >filter_1.txt
+awk '{tmp=$0;getline;print tmp"\t"$0}' filter_1.txt > filter_2.txt
+find lines different, delete it
