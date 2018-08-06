@@ -834,3 +834,4 @@ let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_WorkingDirectoryMode = 'Ac'
 
 map <leader>C :!pwd > ~/.vpath<CR>
+let g:NERDSpaceDelims = 1
