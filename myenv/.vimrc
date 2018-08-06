@@ -786,3 +786,6 @@ let g:Lf_WorkingDirectoryMode = 'Ac'
 
 map <leader>C :!pwd > ~/.vpath<CR>
 let g:NERDSpaceDelims = 1
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabLongestEnhanced = 1
