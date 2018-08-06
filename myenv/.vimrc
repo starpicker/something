@@ -752,12 +752,12 @@ nnoremap ]w :NextTrailingWhitespace<CR>
 nnoremap [w :PrevTrailingWhitespace<CR>
 
 let g:asyncomplete_auto_popup=0
+nnoremap <leader><leader>z :let g:asyncomplete_auto_popup=1<cr>
+nnoremap <leader><leader>Z :let g:asyncomplete_auto_popup=0<cr>
 
-"let g:tmuxcomplete#trigger = 'completefunc'
-let g:tmuxcomplete#trigger = 'omnifunc'
-
+let g:asyncomplete_remove_duplicates = 1
 let g:tmuxcomplete#asyncomplete_source_options = {
-	    \ 'name':      'tmuxcomplete',
+	    \ 'name':      'tc',
 	    \ 'whitelist': ['*'],
 	    \ 'config': {
 	    \     'splitmode':      'words',
@@ -768,55 +768,6 @@ let g:tmuxcomplete#asyncomplete_source_options = {
 	    \     'truncate':        0
 	    \     }
 	    \ }
-
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-    \ 'name': 'buffer',
-    \ 'whitelist': ['*'],
-    \ 'blacklist': ['go'],
-    \ 'completor': function('asyncomplete#sources#buffer#completor'),
-    \ }))
-
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-
-call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-\ 'name': 'omni',
-\ 'whitelist': ['*'],
-\ 'blacklist': ['c', 'cpp', 'html'],
-\ 'completor': function('asyncomplete#sources#omni#completor')
-\  }))
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tags#get_source_options({
-    \ 'name': 'tags',
-    \ 'whitelist': ['c'],
-    \ 'completor': function('asyncomplete#sources#tags#completor'),
-    \ 'config': {
-    \    'max_file_size': 50000000,
-    \  },
-    \ }))
-
-"let g:g:gutentags_dont_load = 1
-"let g:gutentags_enabled = 0
-"let g:gutentags_generate_on_write = 0
-"let g:gutentags_generate_on_missing = 0
-"let g:gutentags_ctags_auto_set_tags = 0
-"let g:gutentags_modules = 'ctags'
-"let g:gutentags_modules = 'cscope'
-"let g:gutentags_project_root = ['.git']
-"let g:gutentags_add_default_project_roots = 0
-".notags or
-"let g:gutentags_exclude_project_root = ['/usr/local']
-"let g:gutentags_generate_on_empty_buffer = 0
-"let g:gutentags_background_update = 1
-"let g:gutentags_cache_dir = ''
-"let g:gutentags_resolve_symlinks = 0
-"let g:gutentags_define_advanced_commands = 0
-"set statusline+=%{gutentags#statusline()}
 
 let g:lastplace_open_folds = 0
 
