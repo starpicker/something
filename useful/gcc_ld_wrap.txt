@@ -1,0 +1,64 @@
+说起C/C++程序，一个老生常谈的问题便是内存分配，而这也是一个难点。在大型的软件开发项目中，常会遇到较大的常驻内存、内存泄露、内存破坏等问题，这些问题往往都是致命的。于是我们就借助于一些内存检测工具、API或者是某种技术手段，来动态地跟踪内存分配，查看内存使用细节，方法很多，各有利弊，GNU链接器就提供了一个好用的方法：
+
+–wrap=symbol
+
+函数名为“__wrap_symbol”，且称其为包装函数，“symbol”是一个函数名，大致执行过程是这样的：当调用“symbol”函数时，如果“symbol”函数未定义的话就会调用“__wrap_symbol”函数；“__real_symbol”也是个相关的函数，当其只声明不定义的话，我们对其的调用将调用真正的“symbol”函数；当然，我们还要添加编译链接参数：
+
+-Wl,–wrap,symbol
+
+下面以常用的malloc函数为例说明：
+
+// wrap.c
+#include <stdio.h>
+#include <stdlib.h>
+void* __real_malloc(size_t size); // 只声明不定义__real_malloc
+void* __wrap_malloc(size_t size) // 定义__wrap_malloc
+{
+    printf("__wrap_malloc called, size:%zd\n", size); // log输出
+    return __real_malloc(size); // 通过__real_malloc调用真正的malloc
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+下面是测试用例：
+
+// test.c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char* c = (char*)malloc(sizeof(char)); // 调用malloc
+    printf("c = %p\n", c);
+    free(c); // 调用free，防止内存泄漏
+    return 0;
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+下面是编译链接过程：
+
+gcc -c wrap.c test.c
+gcc -Wl,--wrap,malloc -o test wrap.o test.o // 链接参数-Wl,--wrap,malloc
+1
+2
+结果查看： 
+./test
+
+__wrap_malloc called, size:1
+c = 0x60d010
+1
+2
+从上面的结果中可以看出，测试用例中使用了malloc，首先调用的是__wrap_malloc函数，然后我们就可以在这个函数中添加我们想要的东西了。
