@@ -1,9 +1,13 @@
-#error only work on 32bit system, 64bit please modified the uchar2Int and Int2uchar
+#error "only work on 32bit system, 64bit please modified the uchar2Int and Int2uchar"
+// using:
+    // tune_type t_opt(8, 10240, 8, 102400, 20, 10, false);
+    // g_alloc._M_set_options(t_opt);
 
 #include <ext/mt_allocator.h>
 
 typedef unsigned char value_type;
 typedef __gnu_cxx::__mt_alloc<value_type> allocator_type;
+typedef __gnu_cxx::__pool_base::_Tune tune_type;
 
 extern allocator_type g_alloc;
 
