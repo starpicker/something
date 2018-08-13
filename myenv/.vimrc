@@ -610,6 +610,7 @@ nmap <leader>C :-quit<cr>
 nmap <leader>lu :Ag <c-r><c-w><cr>
 nmap <leader>A :AgFile <c-r><c-w>.h<cr>q
 vmap <leader>A :Tabularize /=<cr>
+vmap <leader>B :Tabularize /,<cr>
 
 
 nmap ++ <c-w>h<c-w>_<c-w>><<c-w>>c-w>>
