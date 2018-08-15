@@ -135,7 +135,7 @@ export ANDROID_MAKE_CCACHE=ccache
 export TERM=xterm-256color
 #toilet "FUCK U" | pv -qL 100
 alias gcc="color_compile gcc"
-alias g++="color_compile g++ -std=c++11"
+alias g++="color_compile g++ -std=c++17"
 #alias make="color_compile make -j4"
 alias make="color_compile make"
 
