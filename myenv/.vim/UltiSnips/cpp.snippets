@@ -72,6 +72,8 @@ snippet std
 #include <memory>
 #include <tuple>
 #include <algorithm>
+#include <chrono>
+#include <thread>
 
 using std::cout;
 using std::endl;
@@ -83,6 +85,8 @@ using std::unique_ptr;
 using std::tuple;
 using std::make_tuple;
 using std::find;
+using std::chrono;
+using std::thread;
 endsnippet
 
 snippet filer
@@ -234,7 +238,8 @@ ${2:void} ${1:name}($3)
 endsnippet
 
 snippet class
-class ${1:Class}{
+class ${1:Class}
+{
 public:
     // constructor, asssignment, move constructor, move assignment, destructor
     $1() = default;
@@ -317,4 +322,37 @@ void cprintf(const char* format, ...)
     print_none
     va_end(args);
 }
+endsnippet
+
+snippet random
+#include <random>
+
+int ${1:size} = $2;
+std::random_device seed;
+std::mt19937 engine(seed());
+std::uniform_int_distribution<> uniformDist(0, $1);
+
+int ${3:random_value} = uniformDist(engine);
+endsnippet
+
+snippet timespan
+#include <chrono>
+
+auto ${1:time_start} = std::chrono::steady_clock::now();
+
+$3
+
+auto ${2:time_end} = std::chrono::steady_clock::now();
+auto ${5:duration} = std::chrono::duration_cast<std::chrono::${4:milliseconds}>($2 - $1);
+endsnippet
+
+snippet sleep
+#include <chrono>
+#include <thread>
+
+std::this_thread::sleep_for(std::chrono::${2:milliseconds}($1));
+endsnippet
+
+snippet cout
+std::cout << "$1 " << $2 << std::endl;
 endsnippet
