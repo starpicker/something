@@ -1,0 +1,19 @@
+sudo apt-get install dictd dict
+sudo apt-get install dict-gcide
+sudo apt-get install dict-moby-thesaurus
+modified
+/var/lib/dictd/db.list
+add langdao dict which get it from starpicker3
+
+database langdao-ce
+ {
+  data  /usr/share/dictd/langdao-ce.dict.dz
+  index /usr/share/dictd/langdao-ce.index
+}
+database langdao-ec
+ {
+  data  /usr/share/dictd/langdao-ec.dict.dz
+  index /usr/share/dictd/langdao-ec.index
+}
+
+sudo /etc/init.d/dictd restart
