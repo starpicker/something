@@ -604,6 +604,7 @@ nmap <leader>cs :CSearch <c-r><c-w> -x all<cr>
 "nmap <leader>l :CSearch <c-r><c-w> -x all<cr>
 nmap <leader>cf :LocateFile <c-r><c-w>.h<cr>
 nmap <leader>T :ProjectsTree<cr>
+nmap <leader>K :!dict -d langdao-ec <c-r><c-w><cr>
 
 "nmap <leader>C :bp<cr>:q<cr>
 nmap <leader>C :-quit<cr>
