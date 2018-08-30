@@ -792,3 +792,5 @@ let g:NERDSpaceDelims = 1
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabLongestEnhanced = 1
 vmap <leader><leader>y y:!echo -n <C-R>" > ~/.vbuf<cr>
+map vii vi(
+map vij vi"
