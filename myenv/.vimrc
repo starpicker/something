@@ -623,7 +623,7 @@ set wildmode=list:longest,full
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrgger="<leader><tab>"
-let g:UltiSnipsListSnippets="<c-e>"
+let g:UltiSnipsListSnippets="<leader><c-e>"
 
 nmap <leader>Y :YRShow<cr>
 "let g:yankring_history_dir =$HOME.'/.yanking/'
@@ -777,8 +777,8 @@ let g:lastplace_open_folds = 0
 map <leader>R :!update_tags.sh %:p:h<CR>
 map <leader>G :!gen_tags.sh %:p:h<CR>
 
-inoremap <C-E> <C-X><C-E>
-inoremap <C-Y> <C-X><C-Y>
+inoremap <C-J> <C-X><C-E>
+inoremap <C-K> <C-X><C-Y>
 
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
