@@ -607,7 +607,7 @@ nmap <leader>T :ProjectsTree<cr>
 nmap <leader>K :!dict -d langdao-ec <c-r><c-w><cr>
 
 "nmap <leader>C :bp<cr>:q<cr>
-nmap <leader>C :-quit<cr>
+" nmap <leader>C :-quit<cr>
 nmap <leader>lu :Ag <c-r><c-w><cr>
 nmap <leader>A :AgFile <c-r><c-w>.h<cr>q
 vmap <leader>A :Tabularize /=<cr>
