@@ -795,3 +795,4 @@ vmap <leader><leader>y y:!echo -n <C-R>" > ~/.vbuf<cr>
 map <leader><leader>c :!echo %:p > ~/.vpath<cr>
 map vii vi(
 map vij vi"
+map <tab> <C-W><C-]>
