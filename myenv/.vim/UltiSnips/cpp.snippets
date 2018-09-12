@@ -388,3 +388,38 @@ for(int i = 0; i < linenum; i++)
 fclose(fp);
 
 endsnippet
+
+snippet asp
+#include <string>
+#include <sstream>
+
+inline void args_string(std::ostringstream&) {}
+
+template<typename T, typename ...Args>
+inline void args_string(std::ostringstream& stream, T first, Args... rest)
+{
+    stream << first;
+    args_string(stream, rest...);
+}
+
+template<typename ...Args>
+inline const char* args_string(Args... rest)
+{
+    std::ostringstream stream;
+    args_string(stream, rest...);
+
+    static std::string str;
+    str = stream.str();
+
+    return str.c_str();
+}
+
+#define value_name_ml(X) " "#X,":", X
+endsnippet
+
+snippet as
+args_string(value_name_ml($1), value_name_ml($2),
+            value_name_ml($3), value_name_ml($4),
+            value_name_ml($5), value_name_ml($6)
+           );
+endsnippet
