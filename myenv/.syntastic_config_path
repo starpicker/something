@@ -1,0 +1,1 @@
+let g:syntastic_cpp_config_file = "/home/lma/xxxxxxxxxx/sourcecode/hardware/qcom/camera/.syntastic_config"
