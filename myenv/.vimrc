@@ -795,4 +795,6 @@ vmap <leader><leader>y y:!echo -n <C-R>" > ~/.vbuf<cr>
 map <leader><leader>c :!echo %:p > ~/.vpath<cr>
 map vii vi(
 map vij vi"
-map <tab> <C-W><C-]>
+" tab and c-i means jump forward
+" map <tab> <C-W><C-]>
+map <leader><leader>. <C-W><C-]>
