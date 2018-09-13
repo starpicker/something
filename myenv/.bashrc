@@ -191,6 +191,7 @@ export PAGER=less
 #export LESS_TERMCAP_us=$green
 
 alias vi='vim'
+alias im='vim'
 alias gi='git'
 alias gti='git'
 alias gs='git status'

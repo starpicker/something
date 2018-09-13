@@ -798,3 +798,4 @@ map vij vi"
 " tab and c-i means jump forward
 " map <tab> <C-W><C-]>
 map <leader><leader>. <C-W><C-]>
+imap <leader><leader>u <C-X><C-U><C-U>
