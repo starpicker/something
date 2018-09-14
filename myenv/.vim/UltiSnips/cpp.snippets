@@ -87,6 +87,7 @@ using std::make_tuple;
 using std::find;
 using std::thread;
 using namespace std::chrono;
+
 endsnippet
 
 snippet filer
@@ -153,6 +154,7 @@ private:
 };
 
 #define T MLTIME t = __func__;
+
 endsnippet
 
 
@@ -166,6 +168,7 @@ long long getTimestamp(void)
     long long curtime = ((long long)(time.tv_sec))*1000 + time.tv_usec/1000;
     return curtime;
 }
+
 endsnippet
 
 snippet mllog
@@ -206,6 +209,7 @@ string getCurrentTimeStr(void)
 
     return ch;
 }
+
 endsnippet
 
 snippet file2str
@@ -228,6 +232,7 @@ string readFileIntoString(const char* filename)
 
     return buf.str();
 }
+
 endsnippet
 
 snippet fun
@@ -322,6 +327,7 @@ void cprintf(const char* format, ...)
     print_none
     va_end(args);
 }
+
 endsnippet
 
 snippet random
@@ -408,13 +414,14 @@ inline const char* args_string(Args... rest)
     std::ostringstream stream;
     args_string(stream, rest...);
 
-    static std::string str;
+    static thread_local std::string str;
     str = stream.str();
 
     return str.c_str();
 }
 
 #define value_name_ml(X) " "#X,":", X
+
 endsnippet
 
 snippet as
@@ -463,6 +470,7 @@ final_action<F> finally_s(F&& f) noexcept
 }
 
 #define finally(c) auto mlfinally = finally_s([=](){c});
+
 endsnippet
 
 snippet fi
