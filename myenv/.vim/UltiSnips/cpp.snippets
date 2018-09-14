@@ -476,3 +476,54 @@ endsnippet
 snippet fi
 finally(${1:fclose(fp);});
 endsnippet
+
+snippet mlt
+#include <sys/time.h>
+
+#define MLLOG printf
+#ifndef MLLOG
+#error "please define MLLOG"
+#endif
+
+struct MLT{
+        MLT(struct timeval start_time, const char* label_tag)
+        :t_start(start_time), label(label_tag)
+        {
+        }
+
+        template <typename T>
+        MLT& operator = (T)
+        {
+            return *this;
+        }
+
+        ~MLT()
+        {
+            gettimeofday(&t_end, 0);
+            long time_diff = (t_end.tv_sec - t_start.tv_sec)*1000 + (t_end.tv_usec - t_start.tv_usec)/1000;
+            MLLOG("%s cost time is %ld ms\n", label, time_diff);
+        }
+private:
+    struct timeval t_start;
+    struct timeval t_end;
+    const char* label;
+};
+
+MLT mlt_helper(struct timeval start_time, const char* label_tag)
+{
+    return MLT(start_time, label_tag);
+}
+
+// caNNot use for void return functions
+// and seems tedious
+#define mlt(f)    struct timeval t_start; \
+                  gettimeofday(&t_start, 0); \
+                  mlt_helper(t_start, #f) = \
+
+
+// cannot use for void return functions
+#define mt        struct timeval t_start; \
+                  gettimeofday(&t_start, 0); \
+                  mlt_helper(t_start, "") = \
+
+endsnippet
