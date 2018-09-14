@@ -423,3 +423,48 @@ args_string(value_name_ml($1), value_name_ml($2),
             value_name_ml($5), value_name_ml($6)
            );
 endsnippet
+
+snippet fin
+template <class F>
+class final_action
+{
+public:
+    explicit final_action(F f) noexcept : f_(std::move(f)) {}
+
+    final_action(final_action&& other) noexcept : f_(std::move(other.f_)), invoke_(other.invoke_)
+    {
+        other.invoke_ = false;
+    }
+
+    final_action(const final_action&) = delete;
+    final_action& operator=(const final_action&) = delete;
+    final_action& operator=(final_action&&) = delete;
+
+    ~final_action() noexcept
+    {
+        if (invoke_) f_();
+    }
+
+private:
+    F f_;
+    bool invoke_{true};
+};
+
+template <class F>
+final_action<F> finally_s(const F& f) noexcept
+{
+    return final_action<F>(f);
+}
+
+template <class F>
+final_action<F> finally_s(F&& f) noexcept
+{
+    return final_action<F>(std::forward<F>(f));
+}
+
+#define finally(c) auto mlfinally = finally_s([=](){c});
+endsnippet
+
+snippet fi
+finally(${1:fclose(fp);});
+endsnippet
