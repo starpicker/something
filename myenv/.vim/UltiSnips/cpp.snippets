@@ -527,3 +527,22 @@ MLT mlt_helper(struct timeval start_time, const char* label_tag)
                   mlt_helper(t_start, "") = \
 
 endsnippet
+
+snippet fr
+unique_ptr<unsigned char[]> p = [](const char* path)
+                                {
+                                    using uchar = unsigned char;
+                                    unique_ptr<uchar[]> p;
+                                    int fs;
+                                    if(FILE* f;(0  == access(path, F_OK | R_OK)) &&
+                                       (f  = fopen(path, "r")) &&
+                                       (0  == fseek(f, 0, SEEK_END)) &&
+                                       (fs = ftell(f)) &&
+                                       (0  == fseek(f, 0, SEEK_SET)) &&
+                                       (p  = unique_ptr<uchar[]>(new uchar[fs])) &&
+                                       (fs == fread(p.get(), fs, 1, f)) &&
+                                       (0  == fclose(f))
+                                      )return p;
+                                }(${1});
+
+endsnippet
