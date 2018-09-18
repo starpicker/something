@@ -546,3 +546,84 @@ unique_ptr<unsigned char[]> p = [](const char* path)
                                 }(${1});
 
 endsnippet
+
+snippet once
+#pragma once
+
+endsnippet
+
+snippet ifn
+#ifndef $1
+
+#define ${1} ${2}
+
+#endif
+
+endsnippet
+
+snippet arr
+
+#include <memory>
+
+template <typename T>
+std::shared_ptr<T> make_shared_array(size_t size)
+{
+    return std::shared_ptr<T>(new T[size], std::default_delete<T[]>());
+}
+
+endsnippet
+
+snippet rc
+
+#ifndef NDEBUG
+#include <assert.h>
+
+template <class T>
+class CheckReturnML
+{
+public:
+
+    CheckReturnML(const T& value) :
+        value(value), check(true){}
+
+    ~CheckReturnML()
+    {
+        if(check)
+            assert("must check return value" == nullptr);
+    }
+
+    operator T(void)
+    {
+        check = false;
+
+        return value;
+    }
+
+private:
+    T value;
+    mutable bool check;
+};
+
+#define CRML(x) using x##c = CheckReturnML<x>; \
+                using u##x##c = CheckReturnML<unsigned x>;
+CRML(char)
+CRML(short)
+CRML(int)
+CRML(long)
+using longlongc = CheckReturnML<long long>;
+using ulonglongc = CheckReturnML<unsigned long long>;
+
+#else // !NDEBUG
+
+#define CRML(x) using x##c = x; \
+                using u##x##c = unsigned x;
+CRML(char)
+CRML(short)
+CRML(int)
+CRML(long)
+using longlongc = long long;
+using ulonglongc = unsigned long long;
+
+#endif // !!NDEBUG
+
+endsnippet
