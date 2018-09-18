@@ -629,3 +629,16 @@ using ulonglongc = unsigned long long;
 #endif // !!NDEBUG
 
 endsnippet
+
+snippet ret
+
+#ifndef MLLOG
+#define MLLOG printf
+#endif
+
+#define return if(MLLOG("returned from %s:%d\n", __func__, __LINE__) || true) \
+               return 
+
+#undef return
+
+endsnippet
