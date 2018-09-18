@@ -469,7 +469,9 @@ final_action<F> finally_s(F&& f) noexcept
     return final_action<F>(std::forward<F>(f));
 }
 
-#define finally(c) auto mlfinally = finally_s([=](){c});
+#define finally_line_cat(c, line) auto mlfinally##line = finally_s([=](){c;});
+#define finally_line(c, line) finally_line_cat(c, line)
+#define finally(c) finally_line(c, __LINE__)
 
 endsnippet
 
