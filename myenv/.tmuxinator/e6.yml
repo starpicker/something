@@ -1,7 +1,7 @@
 # ~/.tmuxinator/e6.yml
 
 name: e6
-root: ~/mount_for_hitachi/e6s/QCamera2/
+root: ~/mount_for_xxxxxhi/e6s/QCamera2/
 
 # Optional tmux socket
 # socket_name: foo
@@ -29,6 +29,6 @@ root: ~/mount_for_hitachi/e6s/QCamera2/
 
 windows:
   - rtb:
-      - vim util/arcsoft/Bokeh/QCameraArcRTB.cpp
+      - vim util/xxxxxxx/Bokeh/xxxxxxxxxxRTB.cpp
   - pp:
-      - vim util/arcsoft/Bokeh/QCameraBokehPP.cpp
+      - vim util/xxxxxxx/Bokeh/xxxxxxxBokehPP.cpp

@@ -1,7 +1,7 @@
 # ~/.tmuxinator/cloudminds.yml
 
-name: cloudminds
-root: ~/cloudminds/sourcecode
+name: xxxxxxinds
+root: ~/xxxxxxinds/sourcecode
 
 # Optional tmux socket
 # socket_name: foo
@@ -36,10 +36,10 @@ windows:
         - build:
           - source build/envsetup.sh
           - lunch 11
-          - cd hardware/qcom/camera/QCamera2
+          - cd hardware/qcom/camera
           #- mm
         - out:
-          - cd out/target/product/HydrogenONE/vendor/lib/hw
+          - cd out/target/product/xxxxxxxxxNE/vendor/lib/hw
           - ls -ltr
   - hardware:
       - cd hardware/qcom/camera
@@ -59,7 +59,7 @@ windows:
           - cd vendor/qcom/proprietary/mm-camera
           #- mm
         - out:
-          - cd out/target/product/HydrogenONE/vendor/lib
+          - cd out/target/product/xxxxxxxxxNE/vendor/lib
           - ls -ltr
   - vendor:
      - cd vendor/qcom/proprietary/mm-camera/mm-camera2/media-controller/modules/imglib/components
