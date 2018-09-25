@@ -1,0 +1,8 @@
+T release() __attribute__((warn_unused_result)) {
+        T localRef = mLocalRef;
+        mLocalRef = NULL;
+        return localRef;
+    }
+
+
+
