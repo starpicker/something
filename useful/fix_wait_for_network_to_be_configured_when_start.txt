@@ -1,0 +1,12 @@
+use systemd to configure component start/stop timeout
+/etc/systemd/system.conf have DefaultTimeoutStartSec=90s but is only to check
+
+real work is in /etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service
+
+in it call /lib/systemd/systemd-networkd-wait-online
+
+/lib/systemd/systemd-networkd-wait-online has a param --timeout
+
+modified /etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service ExecStart add --timout 5 is ok
+
+
