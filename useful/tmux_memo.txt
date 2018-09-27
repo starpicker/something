@@ -1,0 +1,10 @@
+Duplicate input to any pane to all other panes in the same window
+ctrl+b :set synchronize-panes
+
+exchange windows
+:swap-windows -s 5 -t 1
+
+join window into window
+first windows must be add :
+:join-pane -t :1
+:join-pane -t 2
