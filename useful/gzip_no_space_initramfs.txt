@@ -1,0 +1,11 @@
+gzip: stdout: No space left on device
+
+
+Linux 中 /boot 是存放系统启动文件的地方，安装 ubuntu 时单独分区给 200M 足够，但是系统内核更新后，老的内核依然保存在 /boot 分区内，几次升级后，就会提示 /boot 空间不足。
+我们只要删掉老的内核，将空间释放出来就可以了。
+
+先查看已安装的内核版本dpkg --get-selections |grep linux能看到已经安装的版本，其中带image的一般就是旧版本 deinstall代表是已经删除的旧版本 install是还没有删除的旧版本内核
+
+uname -r查看当前内核版本
+
+sudo apt-get remove linux-image-xxxx删除旧版本内核，xxx为内核版本号
