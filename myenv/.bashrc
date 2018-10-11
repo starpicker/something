@@ -134,7 +134,7 @@ export ANDROID_NDK_ROOT=/mnt/500G/public/NDK/android-ndk-r10d-linux-x86_64
 export ANDROID_MAKE_CCACHE=ccache
 export TERM=xterm-256color
 #toilet "FUCK U" | pv -qL 100
-alias gcc="color_compile gcc"
+alias gcc="color_compile g++ -std=c++17"
 alias g++="color_compile g++ -std=c++17"
 #alias make="color_compile make -j4"
 alias make="color_compile make"
