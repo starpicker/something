@@ -629,8 +629,10 @@ nmap <leader>Y :YRShow<cr>
 "let g:yankring_history_dir =$HOME.'/.yanking/'
 let g:yankring_history_file = '.yankring_history'
 
-nmap vv ]c
-nmap VV [c
+" nmap vv ]c
+" nmap VV [c
+nmap vv zf%
+nmap VV f{zf%
 "nmap <space>j ]c
 "nmap <space>k [c
 
