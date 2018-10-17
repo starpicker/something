@@ -186,10 +186,12 @@ snippet mllog
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include <string.h>
 
 static void mllog(const char * fmt, ...)
 {
-    FILE* fp = fopen(${1:"/data/misc/camera/mllog2.txt"}, "a+");
+    FILE* fp = fopen("${1:/data/misc/camera/mllog2.txt}", "a+");
     if(fp)
     {
         va_list arg;
@@ -1277,5 +1279,94 @@ template <class T>
 const char* s2s(T& f)
 {
     return s2s(f, std::make_index_sequence<tuple_size<T>()>{});
+}
+endsnippet
+
+snippet mlp
+
+#include <string>
+#include <sstream>
+
+namespace ml
+{
+inline void args_string_f(std::ostringstream& stream)
+{
+    stream << "\n";
+}
+
+template<typename T, typename ...Args>
+inline void args_string_f(std::ostringstream& stream, T first, Args... rest)
+{
+    stream << first;
+    if constexpr(sizeof...(rest)%2)
+        stream << ": ";
+    else if constexpr(sizeof...(rest))
+        stream << ", ";
+    args_string_f(stream, rest...);
+}
+
+template<typename ...Args>
+inline const char* args_string_f(Args... rest)
+{
+    static_assert(sizeof...(rest)%2 == 0, "args_string_f must use pairs");
+
+    std::ostringstream stream;
+    args_string_f(stream, rest...);
+
+    static thread_local std::string str;
+    str = stream.str();
+
+    return str.c_str();
+}
+} // ml
+#define S_ ml::args_string_f
+
+#include <type_traits>
+
+namespace ml
+{
+using std::true_type;
+using std::false_type;;
+using std::is_function;;
+using std::remove_pointer;
+using std::conditional;
+using std::is_class;
+using std::remove_reference;
+
+struct __is_callable_base { void operator()(); };
+
+template <class _T>
+struct __is_callable_derived : _T, __is_callable_base {};
+
+template <class _T, _T>
+struct __is_callable_check { typedef void _Type; };
+
+template <class _T, class = void>
+struct __is_callable_class : true_type {};
+
+template <class _T>
+struct __is_callable_class<_T,
+  typename __is_callable_check<void (__is_callable_base::*)(),
+    &__is_callable_derived<_T>::operator()>::_Type> : false_type {};
+
+template <class _T>
+struct __is_callable_function :
+  is_function<typename remove_pointer<typename remove_reference<_T>::type>::type> {};
+
+template <class _T>
+struct __is_callable :
+  conditional<is_class<_T>::value,
+    __is_callable_class<_T>, __is_callable_function<_T>>::type {};
+
+} // ml
+
+void mllog(const char * fmt, ...);
+template <typename C, typename ...Args>
+void mlp(C c, Args... args)
+{
+    if constexpr(ml::__is_callable<C>::value)
+        c(S_(args...));
+    else
+        mllog(S_(c, args...));
 }
 endsnippet
