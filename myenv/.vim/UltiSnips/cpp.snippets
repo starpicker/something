@@ -65,6 +65,7 @@ snippet inc
 endsnippet
 
 snippet std
+/*{{{*/
 #include <iostream>
 #include <string>
 #include <vector>
@@ -74,6 +75,7 @@ snippet std
 #include <algorithm>
 #include <chrono>
 #include <thread>
+#include <initializer_list>
 
 using std::cout;
 using std::endl;
@@ -97,7 +99,9 @@ using std::is_convertible;
 using std::true_type;
 using std::false_type;
 using std::to_string;
+using std::initializer_list;
 using namespace std::chrono;
+/*}}}*/
 
 endsnippet
 
@@ -695,6 +699,7 @@ endsnippet
 
 snippet member
 
+/*{{{*/
 #include <type_traits>
 #include <utility>
 
@@ -863,6 +868,7 @@ namespace detail {
 
 } // namespace detail
 
+/*}}}*/
 
 template <class T>
 constexpr auto get_struct_member_count(void)
@@ -876,6 +882,7 @@ endsnippet
 
 snippet s2s
 
+/*{{{*/
 #include <string>
 #include <sstream>
 
@@ -1280,6 +1287,7 @@ const char* s2s(T& f)
 {
     return s2s(f, std::make_index_sequence<tuple_size<T>()>{});
 }
+/*}}}*/
 endsnippet
 
 snippet mlp
@@ -1369,4 +1377,25 @@ void mlp(C c, Args... args)
     else
         mllog(S_(c, args...));
 }
+endsnippet
+
+snippet index
+
+#include <initializer_list>
+#include <utility>
+
+using std::initializer_list;
+
+template <std::size_t... I>
+auto num2list_impl(std::index_sequence<I...>)
+{
+    return initializer_list<int>{I...};
+}
+
+template <size_t N, typename Indices = std::make_index_sequence<N>>
+auto num2list(void)
+{
+    return num2list_impl(Indices{});
+}
+
 endsnippet
