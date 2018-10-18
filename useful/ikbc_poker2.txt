@@ -1,0 +1,5 @@
+map ~ to fn+left shift+esc
+map fsed to aswd
+map ikjl to aswd for fn+rshift toggle
+map c to cmd enter 0.1s adb shell 0.1s enter
+fn+z press toggle shift means shift is always on
