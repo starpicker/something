@@ -148,6 +148,7 @@ unsigned long get_file_size(const char *path)
 endsnippet
 
 snippet mltime
+/*{{{*/
 #include <sys/time.h>
 
 struct MLTIME {
@@ -171,6 +172,7 @@ private:
     const char* label;
 };
 
+/*}}}*/
 #define T MLTIME t = __func__;
 
 endsnippet
@@ -199,6 +201,7 @@ snippet mllog
 static void mllog(const char * fmt, ...)
 {
     FILE* fp = fopen("${1:/data/misc/camera/mllog2.txt}", "a+");
+/*{{{*/
     if(fp)
     {
         va_list arg;
@@ -212,6 +215,7 @@ static void mllog(const char * fmt, ...)
         fflush(fp);
         fclose(fp);
     }
+/*}}}*/
 }
 endsnippet
 

@@ -33,9 +33,9 @@ endif
 
 " uncomment the following to have vim load indentation rules and plugins
 " according to the detected filetype.
-"if has("autocmd")
- "filetype plugin indent on
-"endif
+if has("autocmd")
+ filetype plugin indent on
+endif
 
 " the following are commented out as they cause vim to behave a lot
 " differently from regular vi. they are highly recommended though.
@@ -51,12 +51,13 @@ autocmd FileType c,cpp,make,go,h set tabstop=4 | set expandtab
 set shiftwidth=4
 set hlsearch
 set nonumber
-"set autoindent
+" set autoindent
+set smartindent
 set smartcase
 set nocp
-"set foldenable
+" set foldenable
 set foldmethod=manual
-"set foldmethod=syntax
+" set foldmethod=syntax
 "set foldmethod=marker
 "set foldcolumn=4
 "set foldmethod=indent
@@ -527,8 +528,8 @@ vmap q <ESC>
 "noremap <S-Tab> :tp<cr>
 set shortmess +=F
 
-nmap <leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
-nmap <leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<cr>
+nmap <leader><leader>/ :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+nmap <leader><leader>lv :exec 'lvimgrep /' . input('/', expand('<cword>')) . '/j % <bar> lopen'<cr>
 
 function! TabMessage(cmd)
   redir => message
@@ -814,3 +815,6 @@ vmap yc "cy
 nmap ta "ap
 nmap tb "bp
 nmap tc "cp
+imap jj ();<esc>hi
+imap nn <esc>o
+nmap <leader>/ %
