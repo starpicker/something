@@ -218,9 +218,12 @@ nnoremap <silent> <leader>w :wqa<CR>
 "nnoremap <silent><leader>U :%s/\s*$//g<cr>
 
 
-"nnoremap <leader>I :IndentLinesToggle<CR>
+" nnoremap <leader><leader>i :IndentLinesToggle<CR>
+nnoremap <leader><leader>i :IndentGuidesToggle<CR>
 "nnoremap <leader>i :LeadingSpaceToggle<CR>
 let g:indentLine_enabled = 0
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 
 " For vundle
 set nocompatible
