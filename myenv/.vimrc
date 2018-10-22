@@ -356,6 +356,7 @@ nnoremap <Space> <C-f>
 "endfunc
 
 
+" autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "set autochdir
 let g:rainbow_active = 1
@@ -803,3 +804,13 @@ map vij vi"
 " map <tab> <C-W><C-]>
 map <leader><leader>. <C-W><C-]>
 imap <leader><leader>u <C-X><C-U><C-U>
+
+nmap ya "ayy
+nmap yb "byy
+nmap yc "cyy
+vmap ya "ay
+vmap yb "by
+vmap yc "cy
+nmap ta "ap
+nmap tb "bp
+nmap tc "cp

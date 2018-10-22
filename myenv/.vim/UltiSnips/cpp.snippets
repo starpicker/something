@@ -123,6 +123,9 @@ snippet malloc
 char* ${1:buff} = malloc(${2});
 endsnippet
 
+snippet memset
+memset(${1:buff}, 0, sizeof(${2})*${3});
+endsnippet
 
 snippet filesize
 
@@ -253,14 +256,14 @@ string readFileIntoString(const char* filename)
 endsnippet
 
 snippet fun
-${2:void} ${1:name}($3)
+${2:void} ${1:foo}($3)
 {
     $4
 }
 endsnippet
 
 snippet class
-class ${1:Class}
+class ${1:Foo}
 {
 public:
     // constructor, asssignment, move constructor, move assignment, destructor
@@ -269,13 +272,14 @@ public:
     $1& operator=(const $1&) = delete;
     $1($1&&) = delete;
     $1& operator=($1&&) = delete;
-    ~$1();
+    ~$1(){;}
 
 private:
 };
 endsnippet
 
 snippet colorprint
+/*{{{*/
 #include <stdio.h>
 #include <stdarg.h>
 #define print_none         printf("\033[0m");fflush(stdout);
@@ -344,6 +348,7 @@ void cprintf(const char* format, ...)
     print_none
     va_end(args);
 }
+/*}}}*/
 
 endsnippet
 
@@ -377,6 +382,10 @@ std::this_thread::sleep_for(std::chrono::${2:milliseconds}($1));
 endsnippet
 
 snippet cout
+std::cout <<  $1 << std::endl;
+endsnippet
+
+snippet cout2
 std::cout << "$1 " << $2 << std::endl;
 endsnippet
 
@@ -389,7 +398,7 @@ std::vector<${1:int}> v$0;
 endsnippet
 
 snippet tp "template <typename ..> (template)"
-template <typename ${1:_InputIter}>
+template <typename ${1:T}>
 endsnippet
 
 snippet scanf
@@ -449,6 +458,7 @@ args_string(value_name_ml($1), value_name_ml($2),
 endsnippet
 
 snippet fin
+/*{{{*/
 template <class F>
 class final_action
 {
@@ -488,6 +498,7 @@ final_action<F> finally_s(F&& f) noexcept
 
 #define finally_line_cat(c, line) auto mlfinally##line = finally_s([=](){c;});
 #define finally_line(c, line) finally_line_cat(c, line)
+/*}}}*/
 #define finally(c) finally_line(c, __LINE__)
 
 endsnippet
@@ -497,6 +508,7 @@ finally(${1:fclose(fp);});
 endsnippet
 
 snippet mlt
+/*{{{*/
 #include <sys/time.h>
 
 #define MLLOG printf
@@ -539,6 +551,7 @@ MLT mlt_helper(struct timeval start_time, const char* label_tag)
                   gettimeofday(&t_start, 0); \
                   mlt_helper(t_start, #f) = \
 
+/*}}}*/
 
 // cannot use for void return functions
 #define mt        struct timeval t_start; \
@@ -594,6 +607,7 @@ endsnippet
 
 snippet rc
 
+/*{{{*/
 #ifndef NDEBUG
 #include <assert.h>
 
@@ -644,6 +658,7 @@ using longlongc = long long;
 using ulonglongc = unsigned long long;
 
 #endif // !!NDEBUG
+/*}}}*/
 
 endsnippet
 
@@ -662,6 +677,7 @@ endsnippet
 
 snippet type
 
+/*{{{*/
 #include <type_traits>
 #include <typeinfo>
 #include <memory>
@@ -669,9 +685,11 @@ snippet type
 #include <cstdlib>
 
 #include <cxxabi.h>
+/*}}}*/
 
 template <class T>
 std::string type_name(void)
+/*{{{*/
 {
     typedef typename std::remove_reference<T>::type TR;
 
@@ -694,6 +712,7 @@ std::string type_name(void)
 
     return r;
 }
+/*}}}*/
 
 endsnippet
 
@@ -1292,6 +1311,7 @@ endsnippet
 
 snippet mlp
 
+/*{{{*/
 #include <string>
 #include <sstream>
 
@@ -1367,6 +1387,7 @@ struct __is_callable :
     __is_callable_class<_T>, __is_callable_function<_T>>::type {};
 
 } // ml
+/*}}}*/
 
 void mllog(const char * fmt, ...);
 template <typename C, typename ...Args>

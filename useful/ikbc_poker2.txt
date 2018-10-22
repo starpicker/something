@@ -3,3 +3,24 @@ map fsed to aswd
 map ikjl to aswd for fn+rshift toggle
 map c to cmd enter 0.1s adb shell 0.1s enter
 fn+z press toggle shift means shift is always on
+q passwd
+sdef jkhl
+c in /data/misc/camera
+w check mail
+b open baidu
+
+123456 call bat
+{
+111hardware.bat
+222reboot.bat
+333camera.bat
+444vendor.bat
+555kill-server.bat
+666remount.bat
+
+}
+
+switch 3, win can be fn, but fn cannot be win, sigh...
+map space to pagedown, u to pageup
+but cannot map toggle to other key, sigh...
+
