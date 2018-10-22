@@ -33,9 +33,9 @@ endif
 
 " uncomment the following to have vim load indentation rules and plugins
 " according to the detected filetype.
-if has("autocmd")
- filetype plugin indent on
-endif
+" if has("autocmd")
+ " filetype plugin indent on
+" endif
 
 " the following are commented out as they cause vim to behave a lot
 " differently from regular vi. they are highly recommended though.
@@ -52,7 +52,7 @@ set shiftwidth=4
 set hlsearch
 set nonumber
 " set autoindent
-set smartindent
+" set smartindent
 set smartcase
 set nocp
 " set foldenable
@@ -819,5 +819,6 @@ nmap ta "ap
 nmap tb "bp
 nmap tc "cp
 imap jj ();<esc>hi
+imap kk []<esc>i
 imap nn <esc>o
 nmap <leader>/ %
