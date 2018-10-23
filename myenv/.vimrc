@@ -598,10 +598,10 @@ command -range -nargs=* Bd call eclim#web#SearchEngine(
 nmap <leader>m <c-o>
 nmap <leader>i <c-i>
 
-nmap <leader>cn :cn<cr>
-nmap <leader>j :cn<cr>
-nmap <leader>cp :cp<cr>
-nmap <leader>k :cp<cr>
+" nmap <leader>cn :cn<cr>
+" nmap <leader>j :cn<cr>
+" nmap <leader>cp :cp<cr>
+" nmap <leader>k :cp<cr>
 nmap <leader>ch :CCallHierarchy<cr>
 "nmap <leader>cd :CSearchContext<cr>
 nmap <leader>l :CSearchContext<cr>
