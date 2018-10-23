@@ -1,0 +1,10 @@
+when iconv cannot work, using powershell
+Get-Content 4.txt |Set-Content 44.txt -Encoding UTF8
+
+
+iconv:
+iconv --list | sed 's/\/\/$//' | sort > encodings.list
+for a in `cat encodings.list`; do
+  printf "$a  "
+  iconv -f $a -t UTF-8 systeminfo.txt > /dev/null 2>&1 \&& echo "ok: $a" || echo "fail: $a"
+done | tee result.txt

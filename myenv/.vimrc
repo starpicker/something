@@ -598,6 +598,7 @@ command -range -nargs=* Bd call eclim#web#SearchEngine(
 nmap <leader>m <c-o>
 nmap <leader>i <c-i>
 
+" reserve for better shortcut
 " nmap <leader>cn :cn<cr>
 " nmap <leader>j :cn<cr>
 " nmap <leader>cp :cp<cr>
@@ -820,5 +821,6 @@ nmap tb "bp
 nmap tc "cp
 imap jj ();<esc>hi
 imap kk []<esc>i
-imap nn <esc>o
+" conflict with cannot
+" imap nn <esc>o
 nmap <leader>/ %
