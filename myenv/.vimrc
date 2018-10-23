@@ -637,8 +637,11 @@ let g:yankring_history_file = '.yankring_history'
 
 " nmap vv ]c
 " nmap VV [c
-nmap vv zf%
-nmap VV f{zf%
+" make visual slower
+" nmap vv zf%
+nmap tt zf%
+nmap to zo
+nmap TT f{zf%
 "nmap <space>j ]c
 "nmap <space>k [c
 
@@ -803,8 +806,9 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabLongestEnhanced = 1
 vmap <leader><leader>y y:!echo -n <C-R>" > ~/.vbuf<cr>
 map <leader><leader>c :!echo %:p > ~/.vpath<cr>
-map vii vi(
-map vij vi"
+" for v quickly
+map ti vi(
+map tj vi"
 " tab and c-i means jump forward
 " map <tab> <C-W><C-]>
 map <leader><leader>. <C-W><C-]>
