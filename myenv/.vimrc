@@ -100,7 +100,7 @@ let tlist_auto_open=1
 let tlist_auto_update=1
 filetype plugin on
 let &termencoding=&encoding
-set fileencodings=utf-8,gbk,ucs-bom,cp936
+set fileencodings=utf-8,gbk,ucs-bom,cp936,gb18030
 "hi Comment ctermfg =lightblue
 "colorscheme desert
 "colorscheme twilighted
