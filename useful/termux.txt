@@ -1,0 +1,2 @@
+termux use ctags different with ubuntu which may complain --extras for --extra
+ubuntu cannot use --extras

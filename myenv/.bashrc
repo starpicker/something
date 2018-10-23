@@ -341,7 +341,7 @@ export CDIFF_OPTIONS='-s -w0 --wrap'
 alias grep='grep --color -n'
 eval $(thefuck --alias 2> /dev/null)
 
-source /etc/bash_completion.d/climate_completion
+# source /etc/bash_completion.d/climate_completion
 #[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 alias r='ranger'
 source ~/.commacd.bash
