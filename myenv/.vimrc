@@ -596,7 +596,7 @@ command -range -nargs=* Bd call eclim#web#SearchEngine(
 	\ 'http://www.baidu.com/s?wd=<query>', <q-args>, <line1>, <line2>)
 
 nmap <leader>m <c-o>
-nmap <leader>i <c-i>
+nmap <leader>k <c-i>
 
 " reserve for better shortcut
 " nmap <leader>cn :cn<cr>
