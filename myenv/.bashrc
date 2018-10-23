@@ -375,4 +375,5 @@ alias rms='ls -1 |fpp -ai -c "rm -rf"'
 alias d='dict -d langdao-ec'
 alias xx='cat ~/.vbuf |xargs'
 alias rm="trash-put"
-alias trash-rm="sudo rm -rf $HOME/.local/share/Trash/files/"
+# use trash-empty instead
+# alias trash-rm="sudo rm -rf $HOME/.local/share/Trash/files/"
