@@ -199,7 +199,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
-nnoremap <leader>. <C-W><C-W>
+nnoremap <leader><leader>. <C-W><C-W>
 
 " NERDTree toggle
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -812,7 +812,7 @@ map ti vi(
 map tj vi"
 " tab and c-i means jump forward
 " map <tab> <C-W><C-]>
-map <leader><leader>. <C-W><C-]>
+map <leader>. <C-W><C-]>
 imap <leader><leader>u <C-X><C-U><C-U>
 
 nmap ya "ayy
