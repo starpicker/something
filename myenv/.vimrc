@@ -829,3 +829,4 @@ imap kk []<esc>i
 " conflict with cannot
 " imap nn <esc>o
 nmap <leader>/ %
+nmap <leader><leader>h gd
