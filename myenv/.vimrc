@@ -47,7 +47,7 @@ set incsearch		" incremental search
 "set autowrite		" automatically save before commands like :next and :make
 "set hidden             " hide buffers when they are abandoned
 "set mouse=a		" enable mouse usage (all modes)
-autocmd FileType c,cpp,make,go,h set tabstop=4 | set expandtab
+autocmd FileType c,cpp,make,go,h set tabstop=4 | set expandtab | set mps+=<:>
 set shiftwidth=4
 set hlsearch
 set nonumber
