@@ -288,13 +288,14 @@ let g:EasyMotion_smartcase = 1
 "map <leader><leader>s <Plug>(easymotion-s2)
 "map <leader>. <Plug>(easymotion-s)
 map s <Plug>(easymotion-s2)
+map <leader>j  <Plug>(easymotion-bd-wl)
 "map <leader><leader>t <Plug>(easymotion-t2)
 "map <leader><leader>. <Plug>(easymotion-repeat)
 "map  / <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
 "map  n <Plug>(easymotion-next)
 "map  N <Plug>(easymotion-prev)
-let g:EasyMotion_keys = 'eriopghfasdklj;'
+let g:EasyMotion_keys = 'jlkhi;opergfasd'
 
 "a.vim
 nnoremap <leader>a :A<CR>

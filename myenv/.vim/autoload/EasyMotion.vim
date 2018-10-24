@@ -287,7 +287,9 @@ function! EasyMotion#TL(num_strokes, visualmode, direction) " {{{
 endfunction " }}}
 function! EasyMotion#WBL(visualmode, direction) " {{{
     let s:flag.within_line = 1
-    call EasyMotion#WBK(a:visualmode, a:direction)
+    " change for easy use in c/cpp
+    " call EasyMotion#WBK(a:visualmode, a:direction)
+    call EasyMotion#WB(a:visualmode, a:direction)
     return s:EasyMotion_is_cancelled
 endfunction " }}}
 function! EasyMotion#EL(visualmode, direction) " {{{
@@ -435,7 +437,7 @@ function! s:Message(message) " {{{
     if g:EasyMotion_verbose
         echo 'EasyMotion: ' . a:message
     else
-        " Make the current message disappear
+        " Make the current message dissapear
         echo ''
         " redraw
     endif
@@ -561,25 +563,19 @@ function! s:convertRegep(input) "{{{
     " 2. migemo
     " 3. smartsign
     " 4. smartcase
-    let use_migemo = s:should_use_migemo(a:input)
-    let re = use_migemo || s:should_use_regexp() ? a:input : s:escape_regexp_char(a:input)
+    let re = s:should_use_regexp() ? a:input : s:escape_regexp_char(a:input)
 
     " Convert space to match only start of spaces
     if re ==# ' '
         let re = '\s\+'
     endif
 
-    if use_migemo
+    if s:should_use_migemo(a:input)
         let re = s:convertMigemo(re)
     endif
 
     if s:should_use_smartsign(a:input)
-        let r = s:convertSmartsign(a:input)
-        if use_migemo
-            let re = re . '\m\|' . r
-        else
-            let re = r
-        endif
+        let re = s:convertSmartsign(a:input)
     endif
 
     let case_flag = EasyMotion#helper#should_case_sensitive(
@@ -599,7 +595,10 @@ function! s:convertMigemo(re) "{{{
     if ! has_key(s:migemo_dicts, &l:encoding)
         let s:migemo_dicts[&l:encoding] = EasyMotion#helper#load_migemo_dict()
     endif
-    return get(s:migemo_dicts[&l:encoding], re, a:re)
+    if re =~# '^\a$'
+        let re = get(s:migemo_dicts[&l:encoding], re, a:re)
+    endif
+    return re
 endfunction "}}}
 function! s:convertSmartsign(chars) "{{{
     " Convert given chars to smartsign string
@@ -644,7 +643,7 @@ function! s:should_use_regexp() "{{{
     return g:EasyMotion_use_regexp == 1 && s:flag.regexp == 1
 endfunction "}}}
 function! s:should_use_migemo(char) "{{{
-    if ! g:EasyMotion_use_migemo || match(a:char, '[^!-~]') != -1
+    if ! g:EasyMotion_use_migemo || match(a:char, '\A') != -1
         return 0
     endif
 
@@ -739,6 +738,14 @@ function! s:GetVisualStartPosition(c_pos, v_start, v_end, search_direction) "{{{
 endfunction "}}}
 
 " -- Others ------------------------------
+function! s:is_cmdwin() "{{{
+  return bufname('%') ==# '[Command Line]'
+endfunction "}}}
+function! s:should_use_wundo() "{{{
+    " wundu cannot use in command-line window and
+    " unless undolist is not empty
+    return ! s:is_cmdwin() && undotree().seq_last != 0
+endfunction "}}}
 function! s:handleEmpty(input, visualmode) "{{{
     " if empty, reselect and return 1
     if empty(a:input)
@@ -1096,8 +1103,12 @@ function! s:PromptUser(groups) "{{{
     " }}}
 
     " -- Put labels on targets & Get User Input & Restore all {{{
-    " Save undo tree
-    let undo_lock = EasyMotion#undo#save()
+    " Save undo tree {{{
+    let s:undo_file = tempname()
+    if s:should_use_wundo()
+        execute "wundo" s:undo_file
+    endif
+    "}}}
     try
         " Set lines with markers {{{
         call s:SetLines(lines_items, 'marker')
@@ -1144,8 +1155,21 @@ function! s:PromptUser(groups) "{{{
             \ )
         " }}}
 
-        " Restore undo tree
-        call undo_lock.restore()
+        " Restore undo tree {{{
+        if s:should_use_wundo() && filereadable(s:undo_file)
+            silent execute "rundo" s:undo_file
+            call delete(s:undo_file)
+            unlet s:undo_file
+        else
+            " Break undo history (undobreak)
+            let old_undolevels = &undolevels
+            set undolevels=-1
+            keepjumps call setline('.', getline('.'))
+            let &undolevels = old_undolevels
+            unlet old_undolevels
+            " FIXME: Error occur by GundoToggle for undo number 2 is empty
+            keepjumps call setline('.', getline('.'))
+        endif "}}}
 
         redraw
     endtry "}}}
