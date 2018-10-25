@@ -1,0 +1,8 @@
+sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi qemu-user qemu-system qemu-utils
+
+arm-linux-gnueabi-gcc hello.c -o hello -static
+qemu-arm ./a.out
+
+or
+arm-linux-gnueabi-gcc hello.c -o hello
+qemu-arm -L /usr/arm-linux-gnueabi ./a.out

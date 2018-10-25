@@ -1,3 +1,8 @@
+g++-arm-linux-gnueabi
+gcc-arm-linux-gnueabi
+qemu-user
+qemu-system
+qemu-utils
 acpi
 iconv
 trash-cli
