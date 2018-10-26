@@ -6,7 +6,9 @@
 #include <utility>
 using std::forward;
 
-namespace ml_delegate
+namespace ml_variadic_wrap
+{
+namespace detail
 {
 template <typename T>
 class A;
@@ -38,52 +40,69 @@ public:
     template <typename ...Args>
     int init(Args&& ...args)
     {
-        createDelegate(&t, &T::init)(forward<Args>(args)...);
+        t.init(forward<Args>(args)...);
     }
 
     template <typename ...Args>
     int set(Args ...args)
     {
-        createDelegate(&t, &T::set)(forward<Args>(args)...);
+        t.set(forward<Args>(args)...);
     }
 
     template <typename ...Args>
     int process(Args ...args)
     {
-        createDelegate(&t, &T::process)(forward<Args>(args)...);
+        t.process(forward<Args>(args)...);
     }
 
     template <typename ...Args>
     int unit(Args ...args)
     {
-        createDelegate(&t, &T::unit)(forward<Args>(args)...);
+        t.unit(forward<Args>(args)...);
     }
 
 private:
     void* common;
     T t;
-
-    template <typename U, typename R, typename ...Args>
-    class Delegate
-    {
-    private:
-        U* t;
-        R (U::*f)(Args ...);
-    public:
-        Delegate(U* t, R(U::*f)(Args ...args)):t(t), f(f){}
-        R operator ()(Args&& ...args)
-        {
-            return (t->*f)(forward<Args>(args)...);
-        }
-    };
-
-    template<class U, typename R, typename...Args>
-    Delegate<U, R, Args...> createDelegate(U* t, R (T::*f)(Args...))
-    {
-        Delegate<U, R, Args...> delegate = Delegate<U, R, Args...>(t, f);
-
-        return delegate;
-    }
 };
-} // ml_delegate
+} // detail
 
+#include <type_traits>
+using std::conditional_t;
+
+template <int ID>
+class A
+{
+    using T = conditional_t<ID == 1, detail::A1, conditional_t<ID == 2, detail::A2, void>>;
+
+public:
+    template <typename ...Args>
+    int init(Args&& ...args)
+    {
+        a.init(forward<Args>(args)...);
+    }
+
+    template <typename ...Args>
+    int set(Args ...args)
+    {
+        a.set(forward<Args>(args)...);
+    }
+
+    template <typename ...Args>
+    int process(Args ...args)
+    {
+        a.process(forward<Args>(args)...);
+    }
+
+    template <typename ...Args>
+    int unit(Args ...args)
+    {
+        a.unit(forward<Args>(args)...);
+    }
+
+private:
+    detail::A<T> a;
+    constexpr static int id = ID;
+};
+
+} // ml_variadic_wrap

@@ -65,4 +65,3 @@ private:
     T t;
 };
 } // ml_variadic
-
