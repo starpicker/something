@@ -2,11 +2,15 @@
 #define   TEST_OO
 #define   TEST_CRTP
 #define   TEST_POLICY
+#define   TEST_VARIADIC
+#define   TEST_DELEGATE
 
 #include "crtp.h"
 #include "ob.h"
 #include "oo.h"
 #include "policy.h"
+#include "variadic.h"
+#include "delegate.h"
 
 int main(int argc, char* argv[])
 {
@@ -113,6 +117,52 @@ int main(int argc, char* argv[])
         cout << "************" << endl;
 }
 #endif // TEST_POLICY
+
+#ifdef TEST_VARIADIC
+{
+        cout << "test variadic" << endl;
+        using namespace ml_variadic;
+        {
+            A<A1> a1;
+            a1.init(1);
+            a1.set(1);
+            a1.process(nullptr);
+            a1.unit();
+        }
+        {
+            A<A2> a2;
+            a2.init(2, 2);
+            a2.set(2, 2);
+            a2.process(nullptr, nullptr);
+            a2.unit();
+        }
+
+        cout << "************" << endl;
+}
+#endif // TEST_VARIADIC
+
+#ifdef TEST_DELEGATE
+{
+        cout << "test delegate" << endl;
+        using namespace ml_delegate;
+        {
+            A<A1> a1;
+            a1.init(1);
+            a1.set(1);
+            a1.process(nullptr);
+            a1.unit();
+        }
+        {
+            A<A2> a2;
+            a2.init(2, 2);
+            a2.set(2, 2);
+            a2.process(nullptr, nullptr);
+            a2.unit();
+        }
+
+        cout << "************" << endl;
+}
+#endif // TEST_DELEGATE
 
     return 0;
 }
