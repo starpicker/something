@@ -4,7 +4,8 @@
 // #define   TEST_POLICY
 // #define   TEST_VARIADIC
 // #define   TEST_DELEGATE
-#define   TEST_VARIADIC_WRAP
+// #define   TEST_VARIADIC_WRAP
+#define   TEST_VARIADIC_WRAP_SPECIAL
 
 #include "crtp.h"
 #include "ob.h"
@@ -13,6 +14,7 @@
 #include "variadic.h"
 #include "delegate.h"
 #include "variadic_wrap.h"
+#include "variadic_wrap_special.h"
 
 int main(int argc, char* argv[])
 {
@@ -188,6 +190,35 @@ int main(int argc, char* argv[])
         cout << "************" << endl;
 }
 #endif // TEST_VARIADIC_WRAP
+
+#ifdef TEST_VARIADIC_WRAP_SPECIAL
+{
+        cout << "test variadic_wrap_special" << endl;
+        using namespace ml_variadic_wrap_special;
+        {
+            A<1> a1;
+            a1.init(1);
+            a1.set(1);
+            a1.process(nullptr);
+            a1.unit();
+            // a1.special(3);
+        }
+        {
+            A<2> a2;
+            a2.init(2, 2);
+            a2.set(2, 2);
+            a2.process(nullptr, nullptr);
+            a2.unit();
+        }
+        {
+            A<3> a3;
+            // a3.init(1);
+            a3.special(3);
+        }
+
+        cout << "************" << endl;
+}
+#endif // TEST_VARIADIC_WRAP_SPECIAL
 
     return 0;
 }
