@@ -11,6 +11,9 @@ using std::forward;
 #include <string>
 #include <sstream>
 
+#ifndef ML_ARGS_STRING
+#define ML_ARGS_STRING
+
 template <typename T>
 inline void args_string(std::ostringstream& stream, T last)
 {
@@ -20,7 +23,7 @@ inline void args_string(std::ostringstream& stream, T last)
 template<typename T, typename ...Args>
 inline void args_string(std::ostringstream& stream, T first, Args... rest)
 {
-    stream << first << ",";
+    stream << first << ", ";
     args_string(stream, rest...);
 }
 
@@ -35,6 +38,8 @@ inline const char* args_string(Args... rest)
 
     return str.c_str();
 }
+
+#endif // ML_ARGS_STRING
 
 namespace ml_variadic_wrap_special_return
 {

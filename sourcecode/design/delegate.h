@@ -71,6 +71,39 @@ private:
 #endif // ML_BENCHMARK
 /*}}}*/
 
+#ifndef ML_ARGS_STRING
+#define ML_ARGS_STRING
+
+#include <string>
+#include <sstream>
+
+template <typename T>
+inline void args_string(std::ostringstream& stream, T last)
+{
+    stream << last << "\n";
+}
+
+template<typename T, typename ...Args>
+inline void args_string(std::ostringstream& stream, T first, Args... rest)
+{
+    stream << first << ", ";
+    args_string(stream, rest...);
+}
+
+template<typename ...Args>
+inline const char* args_string(Args... rest)
+{
+    std::ostringstream stream;
+    args_string(stream, rest...);
+
+    static thread_local std::string str;
+    str = stream.str();
+
+    return str.c_str();
+}
+
+#endif // ML_ARGS_STRING
+
 #include <string>
 using std::to_string;
 
@@ -141,6 +174,8 @@ private:
 #ifdef ML_BENCHMARK
             EnterExit ee {to_string(U::id) + ":" + m};
             MLTIME tt {to_string(U::id) + ":" + m};
+            if constexpr(sizeof ...(args))
+                MLLOG((to_string(U::id) +  ":" + m  + "'s params: " + args_string(args...)).c_str());
 #endif
             return (t->*f)(forward<Args>(args)...);
         }

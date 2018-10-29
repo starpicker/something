@@ -431,6 +431,10 @@ fclose(fp);
 endsnippet
 
 snippet asp
+
+#ifndef ML_ARGS_STRING
+#define ML_ARGS_STRING
+
 #include <string>
 #include <sstream>
 
@@ -456,6 +460,8 @@ inline const char* args_string(Args... rest)
 }
 
 #define value_name_ml(X) " "#X,":", X
+
+#endif // ML_ARGS_STRING
 
 endsnippet
 
