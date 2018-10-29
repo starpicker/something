@@ -165,6 +165,10 @@ int main(int argc, char* argv[])
             a2.process(nullptr, nullptr);
             a2.unit();
         }
+        {
+            A<A3> a3;
+            a3.special(3);
+        }
 
         cout << "************" << endl;
 }

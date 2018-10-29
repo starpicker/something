@@ -2,6 +2,7 @@
 
 #include "1.h"
 #include "2.h"
+#include "3.h"
 
 #include <utility>
 using std::forward;
@@ -138,6 +139,16 @@ private:
     inline constexpr static auto id {2};
 };
 
+class A3
+{
+    friend A<A3>;
+private:
+    decltype(auto) special(int a){return ::special(a);}
+
+private:
+    inline constexpr static auto id {3};
+};
+
 template <typename T>
 class A
 {
@@ -155,6 +166,7 @@ public:
     CREATE_DELEGATE(set)
     CREATE_DELEGATE(process)
     CREATE_DELEGATE(unit)
+    CREATE_DELEGATE(special) // for A3
 
 private:
     void* common;
