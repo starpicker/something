@@ -1483,3 +1483,72 @@ using std::cout;
 using std::endl;
 
 endsnippet
+
+snippet bb
+
+#define ML_BENCHMARK
+
+/*{{{*/
+#ifdef ML_BENCHMARK
+
+#define MLLOG printf
+#ifndef MLLOG
+#error "please define MLLOG"
+#endif
+
+#include <sys/time.h>
+#include <string>
+#include <memory>
+using std::string;
+using std::move;
+
+struct MLTIME {
+        explicit MLTIME(string& l):label(l)
+        {
+            gettimeofday(&t_start, 0);
+        }
+
+        explicit MLTIME(string&& l):label(move(l))
+        {
+            gettimeofday(&t_start, 0);
+        }
+
+        ~MLTIME()
+        {
+            gettimeofday(&t_end, 0);
+            long time_diff = (t_end.tv_sec - t_start.tv_sec)*1000 + (t_end.tv_usec - t_start.tv_usec)/1000;
+            MLLOG("%s cost time is %ld ms\n", label.c_str(), time_diff);
+        }
+private:
+        MLTIME operator =(const MLTIME&);
+
+private:
+    struct timeval t_start;
+    struct timeval t_end;
+    string label;
+};
+
+struct EnterExit {
+        explicit EnterExit(string& l):label(l)
+        {
+            MLLOG("%s enter\n", label.c_str());
+        }
+
+        explicit EnterExit(string&& l):label(move(l))
+        {
+            MLLOG("%s enter\n", label.c_str());
+        }
+
+        ~EnterExit()
+        {
+            MLLOG("%s exit\n", label.c_str());
+        }
+
+private:
+    string label;
+};
+
+#endif // ML_BENCHMARK
+/*}}}*/
+
+endsnippet
