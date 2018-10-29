@@ -149,6 +149,11 @@ endsnippet
 
 snippet mltime
 /*{{{*/
+#define MLLOG printf
+#ifndef MLLOG
+#error "please define MLLOG"
+#endif
+
 #include <sys/time.h>
 
 struct MLTIME {
@@ -161,7 +166,7 @@ struct MLTIME {
         {
             gettimeofday(&t_end, 0);
             long time_diff = (t_end.tv_sec - t_start.tv_sec)*1000 + (t_end.tv_usec - t_start.tv_usec)/1000;
-            logToFile("%s cost time is %ld ms", label, time_diff);
+            MLLOG("%s cost time is %ld ms", label, time_diff);
         }
 private:
         MLTIME operator =(const MLTIME&);
@@ -1428,5 +1433,53 @@ endsnippet
 snippet forr
 
 #define forr(x, y) for(auto x = 0; x < y; ++x)
+
+endsnippet
+
+snippet sprintf
+
+    char ${1:name}[256];
+    snprintf($1, sizeof($1), "${4}", ${2}, ${3});
+
+endsnippet
+
+snippet filename
+
+#define filename(x) strrchr(x,'/')?strrchr(x,'/')+1:x
+
+#define FILENAME filename(__FILE__)
+
+endsnippet
+
+snippet inout
+
+#define MLLOG printf
+#ifndef MLLOG
+#error "please define MLLOG"
+#endif
+
+struct EnterExit {
+        EnterExit(const char* l = 0):label(l)
+        {
+            MLLOG("%s enter", label);
+        }
+
+        ~EnterExit()
+        {
+            MLLOG("%s exit", label);
+        }
+
+private:
+    const char* label;
+};
+
+#define EE  EnterExit ee = __func__;
+
+endsnippet
+
+snippet co
+#include <iostream>
+using std::cout;
+using std::endl;
 
 endsnippet
