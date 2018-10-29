@@ -3,10 +3,10 @@
 // #define   TEST_CRTP
 // #define   TEST_POLICY
 // #define   TEST_VARIADIC
-// #define   TEST_DELEGATE
+#define   TEST_DELEGATE
 // #define   TEST_VARIADIC_WRAP
 // #define   TEST_VARIADIC_WRAP_SPECIAL
-#define   TEST_VARIADIC_WRAP_SPECIAL_RETURN
+// #define   TEST_VARIADIC_WRAP_SPECIAL_RETURN
 
 #include "crtp.h"
 #include "ob.h"
