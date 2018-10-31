@@ -1558,3 +1558,12 @@ private:
 /*}}}*/
 
 endsnippet
+
+snippet exp
+#include <initializer_list>
+template<typename F, typename ...Args>void expand(F&& f, Args&& ...args)
+{
+  std::initializer_list<int>{((std::forward<F>(f))(std::forward<Args>(args)), 0)...};
+}
+
+endsnippet
