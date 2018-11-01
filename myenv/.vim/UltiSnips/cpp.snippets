@@ -1567,3 +1567,23 @@ template<typename F, typename ...Args>void expand(F&& f, Args&& ...args)
 }
 
 endsnippet
+
+snippet pp
+    __asm__ __volatile__
+    (
+        "movq %%rsi, %%rdi \t\n"
+        "movb \$0, %%al\t\n"
+        "movl \$0, %%ecx \t\n"
+        "not %%ecx \t\n"
+        "repnz scasb \t\n"
+        "subq %%rsi, %%rdi \t\n"
+        "subq \$1, %%rdi \t\n"
+        "movq %%rdi, %%rdx \t\n"
+        "movq \$1, %%rax \t\n"
+        "movq \$1, %%rdi \t\n"
+        "syscall"
+        ::"S"(${1:"hello, world"})
+        :"rax", "rdx", "rdi", "ecx"
+    );
+
+endsnippet
