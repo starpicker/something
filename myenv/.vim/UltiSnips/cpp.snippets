@@ -1587,3 +1587,23 @@ snippet pp
     );
 
 endsnippet
+
+snippet pp2
+    __asm__ __volatile__
+    (
+        "mov r1, %[str] \t\n"
+        "eor r2, r2, r2 \t\n"
+        "loop: \t\n"
+        "ldrb r3, [r1], #1 \t\n"
+        "cmp r3, #0 \t\n"
+        "addne r2, #1 \t\n"
+        "bne loop \t\n"
+        "mov r0, #1 \t\n"
+        "mov r1, %[str] \t\n"
+        "swi #0x900004 \t\n"
+        :
+        :[str]"r"(${1:"hello, world"})
+        :"r0", "r1", "r2", "r3"
+    );
+
+endsnippet
