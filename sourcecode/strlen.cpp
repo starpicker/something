@@ -23,9 +23,9 @@ int main(int argc, char* argv[])
         "movq $1, %%rax \t\n"
         "movq $1, %%rdi \t\n"
         "syscall"
-        :"=r"(len)
+        :"=Q"(len)
         :"S"(argv[1])
-        :"rax", "rdi", "ecx"
+        :"rax", "rdi", "ecx", "edx"
     );
 
     printf(" len: %d\n", len);
