@@ -1575,6 +1575,7 @@ snippet pp
         "movb \$0, %%al\t\n"
         "movl \$0, %%ecx \t\n"
         "not %%ecx \t\n"
+        "cld \t\n"
         "repnz scasb \t\n"
         "subq %%rsi, %%rdi \t\n"
         "subq \$1, %%rdi \t\n"
