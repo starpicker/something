@@ -465,7 +465,7 @@ inline const char* args_string(Args... rest)
 
 endsnippet
 
-snippet as
+snippet as1
 args_string(value_name_ml($1), value_name_ml($2),
             value_name_ml($3), value_name_ml($4),
             value_name_ml($5), value_name_ml($6)
@@ -1606,5 +1606,17 @@ snippet pp2
         :[str]"r"(${1:"hello, world"})
         :"r0", "r1", "r2", "r3"
     );
+
+endsnippet
+
+snippet as
+
+__asm__ __volatile__
+(
+    "movl \$1, %%eax \n\t"
+    "movl \$0, %%ebx \n\t"
+    "int \$0x80 \n\t"
+    :::
+);
 
 endsnippet

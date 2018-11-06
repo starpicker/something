@@ -1,4 +1,6 @@
 libgnome2-bin
+nasm
+yasm
 g++-arm-linux-gnueabi
 gcc-arm-linux-gnueabi
 qemu-user
