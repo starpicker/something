@@ -377,3 +377,5 @@ alias xx='cat ~/.vbuf |xargs'
 alias rm="trash-put"
 # use trash-empty instead
 # alias trash-rm="sudo rm -rf $HOME/.local/share/Trash/files/"
+alias arg='arm-linux-gnueabi-g++-7'
+alias arm='qemu-arm -L /usr/arm-linux-gnueabi'
