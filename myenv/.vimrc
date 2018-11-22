@@ -659,8 +659,8 @@ endif
 nmap <leader>H :TagbarToggle<CR>
 
 "nmap <leader>S :SyntasticCheck<CR>
-map <leader>GG :!gen_syntastic_config_path.sh %:p:h<CR>
-map <leader>S :source ~/.syntastic_config_path<CR>:SyntasticCheck<CR>
+" map <leader>GG :!gen_syntastic_config_path.sh %:p:h<CR>
+" map <leader>- :source ~/.syntastic_config_path<CR>:SyntasticCheck<CR>
 "for syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -794,7 +794,7 @@ inoremap <C-K> <C-X><C-Y>
 
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
-map <leader>F :set foldmethod=syntax<CR>zc
+map <leader>S :set foldmethod=syntax<CR>zc
 map <leader>M :set foldmethod=marker<CR>zc
 map <leader>B :set foldmethod=manual<CR>zc
 let g:Lf_ShortcutF = '<C-P>'
@@ -830,3 +830,4 @@ imap kk []<esc>i
 " imap nn <esc>o
 nmap <leader>/ %
 nmap <leader><leader>h gd
+nmap <leader>F :LeaderfFunctionAll<cr>
