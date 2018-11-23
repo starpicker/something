@@ -2,3 +2,7 @@ https://github.com/starpicker/something
 https://github.com/starpicker1/empty
 https://github.com/starpicker3/bak
 https://github.com/starpicker2/useful
+https://github.com/chijilyb/design_related
+https://github.com/chijilyb/useful_code
+https://github.com/chijilyb/daily_tools
+https://github.com/chijilyb/development_config
