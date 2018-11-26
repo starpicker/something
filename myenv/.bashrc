@@ -164,6 +164,7 @@ alias vpnui='/opt/cisco/anyconnect/bin/vpnui'
 export PATH=$HOME/.bin:$PATH
 alias bci='bitcoin-cli'
 export s="sheng@172.17.199.159"
+export j="lma@172.17.10.160"
 source $HOME/.tmuxinator/.tmuxinator.bash
 
 # Colors
@@ -379,3 +380,5 @@ alias rm="trash-put"
 # alias trash-rm="sudo rm -rf $HOME/.local/share/Trash/files/"
 alias arg='arm-linux-gnueabi-g++-7'
 alias arm='qemu-arm -L /usr/arm-linux-gnueabi'
+
+alias pwdd='pwd > /tmp/ml.path'

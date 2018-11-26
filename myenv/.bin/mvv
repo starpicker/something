@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mv $1 `cat /tmp/ml.path`
