@@ -6,3 +6,5 @@ https://github.com/chijilyb/design_related
 https://github.com/chijilyb/useful_code
 https://github.com/chijilyb/daily_tools
 https://github.com/chijilyb/development_config
+https://github.com/chijilyb/simulate_input
+https://github.com/chijilyb/jpeg_http_and_client-player
