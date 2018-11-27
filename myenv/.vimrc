@@ -362,7 +362,7 @@ nnoremap <Space> <C-f>
 
 
 " autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
-autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
+" autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "set autochdir
 let g:rainbow_active = 1
 set shortmess=atI
@@ -812,7 +812,8 @@ map ti vi(
 map tj vi"
 " tab and c-i means jump forward
 " map <tab> <C-W><C-]>
-map <leader>. <C-W><C-]>
+" map <leader>. <C-W><C-]>
+map <leader>' <C-W><C-]>
 imap <leader><leader>u <C-X><C-U><C-U>
 
 nmap ya "ayy
@@ -828,6 +829,8 @@ imap jj ();<esc>hi
 imap kk []<esc>i
 " conflict with cannot
 " imap nn <esc>o
-nmap <leader>/ %
+nmap <leader>. [{
+nmap <leader>/ ]}
+nmap <leader><space> %
 nmap <leader><leader>h gd
 nmap <leader>F :LeaderfFunctionAll<cr>
