@@ -1,0 +1,1 @@
+./configure --with-cairo-include=/usr/include/cairo --with-cairo-lib=/usr/lib/x86_64-linux-gnu
