@@ -1,3 +1,4 @@
 #!/bin/bash
 
+echo "cp -r $1 `cat /tmp/ml.path`"
 cp -r $1 `cat /tmp/ml.path`

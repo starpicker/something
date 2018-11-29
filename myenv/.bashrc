@@ -381,4 +381,4 @@ alias rm="trash-put"
 alias arg='arm-linux-gnueabi-g++-7'
 alias arm='qemu-arm -L /usr/arm-linux-gnueabi'
 
-alias pwdd='pwd > /tmp/ml.path'
+alias pwdd='pwd > /tmp/ml.path && pwd'
