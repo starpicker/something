@@ -1,0 +1,31 @@
+NDK_ROOT    := /mnt/500G/public/NDK/android-ndk-r16b
+
+
+TOOLCHAIN   := $(NDK_ROOT)/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
+CC          := $(NDK_ROOT)/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -gcc-toolchain $(TOOLCHAIN)
+
+SYSROOT     := $(NDK_ROOT)/platforms/android-27/arch-arm
+
+CFLAGS      := -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -no-canonical-prefixes -fno-integrated-as -g -target armv7-none-linux-androideabi -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-exceptions -fno-rtti -marm -O2 -DNDEBUG  -mfpu=neon   -DANDROID -Wa,--noexecstack -Wformat -Werror=format-security -fpie -fexceptions --sysroot $(SYSROOT)
+
+target      := get_sdk_version
+
+INC         := -I$(NDK_ROOT)/sysroot/usr/include
+
+LIB         :=  \
+			   -L/home/lma/cloudminds/sourcecode/out/target/product/HydrogenONE/system/lib \
+			   -lartd \
+			   -lgcc \
+			   -lc \
+			   -lm
+
+LDFLAGS     := -Wl,--gc-sections -Wl,-z,nocopyreloc --sysroot=$(SYSROOT) -Wl,-rpath-link=/home/lma/cloudminds/sourcecode/out/target/product/HydrogenONE/system/lib -no-canonical-prefixes -target armv7-none-linux-androideabi -Wl,--fix-cortex-a8 -Wl,--build-id -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--warn-shared-textrel -Wl,--fatal-warnings -fpie -pie
+
+$(target) : $(target).o
+	$(CC) $^ $(LDFLAGS) $(LIB) -o $@
+
+%.o : %.c
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+clean:
+	rm $(target) $(target).o
