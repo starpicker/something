@@ -1,0 +1,8 @@
+int minutes;
+char msg[1024];
+
+FILE* fp = fopen("todo.txt", "r");
+fscanf(fp, "%d\n", &minutes);
+fgets(msg, sizeof(msg), fp);
+fclose(fp);
+msg[strlen(msg)-1] = '\0';
