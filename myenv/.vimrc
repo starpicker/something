@@ -576,6 +576,8 @@ let g:ag_prg="ag --vimgrep -S"
 let g:ag_working_path_mode='r'
 let g:ag_highlight=1
 
+let g:EclimKeepLocalHistory = 1
+let g:EclimHistoryDiffOrientation = 'vertical'
 let g:EclimCValidate = 0
 let g:EclimFileTypeValidate = 0
 let g:EclimBrowser = 'w3m'
@@ -647,6 +649,7 @@ nmap TT f{zf%
 "nmap <space>k [c
 
 nmap "" ebi"<esc>ea"<esc>
+nmap '' ebi'<esc>ea'<esc>
 
 let g:color_coded_enabled = 1
 let g:color_coded_filetypes = ['c', 'cpp', 'objc']
@@ -794,7 +797,7 @@ inoremap <C-K> <C-X><C-Y>
 
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
-map <leader>S :set foldmethod=syntax<CR>zc
+nmap <leader>S :set foldmethod=syntax<CR>zc
 map <leader>M :set foldmethod=marker<CR>zc
 map <leader>B :set foldmethod=manual<CR>zc
 let g:Lf_ShortcutF = '<C-P>'
@@ -825,7 +828,7 @@ vmap yc "cy
 nmap ta "ap
 nmap tb "bp
 nmap tc "cp
-imap jj ();<esc>hi
+imap jj ()<esc>hi
 imap kk []<esc>i
 " conflict with cannot
 " imap nn <esc>o

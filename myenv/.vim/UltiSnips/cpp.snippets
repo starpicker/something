@@ -241,6 +241,33 @@ string getCurrentTimeStr(void)
 
 endsnippet
 
+snippet ts
+#include <string>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+
+using namespace std;
+
+string current_ts(void)
+{
+    struct timeval tv;
+    struct tm* t;
+
+    gettimeofday(&tv, NULL);
+
+    t = localtime(&tv.tv_sec);
+    char tarray[256];
+    // sprintf(tarray, "%d-%d-%d %d:%d:%d.%ld", 1900 + t->tm_year,
+            // 1 + t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec,
+            // tv.tv_usec);
+    sprintf(tarray, "%d:%d:%d.%ld", t->tm_hour, t->tm_min, t->tm_sec, tv.tv_usec);
+
+    return tarray;
+}
+
+endsnippet
+
 snippet file2str
 #include <string>
 #include <fstream>
@@ -708,12 +735,37 @@ snippet ret
 # define GCC_DIAG_ON(x)
 #endif
 
+#include <string>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+
+using namespace std;
+
+string current_ts(void)
+{
+    struct timeval tv;
+    struct tm* t;
+
+    gettimeofday(&tv, NULL);
+
+    t = localtime(&tv.tv_sec);
+    char tarray[256];
+    // sprintf(tarray, "%d-%d-%d %d:%d:%lld.%lld", 1900 + t->tm_year,
+            // 1 + t->tm_mon, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec,
+            // tv.tv_usec);
+    sprintf(tarray, "%02d:%02d:%02lld.%-06lld", t->tm_hour, t->tm_min, t->tm_sec, tv.tv_usec);
+
+    return tarray;
+}
+
 #ifndef MLLOG
 #define MLLOG printf
+#define MLTAG "mllog:"
 #endif
 
 #define return GCC_DIAG_OFF(return-type) \
-	       if(MLLOG("returned from %s:%d\n", __func__, __LINE__) , true) \
+               if(MLLOG("[%s]%s returned from %s:%d\n", current_ts().c_str(), MLTAG, __func__, __LINE__) , true) \
                return 
 
 GCC_DIAG_ON(return-type)
