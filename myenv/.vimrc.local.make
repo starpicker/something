@@ -17,7 +17,7 @@ else
 endif
 
 " map <leader><leader>g :call Run()<CR>
-map <leader><leader>g :set makeprg=gcc\ -Wall\ %:p<CR>:make<CR>
+map <leader><leader>g :set makeprg=g++\ -Wall\ %:p<CR>:make<CR>
 
 "------------------------------------------------------------------------------
 "  < 编译、连接、运行配置 >
