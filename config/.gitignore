@@ -1,0 +1,14 @@
+*.o
+tags*
+.ycm_extra_conf*
+cscope*
+cifs*
+*.bak
+GPATH
+GRTAGS
+GTAGS
+.cs_*
+*.swp
+*.swo
+ctags*
+*.orig
