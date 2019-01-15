@@ -1,0 +1,3 @@
+LOCAL_LDFLAGS := -Wl,--allow-shlib-undefined
+-Wl,--no-undefined
+$(TARGET_ARCH_ABI)
