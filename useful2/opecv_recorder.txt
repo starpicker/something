@@ -1,0 +1,1 @@
+opencv VideoCapture open codec id fail check opencv_ffmpeg_arch.lib is there
