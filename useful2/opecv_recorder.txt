@@ -1,1 +1,20 @@
 opencv VideoCapture open codec id fail check opencv_ffmpeg_arch.lib is there
+
+some devices£¨mbp with windows£©need check
+    bool wset = capture.set(CV_CAP_PROP_FRAME_WIDTH, width);
+    bool hset = capture.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+may got empty frame if wset or hset is false
+
+VideoWriter writer; open failed
+because opencv after build C:\d\opencv\opencv-2.4.9\3rdparty\ffmpeg
+opencv_ffmpeg.dll is not moved into build out directory C:\d\opencv\build\bin
+when 32bit is build, only opencv_ffmpeg_64.dll is moved
+but remember important is opencv_ffmpeg.dll need add subfix 249
+or writer will open fail
+opencv after build need execute make install to make include directory
+
+lession:
+need a good example to check and compare in whatever case
+
+
+need keep a sharp sense because other libs all have 249
