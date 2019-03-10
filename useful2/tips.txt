@@ -1,2 +1,3 @@
 must use same version of sdk, it's a bloody lession
 office 2010: 4CPF7-YT4G4-3K9YH-VM3RB-7MYX3
+notepad++: 设置---首选项 备份-----记住最后打开的文件前面的√取消掉

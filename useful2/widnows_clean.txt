@@ -1,0 +1,122 @@
+0. after uninstall， C->QT， program files (x86) kingsoft, tencent, crossfile, mizalla, winmerge, etc. user->default->favorites, user->name->appdata find whatever you can delete 
+1. (有用) 在系统C盘上，点击右键，然后点击打开“属性”；磁盘清理 && 删除系统还原点 && 其它选项 && 清理系统磁盘
+2. 设置 系统 存储 临时文件
+3. (没啥用) {
+
+	关闭win10信息反馈步骤：
+
+	1、先按WIN+R，regedit 回车打开注册表编辑器；
+
+	2、定位到HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection下， 
+
+	3、新建32bit Dword项，名称为AllowTelemetry，值为0。 
+
+	4、然后到C:\ProgramData\Microsoft\Diagnosis\ETLLogs，可能要赋予管理员权限和打开显示隐藏、系统文件选项才能看到此文件夹，删除此文件夹下的所有etl后缀文件。只删文件，文件夹（我这里有3个）不要动。问题应该就此解决了。 
+
+	补充一下：需要双击ETLLogs文件夹然后在弹出的对话框中赋予管理员权限打开才能在资源管理器里看到真实占用容量，否则就显示0字节
+
+	}
+4. {
+	1. 当你在官网下载一个全新的NVIDIA驱动之后, 点击安装会进行一次解压缩
+
+	默认解压路径是在C盘根目录 C:\Nvidia\DisplayDriver\...
+
+	这个其实有点心的都不会解压到C盘, 毕竟不清除就会一直堆积, 装完驱动记得删掉, 同时悼念楼下不少人的语文老师
+
+	或者, 你使用了Nvidia Geforce Experience的自动更新驱动
+
+	Geforce Experience就会把一个完整的驱动文件安装包下载到C:\ProgramData\NVIDIA Corporation\NetService下
+	·
+	(有用) 2.当你安装好一个Nvidia驱动之后
+
+	Nvidia会在C:\Program Files\NVIDIA Corporation\Installer2下冗余大量的单项安装包
+
+	作用是可以使你在程序控制那里单项删除Nvidia的驱动
+
+	但是请注意, 你更新驱动之后, 旧的单项安装包不会删除
+	}
+5. 使用dism++ 工具清理Winsxs文件夹
+6. Win + R组合键打开“运行”窗口，输入路径“%userprofile%\AppData\Local\Packages\ ”，确定，就能打开应用目录窗口。
+7. 打开CMD命令窗口之后，再键入命名：powercfg –h off 完成后，按“回车键”运行
+8. WINDOWS 徽标 删除自带应用， control删除不用的
+9. {
+	输入“Get-AppxPackage -allusers PackageFullName | Remove-AppxPackage”来卸载指定应用，其中PackageFullName为上图右侧列表中的字符串。这里我们无需输入完整的一长串名称，可以用部分字段加通配符的形式来简化命令。
+
+	比如，想要卸载Windows10内置的“语音录音机”，该应用所对应的详细名称为：Microsoft.WindowsSoundRecorder_10.1507.7010.0_x86__8wekyb3d8bbwe，我们可以用 *soundrecorder* 来代替这一长串名称，即：Get-AppxPackage -allusers *soundrecorder* | Remove-AppxPackage
+
+	注：我们可用 Get-AppxPackage -allusers | Remove-AppxPackage 来卸载所有内置应用，但不建议这么做，因为这样会连Windows商店一起卸载，容易影响后续使用。
+
+	Win10内置应用对应的卸载命令，未列出的应用可通过“开始菜单--所有应用”右键卸载
+
+	日历、邮件
+
+	get-appxpackage *communicationsapps* | remove-appxpackage
+
+	人脉
+
+	get-appxpackage *people* | remove-appxpackage
+
+	Groove 音乐
+
+	get-appxpackage *zunemusic* | remove-appxpackage
+
+	电影和电视
+
+	get-appxpackage *zunevideo* | remove-appxpackage
+
+	·命令 get-appxpackage *zune* | remove-appxpackage 可以同时删除上两项
+
+	财经
+
+	get-appxpackage *bingfinance* | remove-appxpackage
+
+	资讯
+
+	get-appxpackage *bingnews* | remove-appxpackage
+
+	体育
+
+	get-appxpackage *bingsports* | remove-appxpackage
+
+	天气
+
+	get-appxpackage *bingweather* | remove-appxpackage
+
+	·命令 get-appxpackage *bing* | remove-appxpackage 可同时删除上述四项
+
+	OneNote
+
+	get-appxpackage *onenote* | remove-appxpackage
+
+	闹钟和时钟
+
+	get-appxpackage *alarms* | remove-appxpackage
+
+	计算器
+
+	get-appxpackage *calculator* | remove-appxpackage
+	 
+
+	相机
+
+
+	get-appxpackage *camera* | remove-appxpackage
+
+	照片
+
+	get-appxpackage *photos* | remove-appxpackage
+
+	地图
+
+	get-appxpackage *maps* | remove-appxpackage
+
+	语音录音机
+
+	get-appxpackage *soundrecorder* | remove-appxpackage
+
+	XBox
+
+	get-appxpackage *xbox* | remove-appxpackage
+
+	4、若需要恢复卸载的应用，可使用命令 Get-AppxPackage -allusers | foreach {Add-AppxPackage -register "$($_.InstallLocation)appxmanifest.xml" -DisableDevelopmentMode}，它将重装所有内置的应用。
+}
