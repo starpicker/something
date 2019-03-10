@@ -1,0 +1,7 @@
+alias gs='git status'
+alias ga='git add -A'
+alias gl='git log'
+alias gd='git difftool'
+alias gm='git commit -m'
+alias gp='git push'
+PS1='\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]$'

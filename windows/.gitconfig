@@ -1,0 +1,9 @@
+[user]
+	email = starpicker1@163.com
+	name = lma
+[diff]
+	tool = df
+[difftool]
+	prompt = false
+[difftool "df"]
+	cmd = \"C:\\Program Files\\Beyond Compare 4\\BCompare.exe\" \"$LOCAL\" \"$REMOTE\"
