@@ -1,0 +1,7 @@
+qt-opensource-windows-x86-5.12.1.exe
+doxygen-1.8.15-setup.exe
+python-3.7.2-amd64.exe
+python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+cmake-3.14.0-rc3-win64-x64.msi
+vs_enterprise__1697752556.1552223889.exe
+check on opencv, example, plugin, all apps

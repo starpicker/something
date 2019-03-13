@@ -1,0 +1,124 @@
+http://mitk.org/download/thirdparty/ACVD-vtk6_3d5ae388-patched.tar.gz
+http://mitk.org/download/thirdparty/ann_1.1.2.tar.gz
+http://mitk.org/download/thirdparty/boost_1_68_0.7z
+http://mitk.org/download/thirdparty/cppunit-1.12.1.tar.gz
+http://mitk.org/download/thirdparty/PythonQt_e39be131.tar.gz
+http://mitk.org/download/thirdparty/dcmtk_29f9de10.tar.gz
+http://mitk.org/download/thirdparty/eigen-eigen-07105f7124f9.tar.bz2
+http://mitk.org/download/thirdparty/gdcm-2.6.3.tar.bz2
+http://mitk.org/download/thirdparty/hdf5-1.8.17.tar.gz
+http://mitk.org/download/thirdparty/InsightToolkit-4.13.1.tar.xz
+http://mitk.org/download/thirdparty/MatchPoint_rev_24ef6072.tar.gz
+http://mitk.org/download/thirdparty/opencv-3.4.2.tar.gz
+http://mitk.org/download/thirdparty/OpenIGTLink-54df50de.tar.gz
+http://mitk.org/download/thirdparty/pcre-8.35.tar.gz
+http://mitk.org/download/thirdparty/poco-1.6.1-all.tar.gz
+http://mitk.org/download/thirdparty/qwt-6.1.0.tar.bz2
+http://mitk.org/download/thirdparty/raptor2-2.0.15.tar.gz
+http://mitk.org/download/thirdparty/rasqal-0.9.32.tar.gz
+http://mitk.org/download/thirdparty/redland-1.0.17.tar.gz
+http://mitk.org/download/thirdparty/tinyxml_2_6_2.tar.gz
+http://mitk.org/download/thirdparty/vigra-1.10.0-src.tar.gz
+http://mitk.org/download/thirdparty/VTK-8.1.0.tar.gz
+http://mitk.org/download/thirdparty/zlib-66a75305.tar.gz
+http://mitk.org/download/thirdparty/CTK_6c0eddaa.tar.gz
+http://mitk.org/download/thirdparty/swigwin-3.0.2.zip
+http://mitk.org/download/thirdparty/swig-3.0.2.tar.gz
+http://mitk.org/download/thirdparty/mitk-data_7968c5c0.tar.gz
+http://mitk.org/download/thirdparty/patch.exe
+
+http://mitk.org/download/data/FibertrackingLUT.tar.gz
+
+https://github.com/phcerdan/ITKIsotropicWavelets.git
+https://github.com/nolden/dcmqi.git
+
+SuperBuild.cmake 
+					if(NOT MITK_THIRDPARTY_DOWNLOAD_PREFIX_URL)
+						#set(MITK_THIRDPARTY_DOWNLOAD_PREFIX_URL http://mitk.org/download/thirdparty)
+						set(MITK_THIRDPARTY_DOWNLOAD_PREFIX_URL file://c:/d/mitk/mitk_thirdparty)
+					endif()
+				
+Modules/DiffusionImaging/FiberTracking/CMakeLists.txt
+					#set(lut_url http://mitk.org/download/data/FibertrackingLUT.tar.gz)
+					set(lut_url file://c:/d/mitk/mitk_data/FibertrackingLUT.tar.gz)
+					
+CMakeExternals/MITKData.cmake				  
+					SOURCE_DIR ${proj}
+					#GIT_REPOSITORY https://phabricator.mitk.org/source/mitkdata.git
+					URL ${MITK_THIRDPARTY_DOWNLOAD_PREFIX_URL}/mitk-data_7968c5c0.tar.gz
+					UPDATE_COMMAND ""
+	
+Assertion failed: hunk, file ../patch-2.5.9-src/patch.c, line 354	
+	CMakeExternals/CppUnit-1.12.1.patch
+	CMakeExternals/Eigen.patch
+	CMakeExternals/GDCM.patch
+	CMakeExternals/OpenIGTLink-54df50de.patch
+	CMakeExternals/Qwt-6.1.0.patch
+	CMakeExternals/Raptor2-2.0.15.patch
+	CMakeExternals/Rasqal-0.9.32.patch
+	CMakeExternals/Redland-1.0.17.patch
+	CMakeExternals/Vigra.patch
+	CMakeExternals/tinyxml-2.6.2.patch
+						change to dos format
+
+build\ep\OpenCVConfig.cmake
+	check_one_config(OpenCV_LIB_PATH)
+	set(OpenCV_LIB_PATH "C:/d/mitk/build/ep/src/OpenCV-build")
+
+CMake\mitkSetupCPack.cmake
+	message(STATUS "malei test: installationPath: ${installationPath}")
+	set(installationPath "$ENV{PROGRAMFILES\(X86\)}\\Microsoft Visual Studio\\2019\\preview")
+    file(TO_CMAKE_PATH ${installationPath} installationPath)
+	
+Modules\Core\include\mitkAnnotationUtils.h
+	#include<string>
+	#include <memory>
+
+20>C:\d\mitk\MITK\Modules\Core\src\DataManagement\mitkSlicedGeometry3D.cpp : error C2220: 警告被视为错误 - 没有生成“object”文件 [C:\d\mitk\build\MITK-build\Modules\Core\MitkCore.vcxproj]
+20>C:\d\mitk\MITK\Modules\Core\src\DataManagement\mitkSlicedGeometry3D.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 [C:\d\mitk\build\MITK-build\Modules\Core\MitkCore.vcxproj]
+	工具-自定义-命令-菜单栏-文件-高级保存选项
+	文件-高级保存选项 from unicode(utf-8) 65001 to unicode 1200
+	build\ep\include\dcmtk/dcmiod/modsopcommon.h
+	build\ep\include\dcmtk/dcmseg/segment.h
+	build\ep\include\boost/spirit/home/support/char_encoding/iso8859_1.hpp
+	
+Modules\Segmentation\Interactions\mitkTool.cpp
+	#include "mitkVtkResliceInterpolationProperty.h"
+	#include <mitkDICOMSegmentationPropertyHelper.h>
+
+build\ep\include\ITK-4.13\itkEventObject.h
+	#define itkEventMacroDeclaration(classname, super)                   \
+	  /** \class classname */                                            \
+	  class ITKEvent_EXPORT classname:public super                       \
+	  {                                                                  \
+	public:                                                              \
+		typedef classname Self;                                          \
+		typedef super     Superclass;                                    \
+	classname::classname() {}                                                   \
+	classname::classname(const classname &s):super(s){};                        \
+	virtual classname::~classname() {}                                                  \
+	virtual const char * classname::GetEventName() const { return #classname; }          \
+	virtual bool classname::CheckEvent(const::itk::EventObject * e) const               \
+		  { return ( dynamic_cast< const classname * >( e ) != ITK_NULLPTR ); } \
+	virtual ::itk::EventObject *classname::MakeObject() const { return new classname; } \
+	private:                                                             \
+		void operator=(const Self &);                                    \
+	  };
+
+	#define itkEventMacroDefinition(classname, super)/*                           \
+	classname::classname() {}                                                   \
+	classname::classname(const classname &s):super(s){};                        \
+	classname::~classname() {}                                                  \
+	const char * classname::GetEventName() const { return #classname; }          \
+	bool classname::CheckEvent(const::itk::EventObject * e) const               \
+		  { return ( dynamic_cast< const classname * >( e ) != ITK_NULLPTR ); } \
+	::itk::EventObject *classname::MakeObject() const { return new classname; } \*/
+	
+no use
+build\ep\src\OpenCV\cmake\OpenCVDetectCXXCompiler.cmake
+	  elseif(MSVC_VERSION MATCHES "^191[0-9]$")
+		set(OpenCV_RUNTIME vc15)
+	  elseif(MSVC_VERSION MATCHES "^192[0-9]$")
+		set(OpenCV_RUNTIME vc16)
+		
+库已损坏删掉retry
