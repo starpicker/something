@@ -1,0 +1,37 @@
+diff --git a/Makefile b/Makefile
+index d5346fb..3c89e82 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,12 +21,12 @@ clean:
+ 	rm -f *.o $(OBJ)
+ 
+ install:
+-	cp color_compile /usr/local/bin/
+-	cp out_color_info /usr/local/bin/
++	cp color_compile $(PREFIX)/bin/
++	cp out_color_info $(PREFIX)/bin/
+ 
+ 	echo 'alias gcc="color_compile gcc"' >> $(SH_CONFIG)
+ 	echo 'alias g++="color_compile g++"' >> $(SH_CONFIG)
+ 	echo 'alias make="color_compile make"' >> $(SH_CONFIG)
+ 
+ TEST:
+-	gcc test.c -Wall
+\ No newline at end of file
++	gcc test.c -Wall
+diff --git a/out_color_info.c b/out_color_info.c
+index 6c2ef8c..fd71e7f 100644
+--- a/out_color_info.c
++++ b/out_color_info.c
+@@ -77,6 +77,11 @@ static int str_char_count(const char *str, char c, int len)
+ 	return count;
+ }
+ 
++char *index(const char *str, int c)
++{
++	return strchr(str, c);
++}
++
+ static void color_print_line(const char *line, const char *mark_p, int m_i)
+ {
+ 	char *filename;
