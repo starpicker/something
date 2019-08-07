@@ -1,0 +1,8 @@
+pkg install x11-repo tigervnc openbox pypanel xorg-xsetroot aterm xorg-xclock
+pip3 install PyXDG
+startvnc
+
+#vnc localhost:5910
+#5910中的10即是之前export DISPLAY=:10中的10号屏幕
+
+
