@@ -3,9 +3,9 @@
 import codecs, sys
 import intersys.pythonbind3
 id=1;
-user="_system";
-password="sys";
-host = "196.1.10.14";
+user="xxxxxxx";
+password="xxx";
+host = "0.0.0.0";
 port = "1972";
 query = "A";
 name=""

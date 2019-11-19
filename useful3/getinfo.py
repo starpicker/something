@@ -61,9 +61,9 @@ class myFtp:
 tmpfd, tempfilename = tempfile.mkstemp()
 os.close(tmpfd)
         
-ftp = myFtp('10.0.0.7', 3001)
-ftp.Login('administrator', 'abc@1234')
-infofile = 'malei/info/cmter.txt'
+ftp = myFtp('0.0.0.0', 3001)
+ftp.Login('administrator', 'xxxxxxxx')
+infofile = 'xxxxx/xxxx/xxxxxxxxx'
 ftp.DownLoadFile(infofile, tempfilename)
 
 def system_info():

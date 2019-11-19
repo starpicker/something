@@ -48,9 +48,9 @@ if __name__ == "__main__":
     tmpfd, tempfilename = tempfile.mkstemp()
     os.close(tmpfd)
     
-    ftp = myFtp('10.0.0.7', 3001)
-    ftp.Login('administrator', 'abc@1234')
-    ftp.DownLoadFile('malei/u/hos.db', tempfilename)
+    ftp = myFtp('0.0.0.0', 3001)
+    ftp.Login('administrator', 'xxxxxxxx')
+    ftp.DownLoadFile('xxxxx/x/xxxxxx', tempfilename)
     
     ftp.close()
 
