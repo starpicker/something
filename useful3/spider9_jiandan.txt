@@ -1,0 +1,122 @@
+import urllib.request
+import os
+import random
+import time
+ 
+ 
+def get_page(html):
+    # 获取下一页链接
+    start1 = str(html).find("Older Comments")
+    stop1 = str(html).find("class", start1)
+ 
+    url = "http:" + html[start1 + 22:stop1 - 2]
+    return url
+ 
+ 
+def get_img(html):
+    # 获取所有图片地址 （原图）
+    imgs = []
+    img_sta = 0
+    img_end = 0
+    while 1:
+        img_end = str(html).find("view_img_link", img_end + 10)
+        if img_end == -1:
+            break
+        img_sta = str(html).find("righttext", img_sta + 10)
+ 
+        url = "http:" + html[img_sta + 62:img_end - 25]
+        imgs.append(url)
+    return imgs
+ 
+ 
+def save_img(urls, img_dir):
+    if os.path.isdir(img_dir):
+        del_dir(img_dir)
+    os.mkdir(img_dir)
+    os.chdir(img_dir)
+    a = 1
+    for i in urls:
+        print("*" * 60)
+        print("打开链接：", i)
+ 
+        wjm_sta = i.find("large")
+        wjm = i[wjm_sta + 6:]  # 获取文件名
+ 
+        img = open_url(i)
+        with open(wjm, "wb") as f:
+            f.write(img)
+        print("保存成功：", a)
+        a += 1
+        print("关闭链接，挂起程序2s")
+        time.sleep(1)
+ 
+    os.chdir("../")  # 保存完毕切回xxoo目录
+ 
+ 
+def open_url(url):
+    agent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+    req = urllib.request.Request(url)
+    req.add_header("User-agent", agent)
+    # 代{过}{滤}理ip
+    # ipports = ["183.146.213.157:80", "14.155.112.17:9000", "60.211.218.78:53281"]
+    # ipport = random.choice(ipports)
+    # print("使用的代{过}{滤}理ip:", ipport)
+    # proxy_support = urllib.request.ProxyHandler({"http": ipport})
+    # opener = urllib.request.build_opener(proxy_support)
+    # urllib.request.install_opener(opener)
+    try:
+        response = urllib.request.urlopen(req)
+        html = response.read()
+        response.close()
+        return html
+    except:
+        print("出错")
+        return open_url(url)
+ 
+ 
+def del_dir(ddir):
+    os.chdir(ddir)
+    lists = os.listdir()
+    for i in lists:
+        if os.path.isfile(i):
+            os.remove(i)
+        else:
+            del_dir(i)
+    os.chdir("../")
+    os.removedirs(ddir)
+ 
+ 
+def xxoo(page_num=1):
+    if os.path.isdir("xxoo"):
+        del_dir("xxoo")
+    os.mkdir("xxoo")
+    os.chdir("xxoo")
+    page_url = "http://jandan.net/ooxx"
+    img_dir = 1
+    while page_num:
+        html = open_url(page_url).decode("utf-8")
+        print("打开网页。。。")
+ 
+        imgs_url = get_img(html)
+        print("所有图片地址获取成功！", imgs_url)
+ 
+        print("保存当前页的图片。。。。")
+        save_img(imgs_url, str(img_dir))
+        print("保存完毕！。。。")
+ 
+        page_num -= 1
+ 
+        if page_num:
+            print("获取下一页的链接")
+            page_url = get_page(html)
+            print("下一页的地址：", page_url)
+            img_dir += 1
+ 
+ 
+if __name__ == "__main__":
+    page_num = input("请输入要爬取的页数（默认1页！）：")
+    if page_num == "" or page_num.isspace():
+        page_num = 1
+    else:
+        page_num = int(page_num)
+    xxoo(page_num)

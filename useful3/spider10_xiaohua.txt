@@ -1,0 +1,60 @@
+import string
+import urllib
+
+import requests
+from lxml import etree
+
+url = "http://www.xiaohuar.com/hua/"
+proxies = {
+    # 'http':'http://183.196.170.247:9000/',
+    # "http": "111.29.3.190:80"
+}
+headers = {
+
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+}
+
+rep = requests.get(url, headers=headers, proxies=proxies)
+html_content = rep.content.decode(encoding='gb2312')
+# print(html_content)
+dom = etree.HTML(html_content)
+# xh_photos_href = dom.xpath('//div[@id="list_img"]//div[@class="img"]/a/@href')
+# http://www.xiaohuar.com/
+xh_photos_src = dom.xpath('//div[@id="list_img"]//div[@class="img"]/a/img/@src')
+xh_photos_info = dom.xpath('//div[@id="list_img"]//a/img/@alt')
+# 下一页
+xh_photos_href = dom.xpath('//body//div[@id="list_img"]//div[@id="page"]/div/a/@href')
+# 判断尾页
+xh_photos_a_text = dom.xpath('//body//div[@id="list_img"]//div[@id="page"]/div/a/text()')
+print(xh_photos_a_text[-2])
+i = 1
+while xh_photos_a_text[-2] == '下一页':
+    for url, alt_info in zip(xh_photos_src, xh_photos_info):
+        # img_url=c.strip('//')
+        src_name = url.split('.')
+        print(src_name)
+        img_name = alt_info + '.' + src_name[-1]
+        print(img_name)
+        url = 'http://www.xiaohuar.com/' + url
+        url = urllib.parse.quote(url, safe=string.printable)
+        rep = requests.get(url, headers=headers)
+        with open(r'I:\Pchong\pc_image\flowers\\' + img_name.replace("/", "_"), 'wb')as f:
+            f.write(rep.content)
+            print('图片保存完毕！！')
+    print('-------第' + str(i) + '图片爬取完毕---------')
+    i += 1
+
+    print("下一页地址：",xh_photos_href[-2])
+    print("下一页地址：",xh_photos_href)
+    rep = requests.get(xh_photos_href[-2], headers=headers, proxies=proxies)
+    html_content = rep.content.decode(encoding='gbk')
+    # print(html_content)
+    dom = etree.HTML(html_content)
+    # xh_photos_href = dom.xpath('//div[@id="list_img"]//div[@class="img"]/a/@href')
+    # http://www.xiaohuar.com/
+    xh_photos_src = dom.xpath('//div[@id="list_img"]//div[@class="img"]/a/img/@src')
+    xh_photos_info = dom.xpath('//div[@id="list_img"]//a/img/@alt')
+    # 下一页
+    xh_photos_href = dom.xpath('//body//div[@id="list_img"]//div[@id="page"]/div/a/@href')
+    # 判断尾页
+    xh_photos_a_text = dom.xpath('//body//div[@id="list_img"]//div[@id="page"]/div/a/text()')
