@@ -11,6 +11,7 @@
 import requests
 import re
 import time
+import sys
  
 #设置浏览器代{过}{滤}理，一定要是移动设备，安卓/iOS均可
 headers = {
@@ -19,50 +20,59 @@ headers = {
  
 #print("===>欢迎使用抖音视频去水印提取工具")
 #print("===>请输入抖音链接中的短链接（eg：https://v.douyin.com/sLvq6P/）")
-#input_url = input("===>")
-input_url = sys.argv[1]
-#根据粘贴的分享内容，提取视频短链接
-preurl = re.findall(r'(?<=douyin.com\/)\w+\/', input_url, re.I|re.M)
- 
-# print("https://v.douyin.com/"+preurl[0])
-#组装短链接url
-url = "https://v.douyin.com/"+preurl[0]
- 
-#请求短链接，获得itemId和dytk
-get = requests.get(url, headers=headers)
-html = get.content
-# print(html)
-itemId = re.findall(r"(?<=itemId:\s\")\d+", str(html))
-# print(itemId[0])
-dytk = re.findall(r"(?<=dytk:\s\")(.*?)(?=\")", str(html))
-# print(dytk[0])
- 
-#组装视频长链接
-videourl = "https://www.iesdouyin.com/web/api/v2/aweme/iteminfo/?\
-item_ids="+itemId[0]+"&dytk="+dytk[0]
-# print(videourl)
- 
-#请求长链接，获取play_addr
-videoopen = requests.get(videourl, headers=headers)
-vhtml = videoopen.text
-# print(vhtml)
-uri = re.findall(r'(?<=\"uri\":\")\w{32}(?=\")', str(vhtml))
-# print(uri[0])
- 
-#长链接的格式其实是固定的，唯一变动的就是video_id，上面提取出uri后进行组装即可得到最终链接
-play_addr = "https://aweme.snssdk.com/aweme/v1/play/?video_id="+uri[0]+\
-            "&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
-#print("===>复制下面的长链接到手机浏览器打开即可得到无水印视频\n===>"+play_addr)
- 
-#自定义文件名保存短视频
-#name = input("===>正在下载保存视频,请输入视频名称：")
-name = str(time.time())
-video = requests.get(url=play_addr, headers=headers)
-with open(name+".mp4", 'wb')as file:
-    file.write(video.content)
-    file.close()
-	print("done")
-#print("===>视频下载完成！")
+input_url = ''
+while True:
+    if len(sys.argv) == 2:
+        input_url = sys.argv[1]
+    else:
+        input_url = input("link===>")
+
+    if input_url == '':
+        break
+    #根据粘贴的分享内容，提取视频短链接
+    preurl = re.findall(r'(?<=douyin.com\/)\w+\/', input_url, re.I|re.M)
+     
+    # print("https://v.douyin.com/"+preurl[0])
+    #组装短链接url
+    url = "https://v.douyin.com/"+preurl[0]
+     
+    #请求短链接，获得itemId和dytk
+    get = requests.get(url, headers=headers)
+    html = get.content
+    # print(html)
+    itemId = re.findall(r"(?<=itemId:\s\")\d+", str(html))
+    # print(itemId[0])
+    dytk = re.findall(r"(?<=dytk:\s\")(.*?)(?=\")", str(html))
+    # print(dytk[0])
+     
+    #组装视频长链接
+    videourl = "https://www.iesdouyin.com/web/api/v2/aweme/iteminfo/?item_ids="+itemId[0]+"&dytk="+dytk[0]
+    # print(videourl)
+     
+    #请求长链接，获取play_addr
+    videoopen = requests.get(videourl, headers=headers)
+    vhtml = videoopen.text
+    # print(vhtml)
+    uri = re.findall(r'(?<=\"uri\":\")\w{32}(?=\")', str(vhtml))
+    # print(uri[0])
+     
+    #长链接的格式其实是固定的，唯一变动的就是video_id，上面提取出uri后进行组装即可得到最终链接
+    play_addr = "https://aweme.snssdk.com/aweme/v1/play/?video_id="+uri[0]+\
+                "&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+    #print("===>复制下面的长链接到手机浏览器打开即可得到无水印视频\n===>"+play_addr)
+     
+    #自定义文件名保存短视频
+    #name = input("===>正在下载保存视频,请输入视频名称：")
+    name = str(int(time.time()))
+    video = requests.get(url=play_addr, headers=headers)
+    with open(name+".mp4", 'wb')as file:
+        file.write(video.content)
+        file.close()
+        print("done")
+    #print("===>视频下载完成！")
+
+    if len(sys.argv) == 2:
+        break
  
 #完事后退出程序
 #input("===>press enter key to exit!")
