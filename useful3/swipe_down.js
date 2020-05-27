@@ -1,29 +1,3 @@
-while (true) {
-    if (currentPackage() != "com.ss.android.article.lite") {
-            exit()
-        }
-    while (click("保存")) {
-        if (scrollDown() == false) {
-            back()
-            sleep(1000)
-            var val = className("android.widget.ImageView").clickable(true).selected(true).findOne(500)
-            if (val != null) {
-                 val.click()
-                 sleep(500)
-                 back()
-                 sleep(100)
-                 refresh()
-                }
-            else {
-                 back()
-                }
-
-        }
-        sleep(1000)
-    }
-    sleep(1000)
-}
-
 /*
 **脚本编写:魚離ヤ吥開氺
 **脚本作用:仿真随机滑动
@@ -34,16 +8,16 @@ while (true) {
 sml_move()调用即可
 */
 //长距离测试
-function refresh() {
+while (true) {
     WidthOne = random(300, 800);
     HeightOne = random(1600, 1800);
     WidthTwo = random(300, 800);
     HeightTwo = random(500, 700);
     timeGo = random(500, 1000);
-    //timeNext = random(9000, 12000);
+    timeNext = random(9000, 12000);
     sml_move(WidthOne, HeightTwo, WidthTwo, HeightOne, timeGo);
     //swipe(WidthOne, HeightOne, WidthTwo, HeightTwo, timeGo);
-    //sleep(timeNext);
+    sleep(timeNext);
 }
 
 //sml_move(400, 1800, 800, 230, 1000);

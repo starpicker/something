@@ -1,27 +1,16 @@
 while (true) {
-    if (currentPackage() != "com.ss.android.article.lite") {
-            exit()
-        }
     while (click("保存")) {
         if (scrollDown() == false) {
             back()
             sleep(1000)
-            var val = className("android.widget.ImageView").clickable(true).selected(true).findOne(500)
-            if (val != null) {
-                 val.click()
-                 sleep(500)
-                 back()
-                 sleep(100)
-                 refresh()
-                }
-            else {
-                 back()
-                }
-
+            className("android.widget.ImageView").clickable(true).selected(true).findOne(2000).click()
+            sleep(500)
+            back()
+            sleep(100)
+            refresh()
         }
         sleep(1000)
     }
-    sleep(1000)
 }
 
 /*

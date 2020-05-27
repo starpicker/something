@@ -14,14 +14,15 @@
         WidthTwo = random(300, 800);
         HeightTwo = random(500, 700);
         timeGo = random(500, 1000);
-        timeNext = random(8000, 12000);
-        if (currentPackage() != "com.ss.android.ugc.aweme.lite") {
-            exit()
-        }
-	  if (className("android.widget.TextView").textContains("[t]").exists()) {
-        timeNext = 1000
+        timeNext = random(7000, 10000);
+        	  if (className("android.widget.TextView").textContains("[t]").exists()) {
+        timeNext = 500
     }
         sleep(timeNext);
+	if (currentPackage() != "com.ss.android.ugc.aweme.lite") {
+            exit()
+        }
+
         sml_move(WidthOne, HeightOne, WidthTwo, HeightTwo, timeGo);
         //swipe(WidthOne, HeightOne, WidthTwo, HeightTwo, timeGo);
     }
