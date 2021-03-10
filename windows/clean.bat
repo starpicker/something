@@ -18,6 +18,15 @@ del /f /s /q %windir%\*.bak
 del /f /s /q %windir%\prefetch\*.*
 rd /s /q %windir%\temp & md %windir%\temp
 
+echo 清理系统更新包
+rd /s /q C:\Windows\SoftwareDistribution\Download
+
+echo 关闭休眠
+rem powercfg /h off
+
+echo 删除旧驱动
+echo using DriverStoreExplorer to do it
+
 rem cooke和最近历史还是保留吧...
 rem del /f /q %userprofile%\COOKIES s\*.*
 rem del /f /q %userprofile%\recent\*.*
