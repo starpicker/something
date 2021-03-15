@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/python
+import xlrd
+import sys
+
+filename = sys.argv[1]
+sheetname = 'Sheet1'
+rbook = xlrd.open_workbook(filename)
+sheet = rbook.sheet_by_name(sheetname)
+rows = sheet.nrows
+
+col = ord('I') - ord('A')
+for i in range(rows):
+    value = sheet.cell_value(i, col)
+    if(sheet.cell_value(i, col) >= 1):
+        print(sheet.cell_value(i, 1), value)
