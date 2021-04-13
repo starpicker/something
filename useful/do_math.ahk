@@ -1,12 +1,22 @@
 !'::
-;send +{tab}
-;send ^c
+send +{tab}
+send ^c
+sleep 100
 
 Haystack := clipboard
+sleep 100
+
+clipboard := Haystack
+sleep 100
+
+Haystack := clipboard
+sleep 100
 
 if (FoundPos := InStr(Haystack, "="))
 {
 	clipboard := "xxxx"
+	send {tab}
+	sleep 100
 	send ^v
 	return
 }
@@ -18,7 +28,9 @@ While (FoundPos := RegExMatch(Haystack, NeedleRegEx, Match, FoundPos + Match.Len
    sum := sum + Match.Value(0)
 }
 
+sleep 100
 clipboard := sum
-;send ^v
+send {tab}
+send ^v
    
 return
